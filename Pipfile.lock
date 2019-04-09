@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2d70aa994b72312a4661aef71ef383d83ad494dbab44c9290aefffb60525cd30"
+            "sha256": "92c4ec1cea06758b45a63534e2d1ca38093fdced3a72fa93c18b3250b9551877"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -66,20 +66,6 @@
             ],
             "index": "pypi",
             "version": "==4.5.3"
-        },
-        "coveralls": {
-            "hashes": [
-                "sha256:baa26648430d5c2225ab12d7e2067f75597a4b967034bba7e3d5ab7501d207a1",
-                "sha256:ff9b7823b15070f26f654837bb02a201d006baaf2083e0514ffd3b34a3ffed81"
-            ],
-            "index": "pypi",
-            "version": "==1.7.0"
-        },
-        "docopt": {
-            "hashes": [
-                "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"
-            ],
-            "version": "==0.6.2"
         },
         "gamebench-api-client": {
             "editable": true,

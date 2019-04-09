@@ -1,5 +1,4 @@
 import json
-import os
 from unittest import TestCase
 
 import pandas
@@ -8,7 +7,7 @@ from pandas.util.testing import assert_frame_equal
 
 from gamebench_api_client.api.utilities.dataframe_utilities import \
     json_to_normalized_dataframe, session_detail_to_dataframe, to_dataframe
-from tests import API_SAMPLES, PARENT_DIR
+from tests import *
 
 
 class TestDataFrameUtilities(TestCase):

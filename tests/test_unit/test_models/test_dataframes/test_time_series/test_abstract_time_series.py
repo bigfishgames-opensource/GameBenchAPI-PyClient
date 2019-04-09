@@ -18,9 +18,9 @@ class TestAbstractTimeSeriesModel(TestCase):
         AbstractTimeSeriesModel(**test_data)
 
         with self.subTest():
-            mock_time_series.assert_called_with()
+            mock_time_series.assert_called_with(**test_data)
         with self.subTest():
-            mock_get_data.assert_called_with(**test_data)
+            mock_get_data.assert_called_with()
 
     @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.TimeSeriesMediator')
     def test_get_data(self, mock_time_series):
@@ -28,7 +28,7 @@ class TestAbstractTimeSeriesModel(TestCase):
 
         expected = "Test Data"
         mock_instance = mock_time_series.return_value
-        mock_instance.get_data.return_value = expected
+        mock_instance.get_results.return_value = expected
         actual = AbstractTimeSeriesModel().data
 
         self.assertEqual(

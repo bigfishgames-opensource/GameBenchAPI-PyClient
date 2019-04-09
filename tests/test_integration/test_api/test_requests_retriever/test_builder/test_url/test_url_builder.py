@@ -6,8 +6,7 @@ from gamebench_api_client.api.requests_retriever.builder.url.url_builder import 
     SessionURL
 from gamebench_api_client.api.requests_retriever.builder.url.url_director import \
     URLDirector
-from tests import AUTH_URL, DEFAULT_SESSION_URL, METRIC, \
-    SESSION_ID
+from tests import *
 
 
 class TestUrlDirector(TestCase):

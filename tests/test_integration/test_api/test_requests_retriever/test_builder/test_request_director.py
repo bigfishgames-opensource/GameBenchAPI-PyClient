@@ -3,8 +3,7 @@
 from unittest import TestCase
 
 from gamebench_api_client.api.requests_retriever.builder.request_director import RequestDirector
-from tests import AUTH_DATA, AUTH_HEADERS, AUTH_TOKEN, AUTH_URL, BASE_URL, \
-    METRIC_TEST_PARAMS, PASSWORD, SESSION_SUFFIX, USERNAME, VERSION
+from tests import *
 
 
 class TestRequestDirector(TestCase):

@@ -133,3 +133,7 @@ SESSION_RESPONSE_RETRIEVER_PATH = 'gamebench_api_client.api.response.response_me
 REQUEST_BUILDER_PATH = 'gamebench_api_client.api.requests_retriever.builder.request_builder.'
 TEST_URL_DIRECTOR_PATH = 'tests.test_unit.test_api' \
                          '.test_requests_retriever.test_builder.test_request_builder.URLDirector'
+MODEL_CREATOR_GET_CLASS = 'gamebench_api_client.models.creator.model_creator.ModelCreator._get_class_object'
+MODEL_CREATOR_IMPORT_MODULE = 'gamebench_api_client.models.creator.model_creator.ModelCreator' \
+                              '._import_given_model_module'
+MODEL_CREATOR_SET_MODULE = 'gamebench_api_client.models.creator.model_creator.ModelCreator._set_module_name_by_model'

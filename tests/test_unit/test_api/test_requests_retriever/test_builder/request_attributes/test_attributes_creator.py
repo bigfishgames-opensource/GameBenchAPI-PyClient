@@ -5,8 +5,7 @@ from unittest.mock import patch
 
 from gamebench_api_client.api.requests_retriever.builder.attributes.attributes_creator import \
     Attributes
-from tests import AUTH_HEADERS, AUTH_TOKEN, DEFAULT_SESSION_HEADERS, METRIC, \
-    NO_METRIC_HEADERS
+from tests import *
 
 
 class TestAttributes(TestCase):

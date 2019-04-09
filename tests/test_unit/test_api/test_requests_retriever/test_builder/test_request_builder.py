@@ -6,9 +6,7 @@ from unittest.mock import patch
 from gamebench_api_client.api.requests_retriever.builder.request_builder import AuthRequest, Request, RequestBuilder, \
     SessionRequest
 from gamebench_api_client.api.requests_retriever.builder.url.url_director import URLDirector
-from tests import AUTH_DATA, AUTH_HEADERS, AUTH_TOKEN, AUTH_URL, \
-    DEFAULT_SESSION_HEADERS, DEFAULT_SESSION_URL, METRIC, REQUEST_BUILDER_PATH, SESSION_DATA, SESSION_ID, \
-    TEST_URL_DIRECTOR_PATH
+from tests import *
 
 patch_method = 'Method'
 patch_attributes = 'Attributes'
@@ -44,7 +42,7 @@ class DefaultRequestBuilder(RequestBuilder):
         super().set_params()
 
     def set_data(self):
-        """ Setup the get_data method for tests."""
+        """ Setup the get_results method for tests."""
 
         super().set_data()
 

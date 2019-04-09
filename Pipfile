@@ -10,7 +10,6 @@ requests-mock = ">=1.5.2"
 pandas = ">=0.24.2"
 gamebench-api-client = {editable = true,path = "."}
 coverage = ">=4.5.3"
-coveralls = "*"
 
 [requires]
 python_version = "3.7"

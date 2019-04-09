@@ -22,15 +22,14 @@ class Authenticator(AbstractModel, Singleton):
         """
 
         super().__init__()
-        self.mediator = AuthenticationMediator()
-        self.data = self.get_data(**request_parameters)
+        self.mediator = AuthenticationMediator(**request_parameters)
+        self.data = self.get_data()
         self.token = self.get_data
 
-    def get_data(self, **request_parameters):
-        """ Calls the get_data method from the Mediator object.
+    def get_data(self):
+        """ Calls the get_results method from the Mediator object.
 
-            :param request_parameters: Dictionary containing the client's username and password.
             :return: The authentication token as a JSON.
         """
 
-        return self.mediator.get_data(**request_parameters)
+        return super().get_data()

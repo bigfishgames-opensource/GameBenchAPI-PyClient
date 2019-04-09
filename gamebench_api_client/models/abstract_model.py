@@ -11,12 +11,10 @@ class AbstractModel(ABC):
         self.data = None
 
     @abstractmethod
-    def get_data(self, **request_parameters):
+    def get_data(self):
         """ Returns a Pandas DataFrame containing metric data from a response json.
 
-            :param request_parameters: Dictionary passed in from the model Creator.  Contains information to
-                build and send a response.
             :return: Pandas DataFrame containing metric data.
         """
 
-        return self.mediator.get_data(**request_parameters)
+        return self.mediator.get_results()

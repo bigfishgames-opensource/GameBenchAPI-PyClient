@@ -6,8 +6,7 @@ import requests_mock
 
 from gamebench_api_client.api.requests_retriever.request_adapter.adapter import Adapter, \
     RequestsAdapter
-from tests import AUTH_ATTRIBUTES, AUTH_URL, \
-    DEFAULT_SESSION_URL, SESSION_ATTRIBUTES
+from tests import *
 
 
 class DefaultAdapter(Adapter):
