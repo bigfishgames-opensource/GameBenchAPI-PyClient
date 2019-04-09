@@ -18,7 +18,8 @@ install:
   - pipenv install
 
 script:
-  - coverage run --source=./gamebench_api_client -m unittest discover -s tests/
+  - coverage run --source=./gamebench_api_client -m --branch unittest discover -s tests/
+  - coverage xml --include=./gamebench_api_client/*
   - sonar-scanner
 
 after_success: coveralls
