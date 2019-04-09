@@ -1,0 +1,28 @@
+{
+  "request": {
+    "method": "POST",
+    "address": "https://api.production.gamebench.net/v1/sessions/typeahead",
+    "json": {
+      "query": [
+        "Ether"
+      ]
+    }
+  },
+  "response": [
+    {
+      "key": "EtherPad",
+      "doc_count": 3,
+      "type": "app"
+    },
+    {
+      "key": "STF-L09",
+      "doc_count": 138,
+      "type": "device"
+    },
+    {
+      "key": "Huawei",
+      "doc_count": 4827,
+      "type": "manufacturer"
+    }
+  ]
+}

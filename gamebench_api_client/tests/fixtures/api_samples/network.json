@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "address": "https://api.production.gamebench.net/v1/sessions/{sessionId}/network"
+  },
+  "response": {
+    "id": "GEE2gmYB8_EXzPlqzPeB",
+    "sessionId": "7792158b560cef8004fad9933c74b2401382f06d",
+    "samples": [
+      {
+        "appReceivedBytes": 1,
+        "appSendBytes": 1,
+        "downloadSpeed": 1,
+        "mobileDownloadSpeed": 1,
+        "uploadSpeed": 1,
+        "mobileUploadSpeed": 1,
+        "mobileNetworkType": 1,
+        "mobileDataOn": true,
+        "wifiOn": true,
+        "timestamp": 5257
+      }
+    ]
+  }
+}

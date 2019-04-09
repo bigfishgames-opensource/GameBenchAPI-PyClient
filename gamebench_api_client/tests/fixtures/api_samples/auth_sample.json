@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "address": "https://api.production.gamebench.net/v1/Auth/login",
+    "json": {
+      "username": "john.smith@example.com",
+      "password": "password"
+    }
+  },
+  "response": {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+  }
+}

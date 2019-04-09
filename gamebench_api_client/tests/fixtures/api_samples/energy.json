@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "address": "https://api.production.gamebench.net/v1/sessions/{sessionId}/energy"
+  },
+  "response": {
+    "id": "GEE2gmYB8_EXzPlqzPeB",
+    "sessionId": "7792158b560cef8004fad9933c74b2401382f06d",
+    "samples": [
+      {
+        "energyLevel": 515,
+        "timestamp": 5257
+      }
+    ]
+  }
+}

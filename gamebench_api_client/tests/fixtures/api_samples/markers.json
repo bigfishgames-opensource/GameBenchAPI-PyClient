@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "GET",
+    "address": "https://api.production.gamebench.net/v1/sessions/{sessionId}/markers"
+  },
+  "response": {
+    "id": "GEE2gmYB8_EXzPlqzPeB",
+    "sessionId": "7792158b560cef8004fad9933c74b2401382f06d",
+    "fpsAvg": 0,
+    "fpsMax": 0,
+    "fpsMin": 0,
+    "fpsMedian": 0,
+    "fpsStability": 0,
+    "fpsStabilityIndex": 0,
+    "cpuUsageMin": 0,
+    "cpuUsageAvg": 0,
+    "cpuUsageMax": 0,
+    "gpuUsageMin": 0,
+    "gpuUsageAvg": 0,
+    "gpuUsageMax": 0,
+    "memUsageAvg": 0,
+    "memUsageMax": 0,
+    "memUsageMin": 0,
+    "appReceivedBytes": 0,
+    "appSentBytes": 0,
+    "mAMin": 0,
+    "mAAvg": 0,
+    "mAMax": 0,
+    "tsStart": 0,
+    "tsEnd": 0,
+    "label": "marker"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "request": {
+    "method": "GET",
+    "address": "https://api.production.gamebench.net/v1/sessions/{sessionId}/cpu"
+  },
+  "response": {
+    "id": "GEE2gmYB8_EXzPlqzPeB",
+    "sessionId": "7792158b560cef8004fad9933c74b2401382f06d",
+    "samples": [
+      {
+        "appUsage": 1372571.375,
+        "daemonUsage": 0,
+        "gbUsage": 12.658227920532227,
+        "totalCpuUsage": 39.68846130371094,
+        "timestamp": 5257
+      },
+      {
+        "appUsage": 1572571.375,
+        "daemonUsage": 1,
+        "gbUsage": 14.972427920532227,
+        "totalCpuUsage": 61.00046330371094,
+        "timestamp": 5256
+      },
+      {
+        "appUsage": 1982561.386,
+        "daemonUsage": 1,
+        "gbUsage": 12.072427637532894,
+        "totalCpuUsage": 39.98046330361094,
+        "timestamp": 5258
+      }
+    ]
+  }
+}

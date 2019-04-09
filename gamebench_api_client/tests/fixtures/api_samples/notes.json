@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "address": "https://api.production.gamebench.net/v1/sessions/{sessionId}/notes"
+  },
+  "response": {
+    "id": "GEE2gmYB8_EXzPlqzPeB",
+    "sessionId": "7792158b560cef8004fad9933c74b2401382f06d",
+    "firstName": "John",
+    "surname": "Smith",
+    "authorId": "08a3c2d1d59a7d2888dd1bf4da7ca888",
+    "title": "Session Note",
+    "message": "Investigate CPU high load issue.",
+    "date": 1540219787614
+  }
+}

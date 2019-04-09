@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "address": "https://api.production.gamebench.net/v1/sessions/{sessionId}/memory"
+  },
+  "response": {
+    "id": "GEE2gmYB8_EXzPlqzPeB",
+    "sessionId": "7792158b560cef8004fad9933c74b2401382f06d",
+    "samples": [
+      {
+        "dalvikUsage": 0,
+        "nativeUsage": 0,
+        "otherUsage": 0,
+        "totalUsage": 0,
+        "timestamp": 5257
+      }
+    ]
+  }
+}

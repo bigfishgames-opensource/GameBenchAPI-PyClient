@@ -1,0 +1,23 @@
+{
+  "request": {
+    "method": "GET",
+    "address": "https://api.production.gamebench.net/v1/sessions/{sessionId}/battery"
+  },
+  "response": {
+    "id": "GEE2gmYB8_EXzPlqzPeB",
+    "sessionId": "7792158b560cef8004fad9933c74b2401382f06d",
+    "samples": [
+      {
+        "audioVolume": 0,
+        "usbCharge": true,
+        "acCharge": false,
+        "charging": true,
+        "batteryLevel": 76,
+        "batteryTemperature": 31,
+        "mobileOn": false,
+        "wifiOn": false,
+        "timestamp": 0
+      }
+    ]
+  }
+}
