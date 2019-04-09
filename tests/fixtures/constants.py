@@ -1,7 +1,7 @@
 # Universal
 BASE_URL = 'https://api.production.gamebench.net'
 VERSION = '/v1'
-API_SAMPLES = '/tests/fixtures/API_SAMPLES/'
+API_SAMPLES = '/fixtures/api_samples/'
 
 # Authentication Related
 USERNAME = 'john.smith@example.com'
