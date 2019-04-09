@@ -4,8 +4,7 @@ from unittest import TestCase
 from unittest.mock import Mock, patch
 
 from gamebench_api_client.api.requests_retriever.builder.request_director import DirectorLoader, RequestDirector
-from tests import AUTH_DATA, AUTH_HEADERS, AUTH_URL, DEFAULT_SESSION_HEADERS, \
-    DEFAULT_SESSION_URL, SESSION_DATA
+from tests import *
 
 
 class TestRequestDirector(TestCase):

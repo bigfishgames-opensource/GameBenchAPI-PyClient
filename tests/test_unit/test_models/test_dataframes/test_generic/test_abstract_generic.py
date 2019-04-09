@@ -18,9 +18,9 @@ class TestGenericFrameModel(TestCase):
         AbstractGenericModel(**test_data)
 
         with self.subTest():
-            mock_generic_frame.assert_called_with()
+            mock_generic_frame.assert_called_with(**test_data)
         with self.subTest():
-            mock_get_data.assert_called_with(**test_data)
+            mock_get_data.assert_called_with()
 
     @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.GenericMediator')
     def test_get_data(self, mock_generic_frame):
@@ -28,7 +28,7 @@ class TestGenericFrameModel(TestCase):
 
         expected = "Test Data"
         mock_instance = mock_generic_frame.return_value
-        mock_instance.get_data.return_value = expected
+        mock_instance.get_results.return_value = expected
         actual = AbstractGenericModel().data
 
         self.assertEqual(

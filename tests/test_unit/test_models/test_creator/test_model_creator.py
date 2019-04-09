@@ -1,7 +1,8 @@
 from unittest import TestCase
-from unittest.mock import Mock, patch
+from unittest.mock import patch, Mock
 
 from gamebench_api_client.models.creator.model_creator import ModelCreator, ModelNotFound
+from tests import *
 
 
 def stub_function():
@@ -21,9 +22,9 @@ class TestModelCreator(TestCase):
         so the setup needs to patch all of those methods.
     """
 
-    @patch('gamebench_api_client.models.creator.model_creator.ModelCreator._get_class_object')
-    @patch('gamebench_api_client.models.creator.model_creator.ModelCreator._import_given_model_module')
-    @patch('gamebench_api_client.models.creator.model_creator.ModelCreator._find_module_containing_model')
+    @patch(MODEL_CREATOR_GET_CLASS)
+    @patch(MODEL_CREATOR_IMPORT_MODULE)
+    @patch(MODEL_CREATOR_SET_MODULE)
     def setUp(self, mock_module, mock_import, mock_object):
         mock_module.return_value = "Test.Path"
         mock_import.return_value = "Test Module"
@@ -59,33 +60,72 @@ class TestModelCreator(TestCase):
         actual = self.creator.instance
         self.assertEqual(actual, expected)
 
+
+class TestFindGeneric(TestCase):
+    """ Module path for Generic models can be found."""
+
+    @patch(MODEL_CREATOR_GET_CLASS)
+    @patch(MODEL_CREATOR_IMPORT_MODULE)
+    @patch(MODEL_CREATOR_SET_MODULE)
+    def setUp(self, mock_module, mock_import, mock_object):
+        mock_module.return_value = "Test.Path"
+        mock_import.return_value = "Test Module"
+        mock_object.return_value = stub_function
+        self.creator = ModelCreator("SessionSummary")
+
     def test_find_generic_frame_model(self):
         """ Verify a generic frame model can be found and the model name returned."""
 
-        actual = self.creator._find_module_containing_model("Keyword")
-        expected = "gamebench_api_client.models.generic.generic_frame_models"
+        actual = self.creator._set_module_name_by_model()
+        expected = "gamebench_api_client.models.dataframes.generic.generic_models"
         self.assertEqual(actual, expected)
+
+
+class TestFindSessionDetail(TestCase):
+    """ Module path for Session Detail models can be found."""
+
+    @patch(MODEL_CREATOR_GET_CLASS)
+    @patch(MODEL_CREATOR_IMPORT_MODULE)
+    @patch(MODEL_CREATOR_SET_MODULE)
+    def setUp(self, mock_module, mock_import, mock_object):
+        mock_module.return_value = "Test.Path"
+        mock_import.return_value = "Test Module"
+        mock_object.return_value = stub_function
+        self.creator = ModelCreator("App")
 
     def test_find_session_detail_model(self):
         """ Verify a session detail model can be found and the model name returned."""
 
-        actual = self.creator._find_module_containing_model("App")
-        expected = "gamebench_api_client.models.session_detail.session_detail_models"
+        actual = self.creator._set_module_name_by_model()
+        expected = "gamebench_api_client.models.dataframes.session_detail.session_detail_models"
         self.assertEqual(actual, expected)
+
+
+class TestFindTimeSeries(TestCase):
+    """ Module path for Time Series models can be found."""
+
+    @patch(MODEL_CREATOR_GET_CLASS)
+    @patch(MODEL_CREATOR_IMPORT_MODULE)
+    @patch(MODEL_CREATOR_SET_MODULE)
+    def setUp(self, mock_module, mock_import, mock_object):
+        mock_module.return_value = "Test.Path"
+        mock_import.return_value = "Test Module"
+        mock_object.return_value = stub_function
+        self.creator = ModelCreator("Cpu")
 
     def test_find_time_series_model(self):
         """ Verify a time series model can be found and the model name returned."""
 
-        actual = self.creator._find_module_containing_model("Cpu")
-        expected = "gamebench_api_client.models.time_series.time_series_models"
+        actual = self.creator._set_module_name_by_model()
+        expected = "gamebench_api_client.models.dataframes.time_series.time_series_models"
         self.assertEqual(actual, expected)
 
 
 class TestModelNotFound(TestCase):
     """ Unit tests to verify the correct error message is raised if a given model doesn't exist."""
 
-    @patch('gamebench_api_client.models.creator.model_creator.ModelCreator._get_class_object')
-    @patch('gamebench_api_client.models.creator.model_creator.ModelCreator._import_given_model_module')
+    @patch(MODEL_CREATOR_GET_CLASS)
+    @patch(MODEL_CREATOR_IMPORT_MODULE)
     def test_error_raise_when_module_not_found(self, mock_import, mock_object):
         """ Verify the ModuleNotFound exception is raised if the given model doesn't exist."""
 

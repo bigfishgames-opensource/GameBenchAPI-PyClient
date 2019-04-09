@@ -8,16 +8,16 @@ from pandas.io.json import json_normalize
 from pandas.testing import assert_frame_equal
 
 from gamebench_api_client.api.requests_retriever.request_adapter.adapter import RequestsAdapter
-from gamebench_api_client.api.response.response_mediator import GenericMediator, ResponseRetriever, \
-    SessionDetailMediator, TimeSeriesMediator
+from gamebench_api_client.api.response.response_mediator import GenericMediator, SessionDetailMediator, \
+    TimeSeriesMediator, AuthenticationMediator
 from tests import *
+from gamebench_api_client.api.response.response_retriever import ResponseRetriever
 
 
 class TestTimeSeriesMediator(TestCase):
     """ Tests for the TimeSeriesMediator."""
 
     def setUp(self):
-        self.mediator = TimeSeriesMediator()
         self.error_message = "\nTest: {} \nExpected: {}\nActual:   {}\n"
         with open(os.path.join(
                 PARENT_DIR + API_SAMPLES + "cpu_multiple_sessions.json")) as \
@@ -26,25 +26,26 @@ class TestTimeSeriesMediator(TestCase):
 
     @requests_mock.Mocker()
     def test_set_data(self, mock_return):
-        """ Verify get_data returns a DataFrame."""
+        """ Verify get_results returns a DataFrame."""
 
         adapter = RequestsAdapter(**DEFAULT_EXPECTED_REQUEST_PARAMS)
         mock_return.request(
-                "GET",
-                DEFAULT_SESSION_URL,
-                json=self.time_series_json["response"]
+            "GET",
+            DEFAULT_SESSION_URL,
+            json=self.time_series_json["response"]
         )
 
         expected = json_normalize(
-                adapter.request().json(),
-                'samples',
-                ['id', 'sessionId']
+            adapter.request().json(),
+            'samples',
+            ['id', 'sessionId']
         )
-        actual = self.mediator.get_data(**DEFAULT_REQUEST_PARAMS)
+        self.mediator = TimeSeriesMediator(**DEFAULT_REQUEST_PARAMS)
+        actual = self.mediator.get_results()
 
         assert_frame_equal(
-                expected,
-                actual
+            expected,
+            actual
         )
 
 
@@ -52,7 +53,6 @@ class TestSessionDetailMediator(TestCase):
     """ Tests for the SessionDetailMediator."""
 
     def setUp(self):
-        self.mediator = SessionDetailMediator()
         self.error_message = "\nTest: {} \nExpected: {}\nActual:   {}\n"
         with open(os.path.join(
                 PARENT_DIR + API_SAMPLES + "sessionid.json")) as json_data:
@@ -60,25 +60,26 @@ class TestSessionDetailMediator(TestCase):
 
     @requests_mock.Mocker()
     def test_set_data(self, mock_return):
-        """ Verify get_data returns a DataFrame."""
+        """ Verify get_results returns a DataFrame."""
 
         adapter = RequestsAdapter(**NO_METRIC_EXPECTED_REQUEST_PARAMS)
         mock_return.request(
-                "POST",
-                "https://api.production.gamebench.net/v1/sessions/session_id?test_params",
-                json=self.test_json["response"]
+            "POST",
+            "https://api.production.gamebench.net/v1/sessions/session_id?test_params",
+            json=self.test_json["response"]
         )
         series = pandas.Series(adapter.request().json())
 
         expected = pandas.DataFrame(
-                series['app'],
-                index=['app']
+            series['app'],
+            index=['app']
         )
-        actual = self.mediator.get_data(**NO_METRIC_REQUEST_PARAMS)
+        self.mediator = SessionDetailMediator(**NO_METRIC_REQUEST_PARAMS)
+        actual = self.mediator.get_results()
 
         assert_frame_equal(
-                expected,
-                actual
+            expected,
+            actual
         )
 
 
@@ -86,7 +87,6 @@ class TestGenericFrameMediator(TestCase):
     """ Tests for the GenericMediator."""
 
     def setUp(self):
-        self.mediator = GenericMediator()
         self.error_message = "\nTest: {} \nExpected: {}\nActual:   {}\n"
         with open(os.path.join(
                 PARENT_DIR + API_SAMPLES + "sessionid.json")) as json_data:
@@ -94,29 +94,29 @@ class TestGenericFrameMediator(TestCase):
 
     @requests_mock.Mocker()
     def test_set_data(self, mock_return):
-        """ Verify get_data returns a DataFrame."""
+        """ Verify get_results returns a DataFrame."""
 
         adapter = RequestsAdapter(**DEFAULT_EXPECTED_REQUEST_PARAMS)
         mock_return.request(
-                "GET",
-                DEFAULT_SESSION_URL,
-                json=self.generic_frame_json["response"]
+            "GET",
+            DEFAULT_SESSION_URL,
+            json=self.generic_frame_json["response"]
         )
 
         expected = pandas.DataFrame(adapter.request().json())
-        actual = self.mediator.get_data(**DEFAULT_REQUEST_PARAMS)
+        self.mediator = GenericMediator(**DEFAULT_REQUEST_PARAMS)
+        actual = self.mediator.get_results()
 
         assert_frame_equal(
-                expected,
-                actual
+            expected,
+            actual
         )
 
 
 class TestResponseRetriever(TestCase):
-    """ Tests for the TimeSeriesMediator."""
+    """ Tests for the ResponseMediator."""
 
     def setUp(self):
-        self.retriever = ResponseRetriever()
         self.error_message = "\nTest: {} \nExpected: {}\nActual:   {}\n"
         with open(os.path.join(
                 PARENT_DIR + API_SAMPLES + "cpu_multiple_sessions.json")) as \
@@ -154,7 +154,7 @@ class TestResponseRetriever(TestCase):
             }
         }
 
-    @patch('gamebench_api_client.api.response.response_mediator.RequestsAdapter')
+    @patch('gamebench_api_client.api.response.response_retriever.RequestsAdapter')
     def test_get_response_json_gets_expected_request_dict(self, mock_return):
         """ Verify get_response_json.request is set to the correct dict."""
 
@@ -171,7 +171,8 @@ class TestResponseRetriever(TestCase):
                 "params": params['params'],
                 "data": params['data']
             }
-            self.retriever.get_response_json(**session_parameters)
+            self.retriever = ResponseRetriever(**session_parameters)
+            self.retriever.get_response_json()
 
             expected = {
                 "method": params['method'],
@@ -181,13 +182,13 @@ class TestResponseRetriever(TestCase):
             actual = self.retriever.request
 
             self.assertEqual(
+                expected,
+                actual,
+                self.error_message.format(
+                    test,
                     expected,
-                    actual,
-                    self.error_message.format(
-                            test,
-                            expected,
-                            actual
-                    )
+                    actual
+                )
             )
 
     @requests_mock.Mocker()
@@ -211,23 +212,50 @@ class TestResponseRetriever(TestCase):
 
             adapter = RequestsAdapter(**expected_request_parameters)
             mock_return.request(
-                    params['method'],
-                    params['url'],
-                    json=self.time_series_json["response"]
+                params['method'],
+                params['url'],
+                json=self.time_series_json["response"]
             )
 
             expected_json = adapter.request().json()
             expected = expected_json['samples']
 
-            actual_json = self.retriever.get_response_json(**session_parameters)
+            self.retriever = ResponseRetriever(**session_parameters)
+            actual_json = self.retriever.get_response_json()
             actual = actual_json['samples']
 
             self.assertEqual(
+                expected,
+                actual,
+                self.error_message.format(
+                    test,
                     expected,
-                    actual,
-                    self.error_message.format(
-                            test,
-                            expected,
-                            actual
-                    )
+                    actual
+                )
             )
+
+
+class TestAuthenticationMediator(TestCase):
+    """ Tests for the AuthenticationMediator."""
+
+    def setUp(self):
+        self.error_message = "\nTest: {} \nExpected: {}\nActual:   {}\n"
+        with open(os.path.join(
+                PARENT_DIR + API_SAMPLES + "auth_sample.json")) as json_data:
+            self.auth_json = json.load(json_data)
+
+    @requests_mock.Mocker()
+    def test_set_data(self, mock_return):
+        """ Verify get_results returns an auth token."""
+
+        adapter = RequestsAdapter(**AUTH_ATTRIBUTES)
+        mock_return.request(
+            "POST",
+            AUTH_URL,
+            json=self.auth_json["response"]
+        )
+        expected = adapter.request().json()
+        self.mediator = AuthenticationMediator(**AUTH_DATA)
+        actual = self.mediator.get_results()
+
+        self.assertEqual(actual, expected)

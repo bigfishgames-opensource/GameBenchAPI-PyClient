@@ -15,21 +15,20 @@ class AbstractGenericModel(AbstractModel, ABC):
         """ Sets up the mediator and data attributes.
 
             The mediator is set to the mediator that it will be contacting.  The data
-            is set to the DataFrame returned from the get_data method.
+            is set to the DataFrame returned from the get_results method.
 
             :param request_parameters: Dictionary passed in from the model Creator.  Contains information to
                 build and send a response.
         """
-        super().__init__()
-        self.mediator = GenericMediator()
-        self.data = self.get_data(**request_parameters)
 
-    def get_data(self, **request_parameters):
+        super().__init__()
+        self.mediator = GenericMediator(**request_parameters)
+        self.data = self.get_data()
+
+    def get_data(self):
         """ Returns a Pandas DataFrame containing metric data from a response json.
 
-            :param request_parameters: Dictionary passed in from the model Creator.  Contains information to
-                build and send a response.
             :return: Pandas DataFrame containing metric data.
         """
 
-        return super().get_data(**request_parameters)
+        return super().get_data()

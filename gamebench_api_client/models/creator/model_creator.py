@@ -9,11 +9,11 @@ class ModelCreator:
     """
 
     MODELS_AND_MODULES = {
-        "gamebench_api_client.models.generic.generic_frame_models":
+        "gamebench_api_client.models.dataframes.generic.generic_models":
             ["Keyword", "Markers", "SessionNotes", "SessionSummary"],
-        "gamebench_api_client.models.session_detail.session_detail_models":
+        "gamebench_api_client.models.dataframes.session_detail.session_detail_models":
             ["App", "Device", "Location", "Metrics", "NetworkUsage"],
-        "gamebench_api_client.models.time_series.time_series_models":
+        "gamebench_api_client.models.dataframes.time_series.time_series_models":
             [
                 "Battery", "Cpu", "CpuCoreFrequency", "Energy", "Fps", "FpsStability",
                 "Energy", "GpuImg", "Gpu", "Janks", "Memory", "Network", "Power"
@@ -33,45 +33,40 @@ class ModelCreator:
                     params: URL appended filters.
                     data: Dictionary of filter keywords.
         """
-        # TODO set self.model = model
-        self.module_path = self._find_module_containing_model(model)
-        # TODO Add set_module_path(module_path) if given a path, use it, if not _find_module_path()
-        self.imported_module = self._import_given_model_module(self.module_path)
-        self.model_class = self._get_class_object(self.imported_module, model)
+        self.model = model
+        self.module_path = self._set_module_name_by_model()
+        self.imported_module = self._import_given_model_module()
+        self.model_class = self._get_class_object()
         self.instance = self.model_class(**request_parameters)
 
-    def _find_module_containing_model(self, model):
+    def _set_module_name_by_model(self):
         """ Determine which module the given model is in and returns the module path.
 
-            :param model: The model that the client is requesting.
             :return: The path to the module containing the requested model.
             :raises ValueError: Raised if the model doesn't exist.
         """
 
         for path, models in self.MODELS_AND_MODULES.items():
-            if model in models:
+            if self.model in models:
                 return path
         else:
-            raise ModelNotFound(model)
+            raise ModelNotFound(self.model)
 
-    def _import_given_model_module(self, module_path):
+    def _import_given_model_module(self):
         """ Use import module that contains the specified class name.
 
-            :param module_path: The path to the module containing the required model.
             :return: Imported module name.
         """
-        # TODO Refactor to import_module(self.module_path) since this happens after self.module_path is set.
-        return import_module(module_path)
 
-    def _get_class_object(self, imported_module, class_name):
+        return import_module(self.module_path)
+
+    def _get_class_object(self):
         """ Get the value of the model class.
 
-            :param imported_module: The module containing the model the user requested.
-            :param class_name: The class name for the model the user requested.
             :return: Value of the model's class.
         """
-        # TODO refactor to use instance members.
-        return getattr(imported_module, class_name)
+
+        return getattr(self.imported_module, self.model)
 
     def get_model(self):
         """ Returns the instance of a specified model.

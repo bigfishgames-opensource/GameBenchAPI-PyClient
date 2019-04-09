@@ -20,9 +20,9 @@ class TestSessionDetailModel(TestCase):
         AbstractSessionDetailModel(**test_data)
 
         with self.subTest():
-            mock_session_detail.assert_called_with()
+            mock_session_detail.assert_called_with(**test_data)
         with self.subTest():
-            mock_get_data.assert_called_with(**test_data)
+            mock_get_data.assert_called_with()
 
     @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.SessionDetailMediator')
     def test_get_data(self, mock_session_detail):
@@ -30,7 +30,7 @@ class TestSessionDetailModel(TestCase):
 
         expected = "Test Data"
         mock_instance = mock_session_detail.return_value
-        mock_instance.get_data.return_value = expected
+        mock_instance.get_results.return_value = expected
         actual = AbstractSessionDetailModel().data
 
         self.assertEqual(

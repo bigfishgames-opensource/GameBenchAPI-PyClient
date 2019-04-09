@@ -1,22 +1,28 @@
 from abc import ABC
 
-from gamebench_api_client.api.requests_retriever.builder.request_director import RequestDirector
-from gamebench_api_client.api.requests_retriever.request_adapter.adapter import RequestsAdapter
+from gamebench_api_client.api.response.response_retriever import AuthResponseRetriever, \
+    ResponseRetriever
 from gamebench_api_client.api.utilities.dataframe_utilities import json_to_normalized_dataframe, \
     session_detail_to_dataframe, to_dataframe
 
 
 class ResponseMediator(ABC):
-    """ Abstract Mediator."""
+    """ Abstract Mediator.
 
-    def __init__(self):
+        :param request_parameters: Dictionary from the user containing information
+            for the request.
+    """
+
+    def __init__(self, **request_parameters):
+        self.request_parameters = request_parameters
         self.retriever = None
 
-    def get_data(self, **request_parameters):
-        """ Abstract method to get JSON Data into a Pandas DataFrame.
+    def get_results(self):
+        """ Abstract method to get the JSON from the retriever.
 
-            :param request_parameters: Dictionary from the user containing information
-                for the request.
+            For the Time Series, Generic, and Session Detail mediators this information
+            will be returned in a Pandas DataFrame.  The Authentication simply returns
+            the Auth Token.
         """
 
         pass
@@ -25,19 +31,17 @@ class ResponseMediator(ABC):
 class TimeSeriesMediator(ResponseMediator):
     """ Concrete Mediator for Time Series objects to use."""
 
-    def __init__(self):
-        super().__init__()
-        self.retriever = ResponseRetriever()
+    def __init__(self, **request_parameters):
+        super().__init__(**request_parameters)
+        self.retriever = ResponseRetriever(**request_parameters)
 
-    def get_data(self, **request_parameters):
+    def get_results(self):
         """ Sets JSON data into a Pandas DataFrame.
 
-            :param request_parameters: Dictionary from the user containing information
-                for the request.
             :return: DataFrame of the JSON data from a response.
         """
 
-        response_json = self.retriever.get_response_json(**request_parameters)
+        response_json = self.retriever.get_response_json()
 
         return json_to_normalized_dataframe(response_json)
 
@@ -45,21 +49,19 @@ class TimeSeriesMediator(ResponseMediator):
 class SessionDetailMediator(ResponseMediator):
     """ Concrete Mediator for session detail objects to use."""
 
-    def __init__(self):
-        super().__init__()
-        self.retriever = ResponseRetriever()
+    def __init__(self, **request_parameters):
+        super().__init__(**request_parameters)
+        self.retriever = ResponseRetriever(**request_parameters['response'])
 
-    def get_data(self, **request_parameters):
+    def get_results(self):
         """ Sets JSON data into a Pandas DataFrame.
 
-            :param request_parameters: Dictionary from the user containing information
-                for the request.
             :return: DataFrame of the JSON data from a response.
         """
 
-        response_json = self.retriever.get_response_json(**request_parameters['response'])
+        response_json = self.retriever.get_response_json()
         session_dict = {
-            'metric': request_parameters['metric'],
+            'metric': self.request_parameters['metric'],
             'response_json': response_json
         }
 
@@ -69,86 +71,37 @@ class SessionDetailMediator(ResponseMediator):
 class GenericMediator(ResponseMediator):
     """ Concrete Mediator for generic objects to use."""
 
-    def __init__(self):
-        super().__init__()
-        self.retriever = ResponseRetriever()
+    def __init__(self, **request_parameters):
+        super().__init__(**request_parameters)
+        self.retriever = ResponseRetriever(**request_parameters)
 
-    def get_data(self, **request_parameters):
+    def get_results(self):
         """ Sets JSON data into a Pandas DataFrame.
 
-            :param request_parameters: Dictionary from the user containing information
-                for the request.
             :return: DataFrame of the JSON data from a response.
         """
 
-        response_json = self.retriever.get_response_json(**request_parameters)
+        response_json = self.retriever.get_response_json()
 
         return to_dataframe(response_json)
 
 
-class ResponseRetriever:
-    """ Facade for RequestDirector and RequestsAdapter."""
-
-    def __init__(self):
-        self.director = RequestDirector()
-        self.request = None
-        self.adapter = None
-        self.response = None
-
-    def get_response_json(self, **request_parameters):
-        """ Retrieves request and returns the JSON.
-
-            :param request_parameters: Dictionary from the user containing information
-                for the request.
-            :return: The json data for a response.
-        """
-
-        self.request = self.director.get_session_request(**request_parameters)
-        self.adapter = RequestsAdapter(**self.request)
-        self.response = self.adapter.request()
-
-        return self.response.json()
-
-
 class AuthenticationMediator(ResponseMediator):
-    """ Concrete Mediator for Authentication requests to use."""
+    """ Concrete Mediator for Authentication requests to use.
 
-    def __init__(self):
+        :param request_parameters:
+    """
+
+    def __init__(self, **request_parameters):
         super().__init__()
-        self.retriever = AuthResponseRetriever()
+        self.retriever = AuthResponseRetriever(**request_parameters)
 
-    def get_data(self, **request_parameters):
+    def get_results(self):
         """ Retrieves the Authentication token for a user.
 
-            :param request_parameters: Dictionary from the user containing information
-                for the request.
             :return response_json: Auth Token as a JSON.
         """
 
-        response_json = self.retriever.get_response_json(**request_parameters)
+        response_json = self.retriever.get_response_json()
 
         return response_json
-
-
-class AuthResponseRetriever:
-    """ Facade for getting Auth token from the Request."""
-
-    def __init__(self):
-        self.director = RequestDirector()
-        self.request = None
-        self.adapter = None
-        self.response = None
-
-    def get_response_json(self, **request_parameters):
-        """ Retrieves request and returns the JSON.
-
-            :param request_parameters: Dictionary from the user containing information
-                for the request.
-            :return: The json data for a response.
-        """
-
-        self.request = self.director.get_auth_request(**request_parameters)
-        self.adapter = RequestsAdapter(**self.request)
-        self.response = self.adapter.request()
-
-        return self.response.json()

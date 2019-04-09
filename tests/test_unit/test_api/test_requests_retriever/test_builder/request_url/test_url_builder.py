@@ -2,9 +2,7 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from gamebench_api_client.api.requests_retriever.builder.url.url_builder import AuthURL, SessionURL, URLBuilder
-from tests import AUTH_SUFFIX, AUTH_URL, BASE_URL, DEFAULT_SESSION_URL, \
-    METRIC, \
-    SESSION_ID, SESSION_SUFFIX, VERSION
+from tests import *
 
 
 class StubURLBuilder(URLBuilder):

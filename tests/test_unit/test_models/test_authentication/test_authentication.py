@@ -21,9 +21,9 @@ class TestAuthenticator(TestCase):
         Authenticator(**test_data)
 
         with self.subTest():
-            mock_mediator.assert_called_with()
+            mock_mediator.assert_called_with(**test_data)
         with self.subTest():
-            mock_get_data.assert_called_with(**test_data)
+            mock_get_data.assert_called_with()
 
     @patch('gamebench_api_client.models.authentication.authentication.AuthenticationMediator')
     def test_get_data(self, mock_mediator):
@@ -31,7 +31,7 @@ class TestAuthenticator(TestCase):
 
         expected = "Test Data"
         mock_instance = mock_mediator.return_value
-        mock_instance.get_data.return_value = expected
+        mock_instance.get_results.return_value = expected
         actual = Authenticator().data
 
         self.assertEqual(

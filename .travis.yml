@@ -4,6 +4,12 @@ language: python
 
 sudo: true
 
+addons:
+  sonarcloud:
+    organization: "bigfishgames" # the key of the org you chose at step #3
+    token:
+      secure: $SONAR_TOKEN
+
 python:
   - "3.7"
 
@@ -11,6 +17,9 @@ install:
   - pip install pipenv
   - pipenv install
 
-script: coverage run --source=./gamebench_api_client -m unittest discover -s tests/
+script:
+  - coverage run --source=./gamebench_api_client -m --branch unittest discover -s tests/
+  - coverage xml --include=./gamebench_api_client/*
+  - sonar-scanner
 
 after_success: coveralls
