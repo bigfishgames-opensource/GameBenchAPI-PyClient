@@ -11,4 +11,4 @@ install:
   - pip install pipenv
   - pipenv install
 
-
+script: python -m unittest gamebench_api_client/tests/test_unit/test_global_settings.py
