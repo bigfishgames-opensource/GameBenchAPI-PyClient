@@ -11,6 +11,6 @@ install:
   - pip install pipenv
   - pipenv install
 
-script: coverage run --source=./tests -m unittest discover -s tests/
+script: coverage run --source=./gamebench_api_client -m unittest discover -s tests/
 
 after_success: coveralls
