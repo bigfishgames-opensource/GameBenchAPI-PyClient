@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'GameBenchAPI'
+project = 'GameBench API'
 copyright = '2019, Big Fish Games, Inc.'
 author = 'Big Fish Games, Inc.'
 
@@ -138,7 +138,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'GameBenchAPI.tex', 'GameBenchAPI Documentation',
+    (master_doc, 'GameBenchAPI.tex', 'GameBench API Documentation',
      'Big Fish Games, Inc.', 'manual'),
 ]
 
@@ -148,7 +148,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'gamebenchapi', 'GameBenchAPI Documentation',
+    (master_doc, 'gamebenchapi', 'GameBench API Documentation',
      [author], 1)
 ]
 
@@ -159,8 +159,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'GameBenchAPI', 'GameBenchAPI Documentation',
-     author, 'GameBenchAPI', 'One line description of project.',
+    (master_doc, 'GameBench API', 'GameBench API Documentation',
+     author, 'GameBench API', 'One line description of project.',
      'Miscellaneous'),
 ]
 
