@@ -84,13 +84,15 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#
-# html_theme_options = {}
+html_theme_options = {
+    'sticky_navigation': True,
+    
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -106,6 +108,7 @@ html_static_path = ['_static']
 # 'searchbox.html']``.
 #
 # html_sidebars = {}
+html_logo = "BFG_Logo.png"
 
 
 # -- Options for HTMLHelp output ---------------------------------------------
@@ -194,3 +197,5 @@ intersphinx_mapping = {'https://docs.python.org/': None}
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
+
+autodoc_default_options = {'special-members': '__init__,__new__,__str__'}
