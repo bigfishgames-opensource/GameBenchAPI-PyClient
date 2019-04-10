@@ -49,7 +49,12 @@ class ResponseRetriever(AbstractRetriever):
 
 
 class AuthResponseRetriever(AbstractRetriever):
-    """ Facade for getting Auth token from the Request."""
+    """ Facade for getting Auth token from the Request.
+
+        :param request_parameters: Dictionary containing information needed for
+            an authentication request.  Example:
+            {'username': 'John@gmail.com', 'password': '1234'}
+    """
 
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
