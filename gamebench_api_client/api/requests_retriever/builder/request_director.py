@@ -50,14 +50,15 @@ class RequestDirector:
 
         return request
 
-    def _auth_to_dict(self, auth_object):
+    @staticmethod
+    def _auth_to_dict(auth_object):
         """ Helper method to turn the auth object into a dictionary to return it.
 
             :param auth_object: authorization object.
             :return auth_request: dictionary containing the attributes of the authorization
             object.
         """
-        # TODO consider making this a static method unless there is an instance member hiding here.
+
         auth_request = {
             'method': auth_object.request.method,
             'url': auth_object.request.url,
@@ -87,7 +88,8 @@ class RequestDirector:
 
         return request
 
-    def _session_to_dict(self, session_object):
+    @staticmethod
+    def _session_to_dict(session_object):
         """ Helper method to turn the session object into a dictionary.
 
             :param session_object: session request object.
@@ -95,7 +97,6 @@ class RequestDirector:
             session object.
         """
 
-        # TODO consider making this a static method unless there is an instance member hiding here.
         session_request = {
             'method': session_object.request.method,
             'url': session_object.request.url,
