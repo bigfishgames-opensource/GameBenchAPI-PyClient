@@ -8,14 +8,25 @@ from gamebench_api_client.api.requests_retriever.builder.method.method_creator i
 class RequestBuilder(ABC):
     """ Abstract interface for building requests."""
 
-    def __init__(self):
+    def __init__(self, **request_parameters):
         """ Creates an instance of the Request object for
             construction.
+
+            :param **request_parameters:
+                session_id - id for the current session
+                metric - specific category of data being requested
+                    (cpu, gpu, battery, etc.)
+                auth_token - authorization token necessary for retrieving data.
+                params - parameters appended to certain session requests
+                    (pageSize, timePushed, etc.)
+                data - json body appended to certain session requests
+                    (example: {"apps" : [], "devices" : [], "manufacturers" : []})
         """
 
+        self.request_parameters = request_parameters
         self.request = Request()
-        self.attributes = Attributes()
-        self.method = Method()
+        self.attributes = Attributes(**self.request_parameters)
+        self.method = Method(**self.request_parameters)
 
     @abstractmethod
     def set_method(self):
@@ -27,7 +38,7 @@ class RequestBuilder(ABC):
         pass
 
     @abstractmethod
-    def set_url(self, url_director, **request_parameters):
+    def set_url(self, url_director):
         """ Set the correct url for the request.
 
             This will call the URL Builder methods to build the
@@ -68,16 +79,19 @@ class AuthRequest(RequestBuilder):
         request object by implementing the RequestBuilder interface.
     """
 
-    def set_method(self, **request_parameters):
+    def __init__(self, **request_parameters):
+        super().__init__(**request_parameters)
+
+    def set_method(self):
         """ Implementation of the abstract set_method method.
 
             Sets the proper method property for authentication
             requests.
         """
 
-        self.request.method = self.method.get_method(**request_parameters)
+        self.request.method = self.method.get_method()
 
-    def set_url(self, url_director, **request_parameters):
+    def set_url(self, url_director):
         """ Implementation of the abstract set_method method.
 
             Calls the URL Builder methods to build the auth URL and
@@ -86,16 +100,16 @@ class AuthRequest(RequestBuilder):
 
         self.request.url = url_director.get_auth_url()
 
-    def set_headers(self, **request_parameters):
+    def set_headers(self):
         """ Implementation of the abstract set_headers method.
 
             Sets the proper headers property for authentication
             requests.
         """
 
-        self.request.headers = self.attributes.get_headers(**request_parameters)
+        self.request.headers = self.attributes.get_headers()
 
-    def set_params(self, **request_parameters):
+    def set_params(self):
         """ Implementation of the abstract set_params method.
 
             Sets the proper params property for authentication
@@ -104,13 +118,13 @@ class AuthRequest(RequestBuilder):
 
         pass
 
-    def set_data(self, **request_parameters):
+    def set_data(self):
         """ Implementation of the abstract set_data method.
 
             Sets the data property for authentication requests.
         """
 
-        self.request.data = self.attributes.get_data(**request_parameters)
+        self.request.data = self.attributes.get_data()
 
 
 class SessionRequest(RequestBuilder):
@@ -118,49 +132,52 @@ class SessionRequest(RequestBuilder):
         request object by implementing the RequestBuilder interface.
     """
 
-    def set_method(self, **request_parameters):
+    def __init__(self, **request_parameters):
+        super().__init__(**request_parameters)
+
+    def set_method(self):
         """ Implementation of the abstract set_method method.
 
             Sets the proper method property for session requests.
         """
 
-        self.request.method = self.method.get_method(**request_parameters)
+        self.request.method = self.method.get_method()
 
-    def set_url(self, url_director, **request_parameters):
+    def set_url(self, url_director):
         """ Implementation of the abstract set_method method.
 
             Calls the URL Builder methods to build the session URL
             and sets the url property.
         """
 
-        self.request.url = url_director.get_session_url(**request_parameters)
+        self.request.url = url_director.get_session_url(**self.request_parameters)
 
-    def set_headers(self, **request_parameters):
+    def set_headers(self):
         """ Implementation of the abstract set_headers method.
 
             Sets the proper headers property for session
             requests.
         """
 
-        self.request.headers = self.attributes.get_headers(**request_parameters)
+        self.request.headers = self.attributes.get_headers()
 
-    def set_params(self, **request_parameters):
+    def set_params(self):
         """ Implementation of the abstract set_params method.
 
             Sets the proper params property for session
             requests.
         """
 
-        self.request.params = self.attributes.get_params(**request_parameters)
+        self.request.params = self.attributes.get_params()
 
-    def set_data(self, **request_parameters):
+    def set_data(self):
         """ Implementation of the abstract set_data method.
 
             Sets the proper data property for session
             requests.
         """
 
-        self.request.data = self.attributes.get_data(**request_parameters)
+        self.request.data = self.attributes.get_data()
 
 
 class Request(object):

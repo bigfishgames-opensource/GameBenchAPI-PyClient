@@ -15,7 +15,7 @@ class AbstractRetriever(ABC):
 
     def __init__(self, **request_parameters):
         self.request_parameters = request_parameters
-        self.director = RequestDirector()
+        self.director = RequestDirector(**self.request_parameters)
         self.request = None
         self.adapter = None
         self.response = None
@@ -35,7 +35,7 @@ class ResponseRetriever(AbstractRetriever):
 
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
-        self.request = self.director.get_session_request(**self.request_parameters)
+        self.request = self.director.get_session_request()
         self.adapter = RequestsAdapter(**self.request)
         self.response = self.adapter.request()
 
@@ -53,7 +53,7 @@ class AuthResponseRetriever(AbstractRetriever):
 
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
-        self.request = self.director.get_auth_request(**self.request_parameters)
+        self.request = self.director.get_auth_request()
         self.adapter = RequestsAdapter(**self.request)
         self.response = self.adapter.request()
 

@@ -33,7 +33,7 @@ class TimeSeriesMediator(ResponseMediator):
 
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
-        self.retriever = ResponseRetriever(**request_parameters)
+        self.retriever = ResponseRetriever(**self.request_parameters)
 
     def get_results(self):
         """ Sets JSON data into a Pandas DataFrame.
@@ -51,7 +51,7 @@ class SessionDetailMediator(ResponseMediator):
 
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
-        self.retriever = ResponseRetriever(**request_parameters['response'])
+        self.retriever = ResponseRetriever(**self.request_parameters['response'])
 
     def get_results(self):
         """ Sets JSON data into a Pandas DataFrame.
@@ -73,7 +73,7 @@ class GenericMediator(ResponseMediator):
 
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
-        self.retriever = ResponseRetriever(**request_parameters)
+        self.retriever = ResponseRetriever(**self.request_parameters)
 
     def get_results(self):
         """ Sets JSON data into a Pandas DataFrame.
@@ -93,8 +93,8 @@ class AuthenticationMediator(ResponseMediator):
     """
 
     def __init__(self, **request_parameters):
-        super().__init__()
-        self.retriever = AuthResponseRetriever(**request_parameters)
+        super().__init__(**request_parameters)
+        self.retriever = AuthResponseRetriever(**self.request_parameters)
 
     def get_results(self):
         """ Retrieves the Authentication token for a user.
