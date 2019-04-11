@@ -21,13 +21,10 @@ class TestRequestDirector(TestCase):
 class TestGetAuthRequest(TestCase):
     """ Tests for the GetAuth Request class."""
 
-    def setUp(self):
-        self.director = RequestDirector()
-
     def test_get_auth_request(self):
         """ Test to check that get_auth_request returns expected dict."""
         data = AUTH_DATA
-
+        self.director = RequestDirector(**data)
         expected = {
             "method": "POST",
             "url": AUTH_URL,
@@ -36,7 +33,7 @@ class TestGetAuthRequest(TestCase):
                 "auth": (USERNAME, PASSWORD)
             }
         }
-        actual = self.director.get_auth_request(**data)
+        actual = self.director.get_auth_request()
 
         self.assertEqual(
                 expected,
@@ -71,7 +68,9 @@ class TestGetAuthRequest(TestCase):
                     }
                 }
             }
-            actual = self.director.get_session_request(**request_parameters)
+
+            self.director = RequestDirector(**request_parameters)
+            actual = self.director.get_session_request()
 
             self.assertEqual(
                     expected,

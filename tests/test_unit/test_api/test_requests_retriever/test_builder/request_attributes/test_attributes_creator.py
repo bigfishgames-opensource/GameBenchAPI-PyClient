@@ -11,18 +11,15 @@ from tests import *
 class TestAttributes(TestCase):
     """ Unit tests for the Attributes class."""
 
-    def setUp(self):
-        self.attributes = Attributes()
-
     def test_get_headers_includes_empty_metric(self):
         """ Verify the correct headers are returned if the metric key is empty."""
-
         test_parameters = {
             "metric": "",
             "auth_token": AUTH_TOKEN
         }
+        attributes = Attributes(**test_parameters)
 
-        actual = self.attributes.get_headers(**test_parameters)
+        actual = attributes.get_headers()
         expected = NO_METRIC_HEADERS
 
         self.assertEqual(
@@ -37,8 +34,9 @@ class TestAttributes(TestCase):
             "metric": METRIC,
             "auth_token": AUTH_TOKEN
         }
+        attributes = Attributes(**test_parameters)
 
-        actual = self.attributes.get_headers(**test_parameters)
+        actual = attributes.get_headers()
         expected = DEFAULT_SESSION_HEADERS
 
         self.assertEqual(
@@ -53,8 +51,8 @@ class TestAttributes(TestCase):
         """
 
         test_parameters = {}
-
-        actual = self.attributes.get_headers(**test_parameters)
+        self.attributes = Attributes(**test_parameters)
+        actual = self.attributes.get_headers()
         expected = AUTH_HEADERS
 
         self.assertEqual(
@@ -73,8 +71,8 @@ class TestAttributes(TestCase):
         test_parameters = {
             "params": "pageSize=15"
         }
-
-        actual = self.attributes.get_params(**test_parameters)
+        attributes = Attributes(**test_parameters)
+        actual = attributes.get_params()
         expected = "pageSize=15"
 
         self.assertEqual(
@@ -97,15 +95,15 @@ class TestAttributes(TestCase):
             "password": "test_password",
             "username": "test_user_name"
         }
-
-        actual = self.attributes.get_data(**test_parameters)
+        attributes = Attributes(**test_parameters)
+        actual = attributes.get_data()
         expected = {
             "username": "test_user_name",
             "password": "test_password"
         }
 
         with self.subTest():
-            mock_is_auth_request.assert_called_once_with(**test_parameters)
+            mock_is_auth_request.assert_called_once_with()
 
         self.assertEqual(
                 actual,
@@ -122,8 +120,8 @@ class TestAttributes(TestCase):
         test_parameters = {
             "data": "test_data",
         }
-
-        actual = self.attributes.get_data(**test_parameters)
+        attributes = Attributes(**test_parameters)
+        actual = attributes.get_data()
         expected = "test_data"
 
         self.assertEqual(
@@ -138,8 +136,8 @@ class TestAttributes(TestCase):
             "username": "test_user_name",
             "password": "test_password"
         }
-
-        actual = self.attributes._is_auth_request(**test_parameters)
+        attributes = Attributes(**test_parameters)
+        actual = attributes._is_auth_request()
 
         self.assertTrue(actual)
 
@@ -164,9 +162,9 @@ class TestAttributes(TestCase):
                 'auth_token': AUTH_TOKEN,
                 'headers': params['headers']
             }
-
+            attributes = Attributes(**request_parameters)
             expected = params["headers"]
-            actual = self.attributes._get_session_headers(**request_parameters)
+            actual = attributes._get_session_headers()
 
             self.assertEqual(
                     expected,

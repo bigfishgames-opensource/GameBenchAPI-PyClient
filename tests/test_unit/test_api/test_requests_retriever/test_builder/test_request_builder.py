@@ -16,20 +16,22 @@ patch_request = 'Request'
 class DefaultRequestBuilder(RequestBuilder):
     """ Sets up the Request Builder in order to test it."""
 
-    def __init__(self):
-        """ Setup the init for tests."""
+    def __init__(self, **request_parameters):
+        """ Setup the init for tests.
+        :param **request_parameters:
+        """
 
-        super().__init__()
+        super().__init__(**request_parameters)
 
     def set_method(self):
         """ Setup the set_method method for tests."""
 
         super().set_method()
 
-    def set_url(self, url_director, **request_parameters):
+    def set_url(self, url_director):
         """ Setup the set_url method for tests."""
 
-        super().set_url(url_director, **request_parameters)
+        super().set_url(url_director)
 
     def set_headers(self):
         """ Setup set_headers method for tests."""
@@ -170,7 +172,7 @@ class TestAuthRequest(TestCase):
     def test_set_data(self):
         """ Verify the data contains the username and password."""
 
-        self.auth_request.set_data(**AUTH_DATA)
+        self.auth_request.set_data()
 
         actual = self.auth_request.request.data
         expected = AUTH_DATA
@@ -202,11 +204,7 @@ class TestSessionRequest(TestCase):
             This test is for session requests that contain a metric.
         """
 
-        metric = {
-            "metric": METRIC
-        }
-
-        self.session.set_method(**metric)
+        self.session.set_method()
 
         actual = self.session.request.method
         expected = "GET"
@@ -225,12 +223,7 @@ class TestSessionRequest(TestCase):
         mock_session_url = mock_url.return_value
         mock_session_url.get_session_url.return_value = DEFAULT_SESSION_URL
 
-        session_params = {
-            "session_id": SESSION_ID,
-            "metric": METRIC
-        }
-
-        self.session.set_url(mock_session_url, **session_params)
+        self.session.set_url(mock_session_url)
 
         actual = self.session.request.url
         expected = DEFAULT_SESSION_URL
@@ -243,12 +236,7 @@ class TestSessionRequest(TestCase):
     def test_set_session_headers(self):
         """ Verify the correct headers are set for session requests."""
 
-        headers = {
-            "auth_token": AUTH_TOKEN,
-            "metric": METRIC
-        }
-
-        self.session.set_headers(**headers)
+        self.session.set_headers()
 
         actual = self.session.request.headers
         expected = DEFAULT_SESSION_HEADERS
@@ -261,11 +249,7 @@ class TestSessionRequest(TestCase):
     def test_set_session_params(self):
         """Verify the correct params are set for session requests."""
 
-        params = {
-            "params": "test_params"
-        }
-
-        self.session.set_params(**params)
+        self.session.set_params()
 
         expected = "test_params"
         actual = self.session.request.params
@@ -278,7 +262,7 @@ class TestSessionRequest(TestCase):
     def test_set_session_data(self):
         """ Verify the correct data is set for session requests."""
 
-        self.session.set_data(**SESSION_DATA)
+        self.session.set_data()
 
         actual = self.session.request.data
         expected = {

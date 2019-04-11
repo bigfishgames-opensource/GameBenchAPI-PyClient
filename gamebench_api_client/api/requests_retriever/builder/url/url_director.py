@@ -21,21 +21,22 @@ class URLDirector:
         self._builder.set_suffix(**request_parameters)
         self._builder.set_url()
 
-    def get_auth_url(self):
+    @staticmethod
+    def get_auth_url():
         """ Constructs an auth URL object and returns the auth
             URL string.
 
             :return: auth.url - The auth URL string.
         """
 
-        # TODO consider making this a static method unless there are instance members hiding here.
         auth = AuthURL()
         director = URLDirector()
         director.construct_url(auth)
 
         return auth.url
 
-    def get_session_url(self, **request_parameters):
+    @staticmethod
+    def get_session_url(**request_parameters):
         """ Constructs a session URL object and returns the session
             URL string.
 
@@ -43,7 +44,7 @@ class URLDirector:
                 for the request.
             :return: session.url - The session URL string.
         """
-        # TODO consider making this a static method unless there are instance members hiding here.
+
         session = SessionURL()
         director = URLDirector()
         director.construct_url(session, **request_parameters)

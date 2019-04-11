@@ -19,8 +19,8 @@ class TestRequestBuilder(TestCase):
             built and set correctly.
         """
 
-        auth = AuthRequest()
-        self.request_director.construct_request(auth, **AUTH_DATA)
+        auth = AuthRequest(**AUTH_DATA)
+        self.request_director.construct_request(auth)
 
         expected = {
             "method": "POST",
@@ -47,8 +47,8 @@ class TestRequestBuilder(TestCase):
 
         request_parameters = DEFAULT_REQUEST_PARAMS
 
-        session = SessionRequest()
-        self.request_director.construct_request(session, **request_parameters)
+        session = SessionRequest(**request_parameters)
+        self.request_director.construct_request(session)
 
         expected = {
             "method": "GET",
