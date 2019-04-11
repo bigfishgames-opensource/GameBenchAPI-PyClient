@@ -21,7 +21,7 @@ class DefaultRequestBuilder(RequestBuilder):
         :param **request_parameters:
         """
 
-        super().__init__()
+        super().__init__(**request_parameters)
 
     def set_method(self):
         """ Setup the set_method method for tests."""
@@ -204,10 +204,6 @@ class TestSessionRequest(TestCase):
             This test is for session requests that contain a metric.
         """
 
-        metric = {
-            "metric": METRIC
-        }
-
         self.session.set_method()
 
         actual = self.session.request.method
@@ -227,11 +223,6 @@ class TestSessionRequest(TestCase):
         mock_session_url = mock_url.return_value
         mock_session_url.get_session_url.return_value = DEFAULT_SESSION_URL
 
-        session_params = {
-            "session_id": SESSION_ID,
-            "metric": METRIC
-        }
-
         self.session.set_url(mock_session_url)
 
         actual = self.session.request.url
@@ -245,11 +236,6 @@ class TestSessionRequest(TestCase):
     def test_set_session_headers(self):
         """ Verify the correct headers are set for session requests."""
 
-        headers = {
-            "auth_token": AUTH_TOKEN,
-            "metric": METRIC
-        }
-
         self.session.set_headers()
 
         actual = self.session.request.headers
@@ -262,10 +248,6 @@ class TestSessionRequest(TestCase):
 
     def test_set_session_params(self):
         """Verify the correct params are set for session requests."""
-
-        params = {
-            "params": "test_params"
-        }
 
         self.session.set_params()
 
