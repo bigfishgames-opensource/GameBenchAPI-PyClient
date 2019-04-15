@@ -103,6 +103,13 @@ DEFAULT_REQUEST_PARAMS = {
         "test_data": "test_data"
     }
 }
+DEFAULT_SESSION_DETAIL_PARAMS = {
+    'session_id': SESSION_ID,
+    'metric': '',
+    'auth_token': AUTH_TOKEN,
+    "params": '',
+    "data": ''
+}
 NO_METRIC_REQUEST_PARAMS = {
     'metric': 'app',
     'response': {
