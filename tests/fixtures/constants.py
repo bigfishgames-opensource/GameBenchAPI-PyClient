@@ -94,7 +94,6 @@ DEFAULT_EXPECTED_REQUEST_PARAMS = {
     }
 }
 DEFAULT_REQUEST_PARAMS = {
-    'method': "GET",
     'session_id': SESSION_ID,
     'metric': METRIC,
     'auth_token': AUTH_TOKEN,
