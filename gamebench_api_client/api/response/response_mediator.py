@@ -51,7 +51,7 @@ class SessionDetailMediator(ResponseMediator):
 
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
-        self.retriever = ResponseRetriever(**self.request_parameters)
+        self.retriever = ResponseRetriever(**self.request_parameters['response'])
 
     def get_results(self):
         """ Sets JSON data into a Pandas DataFrame.
