@@ -3,8 +3,8 @@
 GAMEBENCH_CONFIG = {
     'url': 'https://api.production.gamebench.net',
     'api_version': '/v1',
-    'username': 'john.smith',
-    'password': 'password',
+    'username': '',
+    'password': '',
     'company_id': '',
 }
 
