@@ -103,7 +103,7 @@ class TestGenericFrameMediator(TestCase):
             json=self.generic_frame_json["response"]
         )
 
-        expected = pandas.DataFrame(adapter.request().json())
+        expected = pandas.DataFrame([adapter.request().json()])
         self.mediator = GenericMediator(**DEFAULT_REQUEST_PARAMS)
         actual = self.mediator.get_results()
 
