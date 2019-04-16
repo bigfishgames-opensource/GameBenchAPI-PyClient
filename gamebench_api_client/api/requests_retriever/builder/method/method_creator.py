@@ -25,4 +25,3 @@ class Method:
         """ Determine if there is a metric present in the request parameters."""
 
         return 'session_id' not in self.request_parameters or self.request_parameters['session_id'] == ''
-        #return "metric" not in self.request_parameters or self.request_parameters["metric"] == ""
