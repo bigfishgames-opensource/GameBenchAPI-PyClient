@@ -22,10 +22,10 @@ class AbstractSessionDetailModel(AbstractModel, ABC):
                 build and send a response.
         """
 
+        self.authenticator = Authenticator(**request_parameters)
         super().__init__()
         self.mediator = SessionDetailMediator(**request_parameters)
         self.data = self.get_data()
-        self.authenticator = Authenticator(**request_parameters)
 
     def get_data(self):
         """ Returns a Pandas DataFrame containing metric data from a response json.

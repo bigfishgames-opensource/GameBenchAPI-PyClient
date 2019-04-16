@@ -7,7 +7,7 @@ from gamebench_api_client.models.dataframes.session_detail.abstract_session_deta
 class TestSessionDetailModel(TestCase):
     """ Unit tests for the AbstractSessionDetailModel class."""
 
-    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.Authenticator')
+    @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.Authenticator')
     @patch(
             'gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.AbstractSessionDetailModel'
             '.get_data')
@@ -34,7 +34,9 @@ class TestSessionDetailModel(TestCase):
         expected = "Test Data"
         mock_instance = mock_session_detail.return_value
         mock_instance.get_results.return_value = expected
-        actual = AbstractSessionDetailModel().data
+
+        with patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.Authenticator'):
+            actual = AbstractSessionDetailModel().data
 
         self.assertEqual(
                 expected,
