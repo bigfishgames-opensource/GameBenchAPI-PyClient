@@ -7,11 +7,12 @@ from gamebench_api_client.models.dataframes.session_detail.abstract_session_deta
 class TestSessionDetailModel(TestCase):
     """ Unit tests for the AbstractSessionDetailModel class."""
 
+    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.Authenticator')
     @patch(
             'gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.AbstractSessionDetailModel'
             '.get_data')
     @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.SessionDetailMediator')
-    def test_init_sets_attributes(self, mock_session_detail, mock_get_data):
+    def test_init_sets_attributes(self, mock_session_detail, mock_get_data, mock_authenticator):
         """ Verify the instance variables call the appropriate methods."""
 
         test_data = {
@@ -23,6 +24,8 @@ class TestSessionDetailModel(TestCase):
             mock_session_detail.assert_called_with(**test_data)
         with self.subTest():
             mock_get_data.assert_called_with()
+        with self.subTest():
+            mock_authenticator.assert_called_with(**test_data)
 
     @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.SessionDetailMediator')
     def test_get_data(self, mock_session_detail):
