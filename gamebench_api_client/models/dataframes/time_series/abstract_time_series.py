@@ -2,6 +2,7 @@ from abc import ABC
 
 from gamebench_api_client.api.response.response_mediator import TimeSeriesMediator
 from gamebench_api_client.models.abstract_model import AbstractModel
+from gamebench_api_client.models.authentication.authentication import Authenticator
 
 
 class AbstractTimeSeriesModel(AbstractModel, ABC):
@@ -21,6 +22,7 @@ class AbstractTimeSeriesModel(AbstractModel, ABC):
                 build and send a response.
         """
 
+        self.authenticator = Authenticator(**request_parameters)
         super().__init__()
         self.mediator = TimeSeriesMediator(**request_parameters)
         self.data = self.get_data()
