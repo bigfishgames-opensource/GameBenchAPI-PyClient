@@ -2,6 +2,7 @@ from abc import ABC
 
 from gamebench_api_client.api.response.response_mediator import GenericMediator
 from gamebench_api_client.models.abstract_model import AbstractModel
+from gamebench_api_client.models.authentication.authentication import Authenticator
 
 
 class AbstractGenericModel(AbstractModel, ABC):
@@ -24,6 +25,7 @@ class AbstractGenericModel(AbstractModel, ABC):
         super().__init__()
         self.mediator = GenericMediator(**request_parameters)
         self.data = self.get_data()
+        self.authenticator = Authenticator(**request_parameters)
 
     def get_data(self):
         """ Returns a Pandas DataFrame containing metric data from a response json.
