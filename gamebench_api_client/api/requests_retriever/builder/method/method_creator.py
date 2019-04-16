@@ -24,4 +24,5 @@ class Method:
     def is_metric_present(self):
         """ Determine if there is a metric present in the request parameters."""
 
-        return "metric" not in self.request_parameters or self.request_parameters["metric"] == ""
+        return 'session_id' not in self.request_parameters or self.request_parameters['session_id'] == ''
+        #return "metric" not in self.request_parameters or self.request_parameters["metric"] == ""

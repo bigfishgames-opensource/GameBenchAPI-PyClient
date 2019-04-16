@@ -39,16 +39,8 @@ class TestDataFrameUtilities(TestCase):
     def test_session_metric_to_dataframe(self):
         """ Verify a DataFrame is returned when given a specific metric."""
 
-        series = pandas.Series(self.session_json['response'])
-
-        expected = pandas.DataFrame(
-                series['app'],
-                index=['app']
-        )
-        actual = session_detail_to_dataframe(
-                'app',
-                self.session_json['response']
-        )
+        expected = pandas.DataFrame(data=[self.session_json['response']['app']])
+        actual = session_detail_to_dataframe('app', self.session_json['response'])
 
         assert_frame_equal(
                 expected,

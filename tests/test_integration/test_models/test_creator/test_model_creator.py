@@ -37,30 +37,26 @@ class TestModelCreator(TestCase):
 
         assert_frame_equal(actual, expected)
 
-    # @requests_mock.Mocker()
-    # def test_session_detail_model_creation(self, mock_return):
-    #     """ The ModelCreator returns the proper DataFrame."""
-    #
-    #     with open(os.path.join(
-    #             PARENT_DIR + API_SAMPLES + "sessionid.json")) as \
-    #             json_data:
-    #         self.session_app_json = json.load(json_data)
-    #     mock_return.request(
-    #         'GET',
-    #         DEFAULT_SESSION_URL,
-    #         json=self.session_app_json['response']
-    #     )
-    #     creator = ModelCreator('App', **DEFAULT_REQUEST_PARAMS)
-    #     model = creator.get_model()
-    #
-    #     series = pandas.Series(self.session_app_json['response'])
-    #     expected = pandas.DataFrame(
-    #         series['app'],
-    #         index=['app']
-    # )
-    #     actual = model.data
-    #
-    #     assert_frame_equal(actual, expected)
+    @requests_mock.Mocker()
+    def test_session_detail_model_creation(self, mock_return):
+        """ The ModelCreator returns the proper DataFrame."""
+
+        with open(os.path.join(
+                PARENT_DIR + API_SAMPLES + "sessionid.json")) as \
+                json_data:
+            self.session_app_json = json.load(json_data)
+        mock_return.request(
+            'GET',
+            BASE_SESSION_URL,
+            json=self.session_app_json['response']
+        )
+        creator = ModelCreator('App', **DEFAULT_SESSION_DETAIL_PARAMS)
+        model = creator.get_model()
+
+        expected = pandas.DataFrame(data=[self.session_app_json['response']['app']])
+        actual = model.data
+
+        assert_frame_equal(actual, expected)
 
     @requests_mock.Mocker()
     def test_generic_model_creation(self, mock_return):
