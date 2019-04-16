@@ -2,6 +2,7 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from gamebench_api_client.models.dataframes.generic.abstract_generic import AbstractGenericModel
+from pandas import DataFrame
 
 
 class TestGenericFrameModel(TestCase):
@@ -40,3 +41,22 @@ class TestGenericFrameModel(TestCase):
                 expected,
                 actual
         )
+
+    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.Authenticator')
+    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.AbstractGenericModel.get_data')
+    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.GenericMediator')
+    def test_auth_token_added_to_request_parameters(self, mock_generic_frame, mock_get_data, mock_authenticator):
+
+        starting_dict = dict()
+
+        expected_dict = {
+            'auth_token': 'q1w2e3r4t5y6'
+        }
+
+        mock_get_data.return_value = {
+                'token': 'q1w2e3r4t5y6'
+        }
+
+        actual_dict = AbstractGenericModel(**starting_dict)
+
+        self.assertEqual(expected_dict, actual_dict.request_parameters)
