@@ -22,9 +22,10 @@ class AbstractSessionDetailModel(AbstractModel, ABC):
                 build and send a response.
         """
 
-        self.authenticator = Authenticator(**request_parameters)
         super().__init__()
-        self.mediator = SessionDetailMediator(**request_parameters)
+        self.authenticator = Authenticator(**request_parameters)
+        self.request_parameters = request_parameters
+        self.mediator = SessionDetailMediator(self.request_parameters)
         self.data = self.get_data()
 
     def get_data(self):

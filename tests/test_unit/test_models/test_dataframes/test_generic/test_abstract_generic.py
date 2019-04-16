@@ -16,10 +16,10 @@ class TestGenericFrameModel(TestCase):
         test_data = {
             'metric': 'Testing'
         }
-        AbstractGenericModel(**test_data)
+        generic_model = AbstractGenericModel(**test_data)
 
         with self.subTest():
-            mock_generic_frame.assert_called_with(**test_data)
+            mock_generic_frame.assert_called_with(generic_model.request_parameters)
         with self.subTest():
             mock_get_data.assert_called_with()
         with self.subTest():
