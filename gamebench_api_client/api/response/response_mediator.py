@@ -83,7 +83,7 @@ class GenericMediator(ResponseMediator):
 
         response_json = self.retriever.get_response_json()
 
-        return to_dataframe(response_json)
+        return to_dataframe([response_json])
 
 
 class AuthenticationMediator(ResponseMediator):

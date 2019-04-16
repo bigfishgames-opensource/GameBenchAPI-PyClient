@@ -26,7 +26,6 @@ class ModelCreator:
             :param model: The name of the model that the user wants.
             :param request_parameters: This will be a dictionary from the
                 client that includes the following keys:
-                    method: POST, GET, etc.
                     session_id: ID for a specific session.
                     metric: Which metric the user requested (cpu, memory, etc.).
                     auth_token: Auth token for the user.

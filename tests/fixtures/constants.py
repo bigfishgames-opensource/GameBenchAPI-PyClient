@@ -34,6 +34,7 @@ SESSION_SUFFIX = '/sessions'
 SESSION_ID = "/session_id"
 METRIC = "/cpu"
 DEFAULT_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID + METRIC
+GENERIC_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID + '/notes'
 SESSION_DATA = {
     "data": {
         "test_data": "test_data"
@@ -94,7 +95,6 @@ DEFAULT_EXPECTED_REQUEST_PARAMS = {
     }
 }
 DEFAULT_REQUEST_PARAMS = {
-    'method': "GET",
     'session_id': SESSION_ID,
     'metric': METRIC,
     'auth_token': AUTH_TOKEN,
@@ -109,6 +109,15 @@ DEFAULT_SESSION_DETAIL_PARAMS = {
     'auth_token': AUTH_TOKEN,
     "params": '',
     "data": ''
+}
+DEFAULT_GENERIC_PARAMS = {
+    'session_id': SESSION_ID,
+    'metric': '/notes',
+    'auth_token': AUTH_TOKEN,
+    "params": '',
+    "data": {
+        "test_data": "test_data"
+    }
 }
 NO_METRIC_REQUEST_PARAMS = {
     'metric': 'app',
