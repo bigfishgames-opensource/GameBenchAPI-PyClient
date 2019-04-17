@@ -138,3 +138,5 @@ MODEL_CREATOR_IMPORT_MODULE = 'gamebench_api_client.models.creator.model_creator
                               '._import_given_model_module'
 MODEL_CREATOR_SET_MODULE = 'gamebench_api_client.models.creator.model_creator.ModelCreator._set_module_name_by_model'
 ABSTRACT_SESSION_DETAIL = 'gamebench_api_client.models.dataframes.session_detail.abstract_session_detail'
+ABSTRACT_GENERIC = 'gamebench_api_client.models.dataframes.generic.abstract_generic'
+ABSTRACT_TIME_SERIES = 'gamebench_api_client.models.dataframes.time_series.abstract_time_series'

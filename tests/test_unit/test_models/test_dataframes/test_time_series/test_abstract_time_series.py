@@ -2,14 +2,15 @@ from unittest import TestCase
 from unittest.mock import patch, Mock
 
 from gamebench_api_client.models.dataframes.time_series.abstract_time_series import AbstractTimeSeriesModel
+from tests.fixtures.constants import ABSTRACT_TIME_SERIES
 
 
 class TestAbstractTimeSeriesModel(TestCase):
     """ Unit tests for the AbstractTimeSeriesModel class."""
 
-    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.Authenticator')
-    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.AbstractTimeSeriesModel.get_data')
-    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.TimeSeriesMediator')
+    @patch(f'{ABSTRACT_TIME_SERIES}.Authenticator')
+    @patch(f'{ABSTRACT_TIME_SERIES}.AbstractTimeSeriesModel.get_data')
+    @patch(f'{ABSTRACT_TIME_SERIES}.TimeSeriesMediator')
     def test_init_sets_attributes(self, mock_time_series, mock_get_data, mock_authenticator):
         """ Verify the instance variables call the appropriate methods."""
 
@@ -25,7 +26,7 @@ class TestAbstractTimeSeriesModel(TestCase):
         with self.subTest():
             mock_authenticator.assert_called_with()
 
-    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.TimeSeriesMediator')
+    @patch(f'{ABSTRACT_TIME_SERIES}.TimeSeriesMediator')
     def test_get_data(self, mock_time_series):
         """ Verify the data is properly set."""
 
@@ -33,7 +34,7 @@ class TestAbstractTimeSeriesModel(TestCase):
         mock_instance = mock_time_series.return_value
         mock_instance.get_results.return_value = expected
 
-        with patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.Authenticator'):
+        with patch(f'{ABSTRACT_TIME_SERIES}.Authenticator'):
             actual = AbstractTimeSeriesModel().data
 
         self.assertEqual(
@@ -41,9 +42,9 @@ class TestAbstractTimeSeriesModel(TestCase):
                 actual
         )
 
-    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.Authenticator')
-    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.AbstractTimeSeriesModel.get_data')
-    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.TimeSeriesMediator')
+    @patch(f'{ABSTRACT_TIME_SERIES}.Authenticator')
+    @patch(f'{ABSTRACT_TIME_SERIES}.AbstractTimeSeriesModel.get_data')
+    @patch(f'{ABSTRACT_TIME_SERIES}.TimeSeriesMediator')
     def test_auth_token_added_to_request_parameters(self, mock_session_mediator, mock_get_data, mock_authenticator):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
         starting_dict = {}

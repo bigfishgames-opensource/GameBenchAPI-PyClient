@@ -2,14 +2,15 @@ from unittest import TestCase
 from unittest.mock import patch, Mock
 
 from gamebench_api_client.models.dataframes.generic.abstract_generic import AbstractGenericModel
+from tests.fixtures.constants import ABSTRACT_GENERIC
 
 
 class TestGenericFrameModel(TestCase):
     """ Unit tests for the AbstractGenericModel class."""
 
-    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.Authenticator')
-    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.AbstractGenericModel.get_data')
-    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.GenericMediator')
+    @patch(f'{ABSTRACT_GENERIC}.Authenticator')
+    @patch(f'{ABSTRACT_GENERIC}.AbstractGenericModel.get_data')
+    @patch(f'{ABSTRACT_GENERIC}.GenericMediator')
     def test_init_sets_attributes(self, mock_generic_frame, mock_get_data, mock_authenticator):
         """ Verify the instance variables call the appropriate methods."""
 
@@ -25,7 +26,7 @@ class TestGenericFrameModel(TestCase):
         with self.subTest():
             mock_authenticator.assert_called_with()
 
-    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.GenericMediator')
+    @patch(f'{ABSTRACT_GENERIC}.GenericMediator')
     def test_get_data(self, mock_generic_frame):
         """ Verify the data is properly set."""
 
@@ -33,7 +34,7 @@ class TestGenericFrameModel(TestCase):
         mock_instance = mock_generic_frame.return_value
         mock_instance.get_results.return_value = expected
 
-        with patch('gamebench_api_client.models.dataframes.generic.abstract_generic.Authenticator'):
+        with patch(f'{ABSTRACT_GENERIC}.Authenticator'):
             actual = AbstractGenericModel().data
 
         self.assertEqual(
@@ -41,9 +42,9 @@ class TestGenericFrameModel(TestCase):
             actual
         )
 
-    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.Authenticator')
-    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.AbstractGenericModel.get_data')
-    @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.GenericMediator')
+    @patch(f'{ABSTRACT_GENERIC}.Authenticator')
+    @patch(f'{ABSTRACT_GENERIC}.AbstractGenericModel.get_data')
+    @patch(f'{ABSTRACT_GENERIC}.GenericMediator')
     def test_auth_token_added_to_request_parameters(self, mock_generic_frame, mock_get_data, mock_authenticator):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
         starting_dict = {}
