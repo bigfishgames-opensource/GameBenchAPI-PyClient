@@ -7,7 +7,8 @@ It also contains the username and password for the GameBench account you are usi
 and the company ID.
 
 .. code-block:: python
-    :caption: global_settings.py
+   :linenos:
+   :caption: global_settings.py
 
     GAMEBENCH_CONFIG = {
         'url': 'https://api.production.gamebench.net',
