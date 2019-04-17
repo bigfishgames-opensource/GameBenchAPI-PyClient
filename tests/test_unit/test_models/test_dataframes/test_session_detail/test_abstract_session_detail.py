@@ -44,9 +44,10 @@ class TestSessionDetailModel(TestCase):
         )
 
     @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.Authenticator')
-    @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.AbstractSessionDetailModel.get_data')
+    @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.' +
+           'AbstractSessionDetailModel.get_data')
     @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.SessionDetailMediator')
-    def test_auth_token_added_to_request_parameters(self, mock_session_detail_mediator, mock_get_data, mock_authenticator):
+    def test_auth_token_added_to_request_parameters(self, mock_session_mediator, mock_get_data, mock_authenticator):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
         starting_dict = {}
 

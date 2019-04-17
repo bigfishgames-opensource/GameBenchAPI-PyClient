@@ -44,7 +44,7 @@ class TestAbstractTimeSeriesModel(TestCase):
     @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.Authenticator')
     @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.AbstractTimeSeriesModel.get_data')
     @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.TimeSeriesMediator')
-    def test_auth_token_added_to_request_parameters(self, mock_session_detail_mediator, mock_get_data, mock_authenticator):
+    def test_auth_token_added_to_request_parameters(self, mock_session_mediator, mock_get_data, mock_authenticator):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
         starting_dict = {}
 
