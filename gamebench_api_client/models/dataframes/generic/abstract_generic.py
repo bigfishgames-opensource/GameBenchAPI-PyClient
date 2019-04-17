@@ -24,7 +24,7 @@ class AbstractGenericModel(AbstractModel, ABC):
         """
         username_and_password = get_username_and_password()
         super().__init__()
-        self.authenticator = Authenticator(username_and_password)
+        self.authenticator = Authenticator(**username_and_password)
         self.mediator = GenericMediator(**request_parameters)
         self.data = self.get_data()
 
