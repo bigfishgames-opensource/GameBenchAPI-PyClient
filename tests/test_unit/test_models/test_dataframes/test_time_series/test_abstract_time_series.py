@@ -1,8 +1,7 @@
 from unittest import TestCase
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 from gamebench_api_client.models.dataframes.time_series.abstract_time_series import AbstractTimeSeriesModel
-from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
 
 
 class TestAbstractTimeSeriesModel(TestCase):
@@ -20,16 +19,11 @@ class TestAbstractTimeSeriesModel(TestCase):
         time_series_model = AbstractTimeSeriesModel(**test_data)
 
         with self.subTest():
-            mock_time_series.assert_called_with(time_series_model.request_parameters)
+            mock_time_series.assert_called_with(**time_series_model.request_parameters)
         with self.subTest():
             mock_get_data.assert_called_with()
         with self.subTest():
-            mock_authenticator.assert_called_with(
-                {
-                    'username': GAMEBENCH_CONFIG['username'],
-                    'password': GAMEBENCH_CONFIG['password']
-                }
-            )
+            mock_authenticator.assert_called_with()
 
     @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.TimeSeriesMediator')
     def test_get_data(self, mock_time_series):
@@ -46,3 +40,23 @@ class TestAbstractTimeSeriesModel(TestCase):
                 expected,
                 actual
         )
+
+    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.Authenticator')
+    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.AbstractTimeSeriesModel.get_data')
+    @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.TimeSeriesMediator')
+    def test_auth_token_added_to_request_parameters(self, mock_session_detail_mediator, mock_get_data, mock_authenticator):
+        """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
+        starting_dict = {}
+
+        expected_dict = {
+            'auth_token': 'q1w2e3r4t5y6'
+        }
+        mock_dict = Mock()
+        mock_dict.data = {
+            'token': 'q1w2e3r4t5y6'
+        }
+        mock_authenticator.return_value = mock_dict
+
+        actual = AbstractTimeSeriesModel(**starting_dict)
+
+        self.assertDictEqual(expected_dict, actual.request_parameters)

@@ -5,6 +5,7 @@
 """
 
 from gamebench_api_client.api.response.response_mediator import AuthenticationMediator
+from gamebench_api_client.global_settings import get_username_and_password
 from gamebench_api_client.models.abstract_model import AbstractModel
 from gamebench_api_client.singleton import Singleton
 
@@ -12,17 +13,17 @@ from gamebench_api_client.singleton import Singleton
 class Authenticator(AbstractModel, Singleton):
     """ Class responsible for obtaining an authentication token."""
 
-    def __init__(self, **request_parameters):
+    def __init__(self):
         """ Sets up the mediator and data attributes.
 
             The mediator is set to the mediator that it will be contacting.  The data
             is the return from the get_token method.
 
-            :param request_parameters: Dictionary containing the client's username and password.
         """
 
         super().__init__()
-        self.mediator = AuthenticationMediator(**request_parameters)
+        username_and_password = get_username_and_password()
+        self.mediator = AuthenticationMediator(**username_and_password)
         self.data = self.get_data()
         self.token = self.get_data
 

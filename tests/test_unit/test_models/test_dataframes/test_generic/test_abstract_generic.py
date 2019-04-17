@@ -2,7 +2,6 @@ from unittest import TestCase
 from unittest.mock import patch, Mock
 
 from gamebench_api_client.models.dataframes.generic.abstract_generic import AbstractGenericModel
-from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
 
 
 class TestGenericFrameModel(TestCase):
@@ -14,10 +13,6 @@ class TestGenericFrameModel(TestCase):
     def test_init_sets_attributes(self, mock_generic_frame, mock_get_data, mock_authenticator):
         """ Verify the instance variables call the appropriate methods."""
 
-        test_auth_data = {
-            'username': GAMEBENCH_CONFIG['username'],
-            'password': GAMEBENCH_CONFIG['password']
-        }
         test_data = {
             'metric': 'Testing'
         }
@@ -28,7 +23,7 @@ class TestGenericFrameModel(TestCase):
         with self.subTest():
             mock_get_data.assert_called_with()
         with self.subTest():
-            mock_authenticator.assert_called_with(**test_auth_data)
+            mock_authenticator.assert_called_with()
 
     @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.GenericMediator')
     def test_get_data(self, mock_generic_frame):
@@ -50,16 +45,17 @@ class TestGenericFrameModel(TestCase):
     @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.AbstractGenericModel.get_data')
     @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.GenericMediator')
     def test_auth_token_added_to_request_parameters(self, mock_generic_frame, mock_get_data, mock_authenticator):
+        """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
         starting_dict = {}
 
         expected_dict = {
             'auth_token': 'q1w2e3r4t5y6'
         }
-        test = Mock()
-        test.data = {
+        mock_dict = Mock()
+        mock_dict.data = {
             'token': 'q1w2e3r4t5y6'
         }
-        mock_authenticator.return_value = test
+        mock_authenticator.return_value = mock_dict
 
         actual = AbstractGenericModel(**starting_dict)
 
