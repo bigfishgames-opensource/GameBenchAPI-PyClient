@@ -46,7 +46,7 @@ Now that we have the new library set up to send requests, we just have to update
 
 .. code-block:: python
     :caption: response_retriever.py
-    :emphasize-lines: 7
+    :emphasize-lines: 12
 
     class AuthResponseRetriever(AbstractRetriever):
         """ Facade for getting Auth token from the Request.

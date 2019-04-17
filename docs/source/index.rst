@@ -12,6 +12,8 @@ Welcome to the GameBench API documentation!
 
    overview
    api
+   examples
+   global_settings
    how_to_extend
 
 
