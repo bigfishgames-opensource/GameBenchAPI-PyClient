@@ -9,6 +9,7 @@ each of the types of requests:
 Time-Series Model
 -----------------
 .. code-block:: python
+   :linenos:
 
     {
         'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
@@ -21,6 +22,7 @@ Time-Series Model
 Generic Model
 -------------
 .. code-block:: python
+   :linenos:
 
     {
         'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
@@ -33,6 +35,7 @@ Generic Model
 Session Detail Model
 --------------------
 .. code-block:: python
+   :linenos:
 
     {
         'session_id': SESSION_ID,
