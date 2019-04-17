@@ -72,13 +72,11 @@ meaning of our code is self-evident.
 Here are some rules of thumb we like to follow:
 
    **The Sentence Check:**
-
    Read your code out loud. If someone not familiar with the project
    could understand you, it should be good. This is easier with higher
    level policies and interfaces than with low level details, of course.
 
    **Universal Readability > Idioms > Conventions:**
-
    Prioritize universal understanding over idiomatic code or
    conventions.
 
@@ -92,7 +90,6 @@ Here are some rules of thumb we like to follow:
    unnecessary. We will touch on common conventions later.
 
    **Comments are Red Flags:**
-
    Specifically, comments that describe *what* the code is doing show
    the code isn’t expressive enough. If the code is expressive, then the
    comment will be redundant and become another axis of change, defects,
@@ -147,8 +144,9 @@ history and meaning. For example, incrementors can be, “\ *i*.” And
 formulas can use their common variable letters, such as:
 
 In Python:
+
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     a = 3
     b = 5
