@@ -1,5 +1,5 @@
-Using the API
-=============
+Using the GameBench API Client
+==============================
 
 1. Install the package with ‘pip install gamebench_api’ or download it from GitHub.
 
