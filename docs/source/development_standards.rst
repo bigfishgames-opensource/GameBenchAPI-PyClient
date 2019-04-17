@@ -157,6 +157,7 @@ However, you may also consider using more descriptive names for those
 without specific knowledge.
 
 **Example:**
+
 .. code-block:: python
    :linenos:
 
@@ -271,6 +272,7 @@ be both a query and command. So be sure that your name matches the
 action type to avoid confusion.
 
 **Query and Command Separation:**
+
 .. code-block:: python
    :linenos:
 
@@ -303,6 +305,7 @@ action type to avoid confusion.
         return self._is_active
 
 Avoid This:
+
 .. code-block:: python
    :linenos:
 
@@ -339,6 +342,7 @@ and/or *from_iterable()* on the string class. Ideally, both would be
 available.
 
 To get a sense of clarity, try reading the following code out loud:
+
 .. code-block:: python
    :linenos:
 
@@ -351,6 +355,7 @@ full_name = space.join([
 name.”* The choice to use “str” is historical and a barrier to entry for
 those new to our field. As is “char,” “int,” and all other abbreviated
 words. Consider these alternatives:
+
 .. code-block:: python
    :linenos:
 
@@ -408,6 +413,7 @@ convention, but if there is an opportunity to make code more semantic,
 we like it. In this case, calling a method with no arguments and a name
 expressing clear intent is a straightforward way to reduce silly bugs
 and increase readability.
+
 .. code-block:: python
    :linenos:
 
@@ -416,6 +422,7 @@ and increase readability.
     new_hire.save()
 
 # vs:
+
 .. code-block:: python
    :linenos:
 
@@ -423,6 +430,7 @@ and increase readability.
     new_hire.activate()
     new_hire.save()
 # even better, but this comes later.
+
 .. code-block:: python
    :linenos:
 
