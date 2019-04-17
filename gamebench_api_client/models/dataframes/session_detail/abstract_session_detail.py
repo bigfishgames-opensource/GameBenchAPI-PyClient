@@ -2,6 +2,8 @@ from abc import ABC
 
 from gamebench_api_client.api.response.response_mediator import SessionDetailMediator
 from gamebench_api_client.models.abstract_model import AbstractModel
+from gamebench_api_client.models.authentication.authentication import Authenticator
+from gamebench_api_client.global_settings import get_username_and_password
 
 
 class AbstractSessionDetailModel(AbstractModel, ABC):
@@ -21,7 +23,9 @@ class AbstractSessionDetailModel(AbstractModel, ABC):
                 build and send a response.
         """
 
+        username_and_password = get_username_and_password()
         super().__init__()
+        self.authenticator = Authenticator(username_and_password)
         self.mediator = SessionDetailMediator(**request_parameters)
         self.data = self.get_data()
 
