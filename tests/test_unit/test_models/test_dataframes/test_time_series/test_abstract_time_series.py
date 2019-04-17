@@ -2,6 +2,7 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from gamebench_api_client.models.dataframes.time_series.abstract_time_series import AbstractTimeSeriesModel
+from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
 
 
 class TestAbstractTimeSeriesModel(TestCase):
@@ -23,7 +24,12 @@ class TestAbstractTimeSeriesModel(TestCase):
         with self.subTest():
             mock_get_data.assert_called_with()
         with self.subTest():
-            mock_authenticator.assert_called_with(**test_data)
+            mock_authenticator.assert_called_with(
+                {
+                    'username': GAMEBENCH_CONFIG['username'],
+                    'password': GAMEBENCH_CONFIG['password']
+                }
+            )
 
     @patch('gamebench_api_client.models.dataframes.time_series.abstract_time_series.TimeSeriesMediator')
     def test_get_data(self, mock_time_series):

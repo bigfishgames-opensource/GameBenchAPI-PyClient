@@ -2,6 +2,7 @@ from unittest import TestCase
 from unittest.mock import patch
 
 from gamebench_api_client.models.dataframes.session_detail.abstract_session_detail import AbstractSessionDetailModel
+from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
 
 
 class TestSessionDetailModel(TestCase):
@@ -25,7 +26,12 @@ class TestSessionDetailModel(TestCase):
         with self.subTest():
             mock_get_data.assert_called_with()
         with self.subTest():
-            mock_authenticator.assert_called_with(**test_data)
+            mock_authenticator.assert_called_with(
+                {
+                    'username': GAMEBENCH_CONFIG['username'],
+                    'password': GAMEBENCH_CONFIG['password']
+                }
+            )
 
     @patch('gamebench_api_client.models.dataframes.session_detail.abstract_session_detail.SessionDetailMediator')
     def test_get_data(self, mock_session_detail):
