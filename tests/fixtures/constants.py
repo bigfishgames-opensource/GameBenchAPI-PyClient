@@ -137,3 +137,4 @@ MODEL_CREATOR_GET_CLASS = 'gamebench_api_client.models.creator.model_creator.Mod
 MODEL_CREATOR_IMPORT_MODULE = 'gamebench_api_client.models.creator.model_creator.ModelCreator' \
                               '._import_given_model_module'
 MODEL_CREATOR_SET_MODULE = 'gamebench_api_client.models.creator.model_creator.ModelCreator._set_module_name_by_model'
+ABSTRACT_SESSION_DETAIL = 'gamebench_api_client.models.dataframes.session_detail.abstract_session_detail'
