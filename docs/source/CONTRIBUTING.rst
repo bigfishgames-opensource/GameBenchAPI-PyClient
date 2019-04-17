@@ -160,7 +160,7 @@ Candid, but respectful. You must also present a path forward. If you
 call out some code for improvement, we expect you to call out the
 standard it is violating and a little nudge in the right direction.
 
-If either party violates our :doc: `Code of Conduct </Contributor Covenant Code of Conduct>`, we will act as described
+If either party violates our :doc:`Code of Conduct </Contributor Covenant Code of Conduct>`, we will act as described
 in that policy.
 
 Code review is a critical step in creating quality software. More eyes
