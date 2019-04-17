@@ -346,10 +346,10 @@ To get a sense of clarity, try reading the following code out loud:
 .. code-block:: python
    :linenos:
 
-full_name = space.join([
-    str.title(self.first_name),
-    str.title(self.last_name)
-    ])
+    full_name = space.join([
+        str.title(self.first_name),
+        str.title(self.last_name)
+        ])
 
 *“Full name equals space join stir title first name and stir title last
 name.”* The choice to use “str” is historical and a barrier to entry for
