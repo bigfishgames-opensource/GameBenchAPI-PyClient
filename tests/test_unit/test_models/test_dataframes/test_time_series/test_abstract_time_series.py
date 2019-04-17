@@ -14,9 +14,6 @@ class TestAbstractTimeSeriesModel(TestCase):
     def test_init_sets_attributes(self, mock_time_series, mock_get_data, mock_authenticator):
         """ Verify the instance variables call the appropriate methods."""
 
-        test_data = {
-            'metric': 'Testing'
-        }
         time_series_model = AbstractTimeSeriesModel()
 
         with self.subTest():
@@ -43,11 +40,8 @@ class TestAbstractTimeSeriesModel(TestCase):
         )
 
     @patch(f'{ABSTRACT_TIME_SERIES}.Authenticator')
-    @patch(f'{ABSTRACT_TIME_SERIES}.AbstractTimeSeriesModel.get_data')
-    @patch(f'{ABSTRACT_TIME_SERIES}.TimeSeriesMediator')
-    def test_auth_token_added_to_request_parameters(self, mock_session_mediator, mock_get_data, mock_authenticator):
+    def test_auth_token_added_to_request_parameters(self, mock_authenticator):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
-        starting_dict = {}
 
         expected_dict = {
             'auth_token': 'q1w2e3r4t5y6'
@@ -58,6 +52,8 @@ class TestAbstractTimeSeriesModel(TestCase):
         }
         mock_authenticator.return_value = mock_dict
 
-        actual = AbstractTimeSeriesModel(**starting_dict)
+        with patch(f'{ABSTRACT_TIME_SERIES}.TimeSeriesMediator'), \
+                patch(f'{ABSTRACT_TIME_SERIES}.AbstractTimeSeriesModel.get_data'):
+            actual = AbstractTimeSeriesModel()
 
         self.assertDictEqual(expected_dict, actual.request_parameters)

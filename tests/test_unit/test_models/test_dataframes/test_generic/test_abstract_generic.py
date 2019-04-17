@@ -14,9 +14,6 @@ class TestGenericFrameModel(TestCase):
     def test_init_sets_attributes(self, mock_generic_frame, mock_get_data, mock_authenticator):
         """ Verify the instance variables call the appropriate methods."""
 
-        test_data = {
-            'metric': 'Testing'
-        }
         generic_model = AbstractGenericModel()
 
         with self.subTest():
@@ -43,11 +40,8 @@ class TestGenericFrameModel(TestCase):
         )
 
     @patch(f'{ABSTRACT_GENERIC}.Authenticator')
-    @patch(f'{ABSTRACT_GENERIC}.AbstractGenericModel.get_data')
-    @patch(f'{ABSTRACT_GENERIC}.GenericMediator')
-    def test_auth_token_added_to_request_parameters(self, mock_generic_frame, mock_get_data, mock_authenticator):
+    def test_auth_token_added_to_request_parameters(self, mock_authenticator):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
-        starting_dict = {}
 
         expected_dict = {
             'auth_token': 'q1w2e3r4t5y6'
@@ -58,6 +52,8 @@ class TestGenericFrameModel(TestCase):
         }
         mock_authenticator.return_value = mock_dict
 
-        actual = AbstractGenericModel(**starting_dict)
+        with patch(f'{ABSTRACT_GENERIC}.GenericMediator'),\
+                patch(f'{ABSTRACT_GENERIC}.AbstractGenericModel.get_data'):
+            actual = AbstractGenericModel()
 
         self.assertDictEqual(expected_dict, actual.request_parameters)

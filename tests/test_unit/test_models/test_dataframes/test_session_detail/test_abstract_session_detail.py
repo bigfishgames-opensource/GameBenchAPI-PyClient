@@ -14,9 +14,6 @@ class TestSessionDetailModel(TestCase):
     def test_init_sets_attributes(self, mock_session_detail, mock_get_data, mock_authenticator):
         """ Verify the instance variables call the appropriate methods."""
 
-        test_data = {
-            'metric': 'Testing'
-        }
         session_detail_model = AbstractSessionDetailModel()
 
         with self.subTest():
@@ -43,11 +40,8 @@ class TestSessionDetailModel(TestCase):
         )
 
     @patch(f'{ABSTRACT_SESSION_DETAIL}.Authenticator')
-    @patch(f'{ABSTRACT_SESSION_DETAIL}.AbstractSessionDetailModel.get_data')
-    @patch(f'{ABSTRACT_SESSION_DETAIL}.SessionDetailMediator')
-    def test_auth_token_added_to_request_parameters(self, mock_session_mediator, mock_get_data, mock_authenticator):
+    def test_auth_token_added_to_request_parameters(self, mock_authenticator):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
-        starting_dict = {}
 
         expected_dict = {
             'auth_token': 'q1w2e3r4t5y6'
@@ -58,6 +52,8 @@ class TestSessionDetailModel(TestCase):
         }
         mock_authenticator.return_value = mock_dict
 
-        actual = AbstractSessionDetailModel(**starting_dict)
+        with patch(f'{ABSTRACT_SESSION_DETAIL}.SessionDetailMediator'), \
+                patch(f'{ABSTRACT_SESSION_DETAIL}.AbstractSessionDetailModel.get_data'):
+            actual = AbstractSessionDetailModel()
 
         self.assertDictEqual(expected_dict, actual.request_parameters)
