@@ -23,10 +23,10 @@ class AbstractGenericModel(AbstractModel, ABC):
         """
 
         super().__init__()
-        self.authenticator = Authenticator(**request_parameters)
         self.request_parameters = request_parameters
+        self.authenticator = Authenticator(**self.request_parameters)
         self.request_parameters['auth_token'] = self.authenticator.data['token']
-        self.mediator = GenericMediator(self.request_parameters)
+        self.mediator = GenericMediator(**self.request_parameters)
         self.data = self.get_data()
 
     def get_data(self):

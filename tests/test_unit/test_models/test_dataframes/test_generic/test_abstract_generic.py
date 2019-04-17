@@ -47,18 +47,17 @@ class TestGenericFrameModel(TestCase):
     @patch('gamebench_api_client.models.dataframes.generic.abstract_generic.GenericMediator')
     def test_auth_token_added_to_request_parameters(self, mock_generic_frame, mock_get_data, mock_authenticator):
 
-        starting_dict = dict()
+        starting_dict = {}
 
         expected_dict = {
             'auth_token': 'q1w2e3r4t5y6'
         }
-
-        mock_authenticator.data = {
+        test = Mock()
+        test.data = {
             'token': 'q1w2e3r4t5y6'
         }
+        mock_authenticator.return_value = test
 
         actual = AbstractGenericModel(**starting_dict)
 
-        self.assertIn('auth_token', actual.request_parameters)
-        # Want this to be the test, but the value is a MagicMock object.
-        # self.assertDictEqual(expected_dict, actual.request_parameters)
+        self.assertDictEqual(expected_dict, actual.request_parameters)
