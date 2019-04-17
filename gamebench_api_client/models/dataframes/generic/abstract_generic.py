@@ -3,6 +3,7 @@ from abc import ABC
 from gamebench_api_client.api.response.response_mediator import GenericMediator
 from gamebench_api_client.models.abstract_model import AbstractModel
 from gamebench_api_client.models.authentication.authentication import Authenticator
+from gamebench_api_client.global_settings import get_username_and_password
 
 
 class AbstractGenericModel(AbstractModel, ABC):
@@ -22,7 +23,9 @@ class AbstractGenericModel(AbstractModel, ABC):
                 build and send a response.
         """
 
+        username_and_password = get_username_and_password()
         super().__init__()
+        self.authenticator = Authenticator(username_and_password)
         self.request_parameters = request_parameters
         self.authenticator = Authenticator(**self.request_parameters)
         self.request_parameters['auth_token'] = self.authenticator.data['token']
