@@ -13,6 +13,9 @@ Welcome to the GameBench API documentation!
    overview
    api
    how_to_extend
+   CONTRIBUTING
+   CODE_OF_CONDUCT
+   development_standards
 
 
 Indices and tables
