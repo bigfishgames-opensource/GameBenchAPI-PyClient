@@ -10,6 +10,9 @@ dictionaries that can be passed to the ModelCreator as an argument to get back i
 
 Time-Series Model
 -----------------
+This type of request is used for the following models: Battery, Cpu, CPU Core Frequency,
+Energy, FPS, FPS Stability, GPU (Imagination), GPU, Janks, Memory, Netowrk, and Power.
+
 .. code-block:: python
    :linenos:
 
@@ -23,6 +26,9 @@ Time-Series Model
 
 Generic Model
 -------------
+This type of request is used for the following models: Keyword, Markers, Session Notes,
+and Session Summary.
+
 .. code-block:: python
    :linenos:
 
@@ -36,6 +42,9 @@ Generic Model
 
 Session Detail Model
 --------------------
+This type of request is used to get specific metrics from the summary data and includes 
+the following information: App, Device, Location, Metrics, and Network Usage.
+
 .. code-block:: python
    :linenos:
 
