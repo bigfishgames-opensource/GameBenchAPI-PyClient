@@ -17,7 +17,7 @@ class TestSessionDetailModel(TestCase):
         test_data = {
             'metric': 'Testing'
         }
-        session_detail_model = AbstractSessionDetailModel(**test_data)
+        session_detail_model = AbstractSessionDetailModel()
 
         with self.subTest():
             mock_session_detail.assert_called_with(**session_detail_model.request_parameters)

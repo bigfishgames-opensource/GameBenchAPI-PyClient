@@ -17,7 +17,7 @@ class TestAbstractTimeSeriesModel(TestCase):
         test_data = {
             'metric': 'Testing'
         }
-        time_series_model = AbstractTimeSeriesModel(**test_data)
+        time_series_model = AbstractTimeSeriesModel()
 
         with self.subTest():
             mock_time_series.assert_called_with(**time_series_model.request_parameters)
