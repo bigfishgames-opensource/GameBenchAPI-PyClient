@@ -27,7 +27,7 @@ class AbstractTimeSeriesModel(AbstractModel, ABC):
         super().__init__()
         self.authenticator = Authenticator(username_and_password)
         self.request_parameters = request_parameters
-        self.mediator = TimeSeriesMediator(**request_parameters)
+        self.mediator = TimeSeriesMediator(self.request_parameters)
         self.data = self.get_data()
 
     def get_data(self):

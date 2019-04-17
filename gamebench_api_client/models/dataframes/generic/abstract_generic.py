@@ -28,7 +28,7 @@ class AbstractGenericModel(AbstractModel, ABC):
         self.authenticator = Authenticator(username_and_password)
         self.request_parameters = request_parameters
         self.request_parameters['auth_token'] = self.authenticator.data['token']
-        self.mediator = GenericMediator(**request_parameters)
+        self.mediator = GenericMediator(self.request_parameters)
         self.data = self.get_data()
 
     def get_data(self):

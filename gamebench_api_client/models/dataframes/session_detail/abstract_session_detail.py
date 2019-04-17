@@ -27,7 +27,7 @@ class AbstractSessionDetailModel(AbstractModel, ABC):
         super().__init__()
         self.authenticator = Authenticator(username_and_password)
         self.request_parameters = request_parameters
-        self.mediator = SessionDetailMediator(**request_parameters)
+        self.mediator = SessionDetailMediator(self.request_parameters)
         self.data = self.get_data()
 
     def get_data(self):
