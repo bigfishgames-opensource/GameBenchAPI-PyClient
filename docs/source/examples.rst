@@ -1,10 +1,12 @@
 Examples
 ========
 
+
+
 When the ModelCreator is called it requires a dictionary to be passed in which contains the
 information that the client wants.  It takes a 'model' argument which should be the name of
-the metric that you are looking for, and be in a CamelCase style.  Here are examples for
-each of the types of requests:
+the metric that you are looking for, and be in a CamelCase style.  Here are examples of the
+dictionaries that can be passed to the ModelCreator as an argument to get back information.
 
 Time-Series Model
 -----------------
