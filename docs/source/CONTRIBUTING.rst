@@ -1,5 +1,8 @@
+Contributing
+=============
+
 Who can Make Contributions?
-===========================
+---------------------------
 
 We want everyone to feel free and welcome to add value to this project.
 We welcome all people from all roles and skill levels.
@@ -12,7 +15,7 @@ Regardless of experience, we encourage you to talk through your plans
 with us and push branches early to get feedback before you get too deep.
 
 What Code You Can Contribute
-============================
+----------------------------
 
 All code must be compatible with the license shipped with the project.
 This project is a
@@ -21,7 +24,7 @@ product. By contributing, you certify that you have a legal right to
 submit your contributions.
 
 Contacting Us
-=============
+---------------------------
 
 We have a
 `Gitter <https://gitter.im/bigfishgames/GameBench-API-PyClient?utm_source=share-link&utm_medium=link&utm_campaign=share-link>`__
@@ -29,7 +32,7 @@ community setup for chatting through issues, feature requests, and all
 things software development.
 
 The Development Environment
-===========================
+---------------------------
 
 IDEs and text editors are very personal decisions. We want to you work
 with tools that you are effective using. We have supplied an
@@ -43,7 +46,7 @@ formatting settings we check on push. Early feedback is always better
 than late feedback.
 
 Project Management
-==================
+---------------------------
 
 We run a simple `ZenHub Kanban board <https://app.zenhub.com/workspaces/gamebenchapi-5cabf535a736c27636b0283d/board?repos=180245554>`_. You are welcome to work anything in the
 *backlog* at any time if it does not depend on incomplete stories. We
@@ -53,17 +56,17 @@ within 2 weeks. While we are backlog grooming, we will look for items
 that have been in progress for 2 weeks and check on the status.
 
 Version Control Process
-=======================
+---------------------------
 
 Master
-------
+~~~~~~~
 
 The master branch should always be releasable. Unreleased working
 software isn’t supplying value to anyone. Our development standards and
 processes exist to help this be a reality.
 
 Branching
----------
+~~~~~~~~~
 
 When you begin work on a bug fix or feature, cut a branch from master.
 Be sure your local master is up to date with the remote master branch
@@ -75,7 +78,7 @@ Update your branch from master often as you work to avoid complex
 conflict resolution at the end.
 
 Commits
--------
+~~~~~~~~
 
 We recommend that you commit early and often. This gives you more
 freedom to go back and forth between commits as your solution evolves.
@@ -111,7 +114,7 @@ readability.*
 .. _section-1:
 
 Pushes
-------
+~~~~~~~
 
 Push your branch to remote early in the process and then as you have
 working pieces complete.
@@ -140,7 +143,7 @@ In addition to the automated checks, an official maintainer must approve
 the pull request.
 
 Code Review
-===========
+--------------
 
 Code review can be awkward for some engineers. It can be difficult to
 put your work up for judgment. Rest assured, future you will come to
