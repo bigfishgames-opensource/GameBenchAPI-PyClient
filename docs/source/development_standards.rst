@@ -158,7 +158,7 @@ without specific knowledge.
 
 **Example:**
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     adjacent = 3
     opposite = 4
@@ -272,7 +272,7 @@ action type to avoid confusion.
 
 **Query and Command Separation:**
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     class User:
         def __init__(self, first_name, last_name):
@@ -304,7 +304,7 @@ action type to avoid confusion.
 
 Avoid This:
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     def activate (self):
     """Change state of user to active and return user._is_active."""
@@ -340,7 +340,7 @@ available.
 
 To get a sense of clarity, try reading the following code out loud:
 .. code-block:: python
-    :linenos:
+   :linenos:
 
 full_name = space.join([
     str.title(self.first_name),
@@ -352,7 +352,7 @@ name.”* The choice to use “str” is historical and a barrier to entry for
 those new to our field. As is “char,” “int,” and all other abbreviated
 words. Consider these alternatives:
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     def get_full_name(self):
         full_name = self.first_name.get_title_cased() +
@@ -409,7 +409,7 @@ we like it. In this case, calling a method with no arguments and a name
 expressing clear intent is a straightforward way to reduce silly bugs
 and increase readability.
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     new_hire = Employee.from_full_name(full_name)
     new_hire.set_active(True)
@@ -417,14 +417,14 @@ and increase readability.
 
 # vs:
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     new_hire = Employee.from_full_name(full_name)
     new_hire.activate()
     new_hire.save()
 # even better, but this comes later.
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     human_resources_facade.onboard_new_hire(full_name)
 
@@ -481,7 +481,7 @@ not need to add unit tests for these things:
 
 ..
 .. code-block:: python
-    :linenos:
+   :linenos:
 
     def get_name(self):
         return self.name
