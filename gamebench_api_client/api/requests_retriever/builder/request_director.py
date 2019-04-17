@@ -11,7 +11,8 @@ class RequestDirector:
 
     def __init__(self, **request_parameters):
         """ Set up the _builder to be used by the constructor.
-        :param **request_parameters:
+
+            :param request_parameters: Dictionary containing information needed to build the request.
         """
 
         self.request_parameters = request_parameters

@@ -9,18 +9,15 @@ class RequestBuilder(ABC):
     """ Abstract interface for building requests."""
 
     def __init__(self, **request_parameters):
-        """ Creates an instance of the Request object for
-            construction.
+        """ Creates an instance of the Request object for construction.
 
-            :param **request_parameters:
+            :param request_parameters:
                 session_id - id for the current session
-                metric - specific category of data being requested
-                    (cpu, gpu, battery, etc.)
+                metric - specific category of data being requested  (cpu, gpu, battery, etc.)
                 auth_token - authorization token necessary for retrieving data.
-                params - parameters appended to certain session requests
-                    (pageSize, timePushed, etc.)
+                params - parameters appended to certain session requests (pageSize, timePushed, etc.)
                 data - json body appended to certain session requests
-                    (example: {"apps" : [], "devices" : [], "manufacturers" : []})
+                (example: {"apps" : [], "devices" : [], "manufacturers" : []})
         """
 
         self.request_parameters = request_parameters
@@ -75,8 +72,9 @@ class RequestBuilder(ABC):
 
 
 class AuthRequest(RequestBuilder):
-    """ Concrete builder that constructs and assembles the auth
-        request object by implementing the RequestBuilder interface.
+    """ Concrete builder that constructs and assembles the auth request object.
+
+        :param request_parameters: Dictionary containing information needed to build the request.
     """
 
     def __init__(self, **request_parameters):
