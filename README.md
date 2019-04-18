@@ -7,3 +7,5 @@ A Python Client for the GameBench API
 [![Gitter](https://badges.gitter.im/bigfishgames/GameBench-API-PyClient.svg)](https://gitter.im/bigfishgames/GameBench-API-PyClient?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Please check out our [ZenHub Board](https://app.zenhub.com/workspaces/gamebenchapi-pyclient-5cabf535a736c27636b0283d/board?repos=180245554) for open issues.
+
+For full documentation, go to the `docs`_ page.

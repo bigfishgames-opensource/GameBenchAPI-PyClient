@@ -1,7 +1,7 @@
 Request Examples
 ================
 
-In order to make a request the client simply has to import the ModelCreator class. 
+In order to make a request the client simply has to import the ModelCreator class.
 When the ModelCreator is instantiated it takes two arguments.  The first is a 'model' argument
 which should be the name of the metric that you are looking for, and be in a CamelCase style.
 This is used by the library to dynamically import the needed model class.  The second argument is
@@ -65,3 +65,6 @@ the following information: App, Device, Location, Metrics, and Network Usage.
     }
 
     creator = ModelCreator(session_detail_request)
+
+
+The GameBench API documentation
