@@ -14,14 +14,10 @@ class TestAuthenticator(TestCase):
     def test_init_sets_attributes(self, mock_mediator, mock_get_data):
         """ The instance variables call the appropriate methods."""
 
-        test_data = {
-            'username': 'Testing',
-            'password': 'Blah'
-        }
-        Authenticator(**test_data)
+        Authenticator()
 
         with self.subTest():
-            mock_mediator.assert_called_with(**test_data)
+            mock_mediator.assert_called_with(password='', username='')
         with self.subTest():
             mock_get_data.assert_called_with()
 

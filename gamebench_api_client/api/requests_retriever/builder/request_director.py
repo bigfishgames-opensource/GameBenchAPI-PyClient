@@ -24,8 +24,6 @@ class RequestDirector:
         """ Constructs a Request objects.
 
             :param builder: object which determines which concrete creator to use.
-            :param request_parameters: dictionary used for adding necessary
-                data to the set methods.
         """
 
         self._url_director = self._loader.set_url_director()
@@ -41,9 +39,6 @@ class RequestDirector:
         """ Constructs an authorization request object and returns the properties
             as a dictionary.
 
-            :param request_parameters: User credentials required for generating an auth token:
-                username - GameBench account username.
-                password - GameBench account password.
             :return: request - dictionary containing each element of the auth request.
         """
 
@@ -81,16 +76,6 @@ class RequestDirector:
     def get_session_request(self):
         """ Constructs and returns a session request object.
 
-            :param request_parameters:
-                session_id - id for the current session
-                metric - specific category of data being requested
-                (cpu, gpu, battery, etc.)
-                auth_token - authorization token necessary for retrieving
-                data.
-                params - parameters appended to certain session requests
-                (pageSize, timePushed, etc.)
-                data - json body appended to certain session requests
-                (example: {"apps" : [], "devices" : [], "manufacturers" : []})
             :return: request - dictionary containing each element of the session request.
         """
 

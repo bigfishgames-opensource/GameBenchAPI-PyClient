@@ -15,6 +15,9 @@ Welcome to the GameBench API Client documentation!
    examples
    global_settings
    how_to_extend
+   CONTRIBUTING
+   CODE_OF_CONDUCT
+   development_standards
 
 
 Indices and tables
