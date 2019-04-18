@@ -13,8 +13,8 @@ Welcome to the GameBench API Client documentation!
    overview
    api
    examples
-   global_settings
    how_to_extend
+   global_settings
    CONTRIBUTING
    CODE_OF_CONDUCT
    development_standards
