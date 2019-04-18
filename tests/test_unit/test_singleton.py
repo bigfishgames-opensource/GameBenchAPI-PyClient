@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from gamebench_api_client.singleton import Singleton
 
 
@@ -14,7 +15,7 @@ class SingletonStub(Singleton):
 
 class TestSingleton(TestCase):
     """Testing the base Singleton"""
-    
+
     def test_singleton_pattern(self):
         """The Stub should be a singleton, ensures all objects are the same."""
         singleton_1 = SingletonStub()

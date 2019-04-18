@@ -1,7 +1,8 @@
-from gamebench_api_client.models.dataframes.time_series.time_series_models import *
-from tests.fixtures.constants import ABSTRACT_TIME_SERIES, DATAFRAMES_PATH
 from unittest import TestCase
 from unittest.mock import patch
+
+from gamebench_api_client.models.dataframes.time_series.time_series_models import *
+from tests.fixtures.constants import ABSTRACT_TIME_SERIES, DATAFRAMES_PATH
 
 
 class TimeSeriesModelsTests(TestCase):

@@ -10,8 +10,8 @@ from pandas.testing import assert_frame_equal
 from gamebench_api_client.api.requests_retriever.request_adapter.adapter import RequestsAdapter
 from gamebench_api_client.api.response.response_mediator import GenericMediator, SessionDetailMediator, \
     TimeSeriesMediator, AuthenticationMediator
-from tests import *
 from gamebench_api_client.api.response.response_retriever import ResponseRetriever
+from tests import *
 
 
 class TestTimeSeriesMediator(TestCase):
