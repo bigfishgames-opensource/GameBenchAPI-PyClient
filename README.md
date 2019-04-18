@@ -10,4 +10,30 @@ Please check out our [ZenHub Board](https://app.zenhub.com/workspaces/gamebencha
 
 For full documentation, go to the [ReadtheDocs](https://gamebenchapi-pyclient.readthedocs.io/) page.
 
+##Overview
+The GameBench API Client library enables automatic delivery of performance data from the GameBench API back to the client. It is built in Python 3.7 and uses the Requests python library to construct HTTP traffic.
+
+The client simply passes in a dictionary to the library that includes the information they want from the GameBenchAPI. The library will do the rest and return the requested data as a Pandas DataFrame for the client to use.
+
+##The Basics
+All requests to the GameBench API Client will go through the `ModelCreator` class.  This class
+is instantiated and given a
+
+```python
+
+from gamebench_api_client.models.creator.model_creator import ModelCreator
+
+
+time_series_request = {
+    'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
+    'metric': '/cpu',
+    'detail': '',
+    'params': '',
+    'data': ''
+}
+
+creator = ModelCreator('Cpu', time_series_request)
+
+```
+
 [GitHub](https://github.com/bigfishgames/GameBenchAPI-PyClient)

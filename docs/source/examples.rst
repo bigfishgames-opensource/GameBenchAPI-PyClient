@@ -26,7 +26,7 @@ Energy, FPS, FPS Stability, GPU (Imagination), GPU, Janks, Memory, Network, and 
        'data': ''
    }
 
-   creator = ModelCreator(time_series_request)
+   creator = ModelCreator('Cpu', time_series_request)
 
 
 Generic Model
@@ -45,7 +45,7 @@ and Session Summary.
         'data': ''
     }
 
-    creator = ModelCreator(generic_request)
+    creator = ModelCreator('SessionNotes', generic_request)
 
 
 Session Detail Model
@@ -64,7 +64,7 @@ the following information: App, Device, Location, Metrics, and Network Usage.
         "data": ''
     }
 
-    creator = ModelCreator(session_detail_request)
+    creator = ModelCreator('App', session_detail_request)
 
 
 The GameBench API documentation
