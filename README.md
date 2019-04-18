@@ -8,7 +8,6 @@ A Python Client for the GameBench API
 
 Please check out our [ZenHub Board](https://app.zenhub.com/workspaces/gamebenchapi-pyclient-5cabf535a736c27636b0283d/board?repos=180245554) for open issues.
 
-For full documentation, go to the `docs`_ page.
+For full documentation, go to the [ReadtheDocs](https://gamebenchapi-pyclient.readthedocs.io/) page.
 
-.. _docs: https://gamebenchapi-pyclient.readthedocs.io/
-.. _gitHub: https://github.com/bigfishgames/GameBenchAPI-PyClient
+[GitHub](https://github.com/bigfishgames/GameBenchAPI-PyClient)
