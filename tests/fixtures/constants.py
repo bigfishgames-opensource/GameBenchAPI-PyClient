@@ -36,6 +36,12 @@ METRIC = "/cpu"
 BASE_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID
 DEFAULT_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID + METRIC
 GENERIC_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID + '/notes'
+
+NUMBER_OF_SESSIONS = 15  # Default
+PAGE_SIZE = f"pageSize={NUMBER_OF_SESSIONS}&sort=timePushed%3Adesc"
+# LAST_NUMBER_OF_SESSIONS_BY_COMPANY_URL
+LAST_NUMBER_OF_SESSIONS_BY_USER_URL = f"{BASE_URL}{VERSION}{SESSION_SUFFIX}?{PAGE_SIZE}"
+
 SESSION_DATA = {
     "data": {
         "test_data": "test_data"
@@ -108,6 +114,15 @@ DEFAULT_REQUEST_PARAMS = {
         "test_data": "test_data"
     }
 }
+
+DEFAULT_BULK_SESSION_DETAIL_PARAMS = {
+    'session_id': "",
+    'metric': "",
+    'auth_token': AUTH_TOKEN,
+    "params": PAGE_SIZE,
+    "data": ""
+}
+
 DEFAULT_SESSION_DETAIL_PARAMS = {
     'session_id': SESSION_ID,
     'metric': '',

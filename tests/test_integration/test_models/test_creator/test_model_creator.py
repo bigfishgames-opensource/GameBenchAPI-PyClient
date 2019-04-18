@@ -1,14 +1,13 @@
 import json
 from unittest import TestCase
-from unittest.mock import patch
 
 import pandas
+import requests_mock
 from pandas.io.json import json_normalize
 from pandas.util.testing import assert_frame_equal
-import requests_mock
 
-from tests import *
 from gamebench_api_client.models.creator.model_creator import ModelCreator
+from tests import *
 
 
 class TestModelCreator(TestCase):
@@ -103,6 +102,39 @@ class TestModelCreator(TestCase):
         model = creator.get_model()
         expected = pandas.DataFrame(
             [self.generic_json['response']]
+        )
+        actual = model.data
+
+        assert_frame_equal(actual, expected)
+
+    @requests_mock.Mocker()
+    def test_model_created_with_number_of_sessions_by_user(self, mock_return):
+        """ The ModelCreator returns the proper DataFrame."""
+
+        with open(os.path.join(
+                PARENT_DIR + API_SAMPLES + "cpu_multiple_sessions.json")) as \
+                json_data:
+            self.time_series_json = json.load(json_data)
+        with open(os.path.join(
+                PARENT_DIR + '/fixtures/' + "authentication_token.json")) as \
+                json_data:
+            self.auth_token = json.load(json_data)
+        mock_return.request(
+            'POST',
+            AUTH_URL,
+            json=self.auth_token
+        )
+        mock_return.request(
+            'POST',
+            LAST_NUMBER_OF_SESSIONS_BY_USER_URL,
+            json=self.time_series_json['response']
+        )
+        creator = ModelCreator('Cpu', **DEFAULT_BULK_SESSION_DETAIL_PARAMS)
+        model = creator.get_model()
+        expected = json_normalize(
+            self.time_series_json['response'],
+            'samples',
+            ['id', 'sessionId']
         )
         actual = model.data
 
