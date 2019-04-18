@@ -40,10 +40,11 @@ class TestSessionDetailMediator(TestCase):
     def test_init_creates_retriever(self, mock_retriever):
         """ Verify the init calls the ResponseRetriever and assigns it to a variable."""
 
-        mediator = SessionDetailMediator(**NO_METRIC_REQUEST_PARAMS)
+        mediator = SessionDetailMediator(**DEFAULT_SESSION_DETAIL_PARAMS)
         with self.subTest():
-            mock_retriever.assert_called_once_with(**NO_METRIC_REQUEST_PARAMS['response'])
-        self.assertIsNotNone(mediator.retriever)
+            mock_retriever.assert_called_once_with(**DEFAULT_SESSION_DETAIL_PARAMS)
+        with self.subTest():
+            self.assertIsNotNone(mediator.retriever)
 
     @patch('gamebench_api_client.api.response.response_mediator.session_detail_to_dataframe')
     @patch(SESSION_RESPONSE_RETRIEVER_PATH)
@@ -55,12 +56,13 @@ class TestSessionDetailMediator(TestCase):
             'metric': NO_METRIC_REQUEST_PARAMS['metric'],
             'response_json': SAMPLE_RESPONSE
         }
-        mediator = SessionDetailMediator(**NO_METRIC_REQUEST_PARAMS)
+        mediator = SessionDetailMediator(**DEFAULT_SESSION_DETAIL_PARAMS)
         mediator.get_results()
 
         with self.subTest():
-            mock_retriever.assert_called_once_with(**NO_METRIC_REQUEST_PARAMS['response'])
-        mock_utility.assert_called_once()
+            mock_retriever.assert_called_once_with(**DEFAULT_SESSION_DETAIL_PARAMS)
+        with self.subTest():
+            mock_utility.assert_called_once()
 
 
 class TestGenericFrameMediator(TestCase):

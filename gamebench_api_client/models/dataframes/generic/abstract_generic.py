@@ -12,7 +12,7 @@ class AbstractGenericModel(AbstractModel, ABC):
         individually as needed.
     """
 
-    def __init__(self):
+    def __init__(self, **request_parameters):
         """ Sets up the mediator and data attributes.
 
             The mediator is set to the mediator that it will be contacting.  The data
@@ -21,9 +21,10 @@ class AbstractGenericModel(AbstractModel, ABC):
         """
 
         super().__init__()
+        self.request_parameters = request_parameters
         self.authenticator = Authenticator()
         self.request_parameters['auth_token'] = self.authenticator.data['token']
-        self.mediator = GenericMediator(**self.request_parameters)
+        self.mediator = GenericMediator(**request_parameters)
         self.data = self.get_data()
 
     def get_data(self):

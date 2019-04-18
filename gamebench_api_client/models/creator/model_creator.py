@@ -26,13 +26,13 @@ class ModelCreator:
             :param model: The name of the model that the user wants.
             :param request_parameters: This will be a dictionary from the
                 client that includes the following keys:
-                    method: POST, GET, etc.
                     session_id: ID for a specific session.
                     metric: Which metric the user requested (cpu, memory, etc.).
                     auth_token: Auth token for the user.
                     params: URL appended filters.
                     data: Dictionary of filter keywords.
         """
+
         self.model = model
         self.module_path = self._set_module_name_by_model()
         self.imported_module = self._import_given_model_module()
