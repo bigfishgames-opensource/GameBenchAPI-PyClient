@@ -10,7 +10,7 @@ The GameBench API Client can be install using pip:
 
     pip install gamebench-api
 
-It can also be found on the GitHub page: https://github.com/bigfishgames/GameBenchAPI-PyClient
+It can also be found on the `GitHub`_ page.
 
 
 Setup
@@ -66,3 +66,5 @@ This will make the request to the API and store the returned data.  You can call
 *get_model* method for the *ModelCreator* instance to get the results.
 
 See :doc:`examples` for more dictionary examples.
+
+.. _GitHub: https://github.com/bigfishgames/GameBenchAPI-PyClient
