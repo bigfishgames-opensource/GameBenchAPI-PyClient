@@ -52,7 +52,7 @@ class TestGenericFrameModel(TestCase):
         }
         mock_authenticator.return_value = mock_dict
 
-        with patch(f'{ABSTRACT_GENERIC}.GenericMediator'),\
+        with patch(f'{ABSTRACT_GENERIC}.GenericMediator'), \
                 patch(f'{ABSTRACT_GENERIC}.AbstractGenericModel.get_data'):
             actual = AbstractGenericModel()
 

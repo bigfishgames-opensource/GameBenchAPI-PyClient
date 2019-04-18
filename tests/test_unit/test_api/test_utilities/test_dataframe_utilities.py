@@ -25,15 +25,15 @@ class TestDataFrameUtilities(TestCase):
         """ Verify a DataFrame is returned after normalizing a JSON."""
 
         expected = json_normalize(
-                self.test_json['response'],
-                'samples',
-                ['id', 'sessionId']
+            self.test_json['response'],
+            'samples',
+            ['id', 'sessionId']
         )
         actual = json_to_normalized_dataframe(self.test_json['response'])
 
         assert_frame_equal(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_session_metric_to_dataframe(self):
@@ -43,8 +43,8 @@ class TestDataFrameUtilities(TestCase):
         actual = session_detail_to_dataframe('app', self.session_json['response'])
 
         assert_frame_equal(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_to_dataframe(self):
@@ -54,6 +54,6 @@ class TestDataFrameUtilities(TestCase):
         actual = to_dataframe(self.test_json)
 
         assert_frame_equal(
-                expected,
-                actual
+            expected,
+            actual
         )

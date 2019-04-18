@@ -35,8 +35,8 @@ class TestAbstractTimeSeriesModel(TestCase):
             actual = AbstractTimeSeriesModel().data
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     @patch(f'{ABSTRACT_TIME_SERIES}.Authenticator')

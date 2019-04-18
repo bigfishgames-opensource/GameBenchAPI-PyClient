@@ -24,8 +24,8 @@ class TestAttributes(TestCase):
         expected = NO_METRIC_HEADERS
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
     def test_get_headers_includes_metric(self):
@@ -42,8 +42,8 @@ class TestAttributes(TestCase):
         expected = DEFAULT_SESSION_HEADERS
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
     def test_get_headers_for_auth(self):
@@ -58,8 +58,8 @@ class TestAttributes(TestCase):
         expected = AUTH_HEADERS
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
     def test_get_params(self):
@@ -78,13 +78,13 @@ class TestAttributes(TestCase):
         expected = "pageSize=15"
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
     @patch(
-            'gamebench_api_client.api.requests_retriever.builder.attributes.attributes_creator.Attributes'
-            '._is_auth_request')
+        'gamebench_api_client.api.requests_retriever.builder.attributes.attributes_creator.Attributes'
+        '._is_auth_request')
     def test_get_data_with_username(self, mock_is_auth_request):
         """ Verify the correct data is returned if a username and password are present.
 
@@ -108,13 +108,13 @@ class TestAttributes(TestCase):
             mock_is_auth_request.assert_called_once_with()
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
     @patch(
-            'gamebench_api_client.api.requests_retriever.builder.attributes.attributes_creator.Attributes'
-            '._is_auth_request')
+        'gamebench_api_client.api.requests_retriever.builder.attributes.attributes_creator.Attributes'
+        '._is_auth_request')
     def test_get_data_without_username(self, mock_is_auth_request):
         """ Verify the correct data is returned if there is no username key."""
 
@@ -127,8 +127,8 @@ class TestAttributes(TestCase):
         expected = "test_data"
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
     def test_is_auth_request(self):
@@ -172,11 +172,11 @@ class TestAttributes(TestCase):
             actual = attributes._get_session_headers()
 
             self.assertEqual(
+                expected,
+                actual,
+                error_message.format(
+                    test,
                     expected,
-                    actual,
-                    error_message.format(
-                            test,
-                            expected,
-                            actual
-                    )
+                    actual
+                )
             )
