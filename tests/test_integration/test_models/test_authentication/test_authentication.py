@@ -24,7 +24,7 @@ class TestAuthentication(TestCase):
             json=self.auth_token_json['response']
         )
         auth_data = {'username': USERNAME, 'password': PASSWORD}
-        authenticator = Authenticator(**auth_data)
+        authenticator = Authenticator()
 
         expected = self.auth_token_json['response']
         actual = authenticator.data

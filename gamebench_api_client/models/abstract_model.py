@@ -7,7 +7,6 @@ class AbstractModel(ABC):
     def __init__(self, **request_parameters):
         """ Sets up the mediator and data attributes."""
 
-        self.request_parameters = request_parameters
         self.mediator = None
         self.data = None
 

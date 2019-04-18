@@ -32,6 +32,7 @@ class ModelCreator:
                     params: URL appended filters.
                     data: Dictionary of filter keywords.
         """
+
         self.model = model
         self.module_path = self._set_module_name_by_model()
         self.imported_module = self._import_given_model_module()
