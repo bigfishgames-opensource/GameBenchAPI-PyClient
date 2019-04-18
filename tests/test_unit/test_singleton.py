@@ -23,4 +23,4 @@ class TestSingleton(TestCase):
         singleton_2 = SingletonStub()
         singleton_2.set_property("second")
 
-        self.assertEqual(singleton_1, singleton_2)
+        self.assertIs(singleton_1, singleton_2)
