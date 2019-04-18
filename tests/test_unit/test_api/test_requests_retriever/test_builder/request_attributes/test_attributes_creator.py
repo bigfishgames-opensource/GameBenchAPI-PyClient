@@ -15,7 +15,8 @@ class TestAttributes(TestCase):
         """ Verify the correct headers are returned if the metric key is empty."""
         test_parameters = {
             "metric": "",
-            "auth_token": AUTH_TOKEN
+            "auth_token": AUTH_TOKEN,
+            'session_id': ''
         }
         attributes = Attributes(**test_parameters)
 
@@ -32,7 +33,8 @@ class TestAttributes(TestCase):
 
         test_parameters = {
             "metric": METRIC,
-            "auth_token": AUTH_TOKEN
+            "auth_token": AUTH_TOKEN,
+            'session_id': SESSION_ID
         }
         attributes = Attributes(**test_parameters)
 
@@ -148,11 +150,13 @@ class TestAttributes(TestCase):
         test_params = {
             "no_metric": {
                 "metric": "",
-                "headers": NO_METRIC_HEADERS
+                "headers": NO_METRIC_HEADERS,
+                'session_id': ''
             },
             "metric_present": {
                 "metric": METRIC,
-                "headers": DEFAULT_SESSION_HEADERS
+                "headers": DEFAULT_SESSION_HEADERS,
+                'session_id': SESSION_ID
             }
         }
 
@@ -160,7 +164,8 @@ class TestAttributes(TestCase):
             request_parameters = {
                 'metric': params['metric'],
                 'auth_token': AUTH_TOKEN,
-                'headers': params['headers']
+                'headers': params['headers'],
+                'session_id': params['session_id']
             }
             attributes = Attributes(**request_parameters)
             expected = params["headers"]

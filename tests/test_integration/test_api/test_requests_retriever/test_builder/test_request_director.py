@@ -23,6 +23,7 @@ class TestGetAuthRequest(TestCase):
 
     def test_get_auth_request(self):
         """ Test to check that get_auth_request returns expected dict."""
+
         data = AUTH_DATA
         self.director = RequestDirector(**data)
         expected = {
