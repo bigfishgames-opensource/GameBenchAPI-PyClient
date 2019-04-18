@@ -1,18 +1,68 @@
 Using the GameBench API Client
 ==============================
 
-1. Install the package with ‘pip install gamebench_api’ or download it from GitHub.
+Installation
+------------
 
-2. Add the username and password you want to use into GAMEBENCH_CONFIG in the ‘global_settings.py’ module.  When requests are made this information will be used to get the authentication token from the API.
+The GameBench API Client can be install using pip:
 
-3. Import the ModelCreator class into the module that will be used to send requests.
+.. code-block:: python
 
-4. Create an instance of the ModelCreator and pass in the following information:
+    pip install gamebench-api
 
-  - Model you are looking for, which should be in a CamelCase style.
+It can also be found on the GitHub page: https://github.com/bigfishgames/GameBenchAPI-PyClient
 
-  - Dictionary that includes the information you want from the API.  Example dictionaries can be found in the ‘Examples’ section of the documentation.
 
-5. This will build and make the request to the API.
+Setup
+-----
 
-6. Call the get_model method for your ModelCreator instance and your results will be returned.
+Add the username and password for the GameBench account you are using to the 'global_settings.py'
+module.
+
+.. code-block:: python
+   :linenos:
+
+    GAMEBENCH_CONFIG = {
+        'url': 'https://api.production.gamebench.net',
+        'api_version': '/v1',
+        'username': 'john.smith@example.com',
+        'password': 'password',
+        'company_id': '',
+    }
+
+See :doc:`global_settings` for for information on this module.
+
+
+Importing
+---------
+
+In the module that will be calling the API Client, import the ModelCreator class.
+
+.. code-block:: python
+
+    from gamebench_api_client.models.creator.model_creator import ModelCreator
+
+Create an instance of the ModelCreator and pass in the following information:
+
+ - The model that you want, which should be in a CamelCase style.
+ - A dictionary that specifies the information you want.
+
+Here is one example for requesting time series data:
+
+.. code-block:: python
+   :linenos:
+
+   time_series_request = {
+       'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
+       'metric': '/cpu',
+       'detail': '',
+       'params': '',
+       'data': ''
+   }
+
+   creator = ModelCreator('Cpu', time_series_request)
+
+This will make the request to the API and store the returned data.  You can call the
+*get_model* method for the *ModelCreator* instance to get the results.
+
+See :doc:`examples` for more dictionary examples.

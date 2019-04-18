@@ -25,6 +25,7 @@ def get_username_and_password():
 
     :return: user_credentials: Dictionary of key username and value password from the global variable GAMEBENCH_CONFIG
     """
+
     user_credentials = dict()
     user_credentials['username'] = GAMEBENCH_CONFIG['username']
     user_credentials['password'] = GAMEBENCH_CONFIG['password']
