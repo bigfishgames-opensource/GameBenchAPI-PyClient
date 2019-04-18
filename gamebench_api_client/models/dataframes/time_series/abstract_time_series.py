@@ -12,7 +12,7 @@ class AbstractTimeSeriesModel(AbstractModel, ABC):
         individually as needed.
     """
 
-    def __init__(self):
+    def __init__(self, **request_parameters):
         """ Sets up the mediator and data attributes.
 
             The mediator is set to the mediator that it will be contacting.  The data
@@ -21,6 +21,7 @@ class AbstractTimeSeriesModel(AbstractModel, ABC):
         """
 
         super().__init__()
+        self.request_parameters = request_parameters
         self.authenticator = Authenticator()
         self.request_parameters['auth_token'] = self.authenticator.data['token']
         self.mediator = TimeSeriesMediator(**self.request_parameters)

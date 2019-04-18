@@ -28,12 +28,7 @@ def session_detail_to_dataframe(metric, response_json):
                 json dictionary.
     """
 
-    series = pandas.Series(response_json)
-
-    return pandas.DataFrame(
-            series[metric],
-            index=[metric]
-    )
+    return pandas.DataFrame(data=[response_json[metric]])
 
 
 def json_to_normalized_dataframe(response_json):

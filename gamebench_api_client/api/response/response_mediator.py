@@ -51,7 +51,7 @@ class SessionDetailMediator(ResponseMediator):
 
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
-        self.retriever = ResponseRetriever(**self.request_parameters['response'])
+        self.retriever = ResponseRetriever(**self.request_parameters)
 
     def get_results(self):
         """ Sets JSON data into a Pandas DataFrame.
@@ -61,7 +61,7 @@ class SessionDetailMediator(ResponseMediator):
 
         response_json = self.retriever.get_response_json()
         session_dict = {
-            'metric': self.request_parameters['metric'],
+            'metric': self.request_parameters['detail'],
             'response_json': response_json
         }
 
@@ -83,7 +83,7 @@ class GenericMediator(ResponseMediator):
 
         response_json = self.retriever.get_response_json()
 
-        return to_dataframe(response_json)
+        return to_dataframe([response_json])
 
 
 class AuthenticationMediator(ResponseMediator):

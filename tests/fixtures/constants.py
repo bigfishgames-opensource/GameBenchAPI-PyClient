@@ -33,7 +33,9 @@ AUTH_ATTRIBUTES = {
 SESSION_SUFFIX = '/sessions'
 SESSION_ID = "/session_id"
 METRIC = "/cpu"
+BASE_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID
 DEFAULT_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID + METRIC
+GENERIC_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID + '/notes'
 SESSION_DATA = {
     "data": {
         "test_data": "test_data"
@@ -80,6 +82,12 @@ METRIC_TEST_PARAMS = {
         "headers": DEFAULT_SESSION_HEADERS,
         "method": "GET",
         "session_id": SESSION_ID
+    },
+    'session_detail': {
+        'metric': '',
+        'headers': DEFAULT_SESSION_HEADERS,
+        'method': 'GET',
+        'session_id': SESSION_ID
     }
 }
 DEFAULT_EXPECTED_REQUEST_PARAMS = {
@@ -87,14 +95,11 @@ DEFAULT_EXPECTED_REQUEST_PARAMS = {
     'url': DEFAULT_SESSION_URL,
     'attributes': {
         'headers': DEFAULT_SESSION_HEADERS,
-        'params': 'test_params',
-        'data': {
-            'test_data': 'test_data'
-        }
+        'params': '',
+        'data': ''
     }
 }
 DEFAULT_REQUEST_PARAMS = {
-    'method': "GET",
     'session_id': SESSION_ID,
     'metric': METRIC,
     'auth_token': AUTH_TOKEN,
@@ -103,17 +108,31 @@ DEFAULT_REQUEST_PARAMS = {
         "test_data": "test_data"
     }
 }
+DEFAULT_SESSION_DETAIL_PARAMS = {
+    'session_id': SESSION_ID,
+    'metric': '',
+    'detail': 'app',
+    'auth_token': AUTH_TOKEN,
+    "params": '',
+    "data": ''
+}
+DEFAULT_GENERIC_PARAMS = {
+    'session_id': SESSION_ID,
+    'metric': '/notes',
+    'auth_token': AUTH_TOKEN,
+    "params": '',
+    "data": {
+        "test_data": "test_data"
+    }
+}
 NO_METRIC_REQUEST_PARAMS = {
     'metric': 'app',
     'response': {
-        'method': "POST",
         'session_id': SESSION_ID,
         'metric': "",
         'auth_token': AUTH_TOKEN,
-        "params": "test_params",
-        "data": {
-            "test_data": "test_data"
-        }
+        "params": "",
+        "data": ''
     }
 }
 NO_METRIC_EXPECTED_REQUEST_PARAMS = {

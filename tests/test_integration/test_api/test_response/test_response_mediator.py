@@ -56,25 +56,20 @@ class TestSessionDetailMediator(TestCase):
         self.error_message = "\nTest: {} \nExpected: {}\nActual:   {}\n"
         with open(os.path.join(
                 PARENT_DIR + API_SAMPLES + "sessionid.json")) as json_data:
-            self.test_json = json.load(json_data)
+            self.session_app_json = json.load(json_data)
 
     @requests_mock.Mocker()
     def test_set_data(self, mock_return):
         """ Verify get_results returns a DataFrame."""
 
-        adapter = RequestsAdapter(**NO_METRIC_EXPECTED_REQUEST_PARAMS)
         mock_return.request(
-            "POST",
-            "https://api.production.gamebench.net/v1/sessions/session_id?test_params",
-            json=self.test_json["response"]
+            "GET",
+            "https://api.production.gamebench.net/v1/sessions/session_id",
+            json=self.session_app_json["response"]
         )
-        series = pandas.Series(adapter.request().json())
 
-        expected = pandas.DataFrame(
-            series['app'],
-            index=['app']
-        )
-        self.mediator = SessionDetailMediator(**NO_METRIC_REQUEST_PARAMS)
+        expected = pandas.DataFrame(data=[self.session_app_json['response']['app']])
+        self.mediator = SessionDetailMediator(**DEFAULT_SESSION_DETAIL_PARAMS)
         actual = self.mediator.get_results()
 
         assert_frame_equal(
@@ -103,7 +98,7 @@ class TestGenericFrameMediator(TestCase):
             json=self.generic_frame_json["response"]
         )
 
-        expected = pandas.DataFrame(adapter.request().json())
+        expected = pandas.DataFrame([adapter.request().json()])
         self.mediator = GenericMediator(**DEFAULT_REQUEST_PARAMS)
         actual = self.mediator.get_results()
 
@@ -130,6 +125,7 @@ class TestResponseRetriever(TestCase):
                 'method': 'GET',
                 'metric': '/cpu',
                 "params": 'test_params',
+                'session_id': SESSION_ID,
                 "url": DEFAULT_SESSION_URL,
                 "data": {'test_data': 'test_data'},
                 "headers": DEFAULT_SESSION_HEADERS,
@@ -143,12 +139,27 @@ class TestResponseRetriever(TestCase):
                 'method': 'POST',
                 'metric': '',
                 "params": 'test_params',
-                'url': "https://api.production.gamebench.net/v1/sessions/session_id",
+                'session_id': '',
+                'url': "https://api.production.gamebench.net/v1/sessions",
                 "data": {'test_data': 'test_data'},
                 "headers": NO_METRIC_HEADERS,
                 "attributes": {
                     'params': 'test_params',
                     'headers': NO_METRIC_HEADERS,
+                    'data': {'test_data': 'test_data'}
+                }
+            },
+            "session": {
+                'method': 'GET',
+                'metric': '',
+                "params": 'test_params',
+                'session_id': SESSION_ID,
+                'url': "https://api.production.gamebench.net/v1/sessions/session_id",
+                "data": {'test_data': 'test_data'},
+                "headers": DEFAULT_SESSION_HEADERS,
+                "attributes": {
+                    'params': 'test_params',
+                    'headers': DEFAULT_SESSION_HEADERS,
                     'data': {'test_data': 'test_data'}
                 }
             }
@@ -165,7 +176,7 @@ class TestResponseRetriever(TestCase):
         for test, params in self.test_params.items():
             session_parameters = {
                 'method': params['method'],
-                'session_id': SESSION_ID,
+                'session_id': params['session_id'],
                 'metric': params['metric'],
                 'auth_token': AUTH_TOKEN,
                 "params": params['params'],
@@ -198,7 +209,7 @@ class TestResponseRetriever(TestCase):
         for test, params in self.test_params.items():
             session_parameters = {
                 'method': params['method'],
-                'session_id': SESSION_ID,
+                'session_id': params['session_id'],
                 'metric': params['metric'],
                 'auth_token': AUTH_TOKEN,
                 "params": params['params'],

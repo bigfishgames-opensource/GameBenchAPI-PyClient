@@ -51,7 +51,7 @@ class Attributes:
             :return: Dictionary containing the headers for the session request.
         """
 
-        if self.request_parameters["metric"] == "":
+        if self.request_parameters["session_id"] == "":
             return {
                 'accept': 'application/json',
                 'Authorization': 'JWT ' + self.request_parameters["auth_token"],
