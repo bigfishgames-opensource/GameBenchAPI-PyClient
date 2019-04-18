@@ -139,3 +139,36 @@ class TestModelCreator(TestCase):
         actual = model.data
 
         assert_frame_equal(actual, expected)
+
+    @requests_mock.Mocker()
+    def test_model_created_with_number_of_sessions_by_company(self, mock_return):
+        """ The ModelCreator returns the proper DataFrame."""
+
+        with open(os.path.join(
+                PARENT_DIR + API_SAMPLES + "cpu_multiple_sessions.json")) as \
+                json_data:
+            self.time_series_json = json.load(json_data)
+        with open(os.path.join(
+                PARENT_DIR + '/fixtures/' + "authentication_token.json")) as \
+                json_data:
+            self.auth_token = json.load(json_data)
+        mock_return.request(
+            'POST',
+            AUTH_URL,
+            json=self.auth_token
+        )
+        mock_return.request(
+            'POST',
+            LAST_NUMBER_OF_SESSIONS_BY_COMPANY_URL,
+            json=self.time_series_json['response']
+        )
+        creator = ModelCreator('Cpu', **DEFAULT_BULK_SESSION_DETAIL_PARAMS)
+        model = creator.get_model()
+        expected = json_normalize(
+            self.time_series_json['response'],
+            'samples',
+            ['id', 'sessionId']
+        )
+        actual = model.data
+
+        assert_frame_equal(actual, expected)
