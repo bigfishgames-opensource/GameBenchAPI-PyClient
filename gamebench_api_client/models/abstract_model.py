@@ -2,7 +2,11 @@ from abc import ABC, abstractmethod
 
 
 class AbstractModel(ABC):
-    """ Abstract model class."""
+    """ Abstract model class.
+
+        The METRIC_PATH class member is created for the individual models
+        to add the needed string.
+    """
 
     METRIC_PATH = ''
 
