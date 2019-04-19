@@ -106,3 +106,33 @@ class TestModelCreator(TestCase):
         actual = model.data
 
         assert_frame_equal(actual, expected)
+
+    @requests_mock.Mocker()
+    def test_session_summary_details(self, mock_return):
+        """ SessionSummary attributes should return the proper DataFrames."""
+
+        with open(os.path.join(
+                PARENT_DIR + API_SAMPLES + "sessionid.json")) as \
+                json_data:
+            self.session_app_json = json.load(json_data)
+        with open(os.path.join(
+                PARENT_DIR + '/fixtures/' + "authentication_token.json")) as \
+                json_data:
+            self.auth_token = json.load(json_data)
+        mock_return.request(
+            'POST',
+            AUTH_URL,
+            json=self.auth_token
+        )
+        mock_return.request(
+            'GET',
+            BASE_SESSION_URL,
+            json=self.session_app_json['response']
+        )
+        creator = ModelCreator('SessionSummary', **DEFAULT_SESSION_DETAIL_PARAMS)
+        model = creator.get_model()
+        df = pandas.DataFrame([self.session_app_json['response']])
+        expected = df.filter(['app'])
+        actual = model.app
+
+        assert_frame_equal(actual, expected)

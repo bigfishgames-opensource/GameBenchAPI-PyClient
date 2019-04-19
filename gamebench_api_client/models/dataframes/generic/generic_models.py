@@ -38,4 +38,3 @@ class SessionSummary(AbstractGenericModel):
         self.location = self.get_data().filter(['location'])
         self.metrics = self.get_data().filter(['metrics'])
         self.network_app_usage = self.get_data().filter(['networkAppUsage'])
-        # TODO: Integration test to verify DataFrames match
