@@ -34,3 +34,8 @@ class SessionSummary(AbstractGenericModel):
     def __init__(self, **request_parameters):
         super().__init__(**request_parameters)
         self.app = self.get_data().filter(['app'])
+        self.device = self.get_data().filter(['device'])
+        self.location = self.get_data().filter(['location'])
+        self.metrics = self.get_data().filter(['metrics'])
+        self.network_app_usage = self.get_data().filter(['networkAppUsage'])
+        # TODO: Integration test to verify DataFrames match
