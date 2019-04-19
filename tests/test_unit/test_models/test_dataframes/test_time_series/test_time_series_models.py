@@ -13,26 +13,38 @@ class TimeSeriesModelsTests(TestCase):
                 patch(f'{ABSTRACT_TIME_SERIES}.TimeSeriesMediator'), \
                 patch(f'{ABSTRACT_TIME_SERIES}.Authenticator'):
             with self.subTest():
-                Battery()
+                battery = Battery()
+                self.assertTrue(set({'metric': '/battery'}).issubset(battery.request_parameters))
             with self.subTest():
-                CpuCoreFrequency()
+                core_frequency = CpuCoreFrequency()
+                self.assertTrue(set({'metric': '/corefreq'}).issubset(core_frequency.request_parameters))
             with self.subTest():
-                Cpu()
+                cpu = Cpu()
+                self.assertTrue(set({'metric': '/cpu'}).issubset(cpu.request_parameters))
             with self.subTest():
-                Energy()
+                energy = Energy()
+                self.assertTrue(set({'metric': '/energy'}).issubset(energy.request_parameters))
             with self.subTest():
-                FpsStability()
+                fps_stability = FpsStability()
+                self.assertTrue(set({'metric': '/fpsStability'}).issubset(fps_stability.request_parameters))
             with self.subTest():
-                Fps()
+                fps = Fps()
+                self.assertTrue(set({'metric': '/fps'}).issubset(fps.request_parameters))
             with self.subTest():
-                GpuImg()
+                gpu_img = GpuImg()
+                self.assertTrue(set({'metric': '/gpu/img'}).issubset(gpu_img.request_parameters))
             with self.subTest():
-                Gpu()
+                gpu = Gpu()
+                self.assertTrue(set({'metric': '/gpu/other'}).issubset(gpu.request_parameters))
             with self.subTest():
-                Janks()
+                janks = Janks()
+                self.assertTrue(set({'metric': '/janks'}).issubset(janks.request_parameters))
             with self.subTest():
-                Memory()
+                memory = Memory()
+                self.assertTrue(set({'metric': '/memory'}).issubset(memory.request_parameters))
             with self.subTest():
-                Network()
+                network = Network()
+                self.assertTrue(set({'metric': '/network'}).issubset(network.request_parameters))
             with self.subTest():
-                Power()
+                power = Power()
+                self.assertTrue(set({'metric': '/power'}).issubset(power.request_parameters))
