@@ -11,22 +11,22 @@ from gamebench_api_client.models.dataframes.generic.abstract_generic import Abst
 class Keyword(AbstractGenericModel):
     """ Object to set the results for a keyword search."""
 
-    pass
+    METRIC_PATH = '/typeahead'
 
 
 class Markers(AbstractGenericModel):
     """ Object to set the Markers information for a session."""
 
-    pass
+    METRIC_PATH = '/markers'
 
 
 class SessionNotes(AbstractGenericModel):
     """ Object to set the Session Notes for a session."""
 
-    pass
+    METRIC_PATH = '/notes'
 
 
 class SessionSummary(AbstractGenericModel):
     """ Object to set the Session Summary information for a session."""
 
-    pass
+    METRIC_PATH = ''

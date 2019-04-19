@@ -13,10 +13,14 @@ class GenericModelsTests(TestCase):
                 patch(f'{ABSTRACT_GENERIC}.GenericMediator'), \
                 patch(f'{ABSTRACT_GENERIC}.Authenticator'):
             with self.subTest():
-                Keyword()
+                keyword = Keyword()
+                self.assertEqual('/typeahead', keyword.request_parameters['metric'])
             with self.subTest():
-                Markers()
+                markers = Markers()
+                self.assertEqual('/markers', markers.request_parameters['metric'])
             with self.subTest():
-                SessionNotes()
+                notes = SessionNotes()
+                self.assertEqual('/notes', notes.request_parameters['metric'])
             with self.subTest():
-                SessionSummary()
+                summary = SessionSummary()
+                self.assertEqual('', summary.request_parameters['metric'])
