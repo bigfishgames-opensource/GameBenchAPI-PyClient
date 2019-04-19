@@ -4,6 +4,8 @@ from abc import ABC, abstractmethod
 class AbstractModel(ABC):
     """ Abstract model class."""
 
+    METRIC_PATH = ''
+
     def __init__(self, **request_parameters):
         """ Sets up the mediator and data attributes."""
 
