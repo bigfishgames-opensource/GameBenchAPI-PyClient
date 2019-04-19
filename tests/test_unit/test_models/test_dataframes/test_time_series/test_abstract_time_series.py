@@ -35,8 +35,8 @@ class TestAbstractTimeSeriesModel(TestCase):
             actual = AbstractTimeSeriesModel().data
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     @patch(f'{ABSTRACT_TIME_SERIES}.Authenticator')
@@ -44,7 +44,8 @@ class TestAbstractTimeSeriesModel(TestCase):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
 
         expected_dict = {
-            'auth_token': 'q1w2e3r4t5y6'
+            'auth_token': 'q1w2e3r4t5y6',
+            'metric': ''
         }
         mock_dict = Mock()
         mock_dict.data = {

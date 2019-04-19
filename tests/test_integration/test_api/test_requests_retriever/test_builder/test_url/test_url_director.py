@@ -17,8 +17,8 @@ class TestGetUrl(TestCase):
         actual = url_builder.get_auth_url()
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_get_session_url(self):
@@ -34,6 +34,6 @@ class TestGetUrl(TestCase):
         actual = url_builder.get_session_url(**session_parameters)
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )

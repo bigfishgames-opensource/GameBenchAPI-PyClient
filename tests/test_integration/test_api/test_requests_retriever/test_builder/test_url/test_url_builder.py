@@ -23,8 +23,8 @@ class TestUrlDirector(TestCase):
         actual = auth.url
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_build_session_url(self):
@@ -43,6 +43,6 @@ class TestUrlDirector(TestCase):
         actual = session.url
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )

@@ -41,9 +41,9 @@ def json_to_normalized_dataframe(response_json):
     """
 
     normalized_dataframe = json_normalize(
-            response_json,
-            'samples',
-            ['id', 'sessionId']
+        response_json,
+        'samples',
+        ['id', 'sessionId']
     )
 
     return normalized_dataframe

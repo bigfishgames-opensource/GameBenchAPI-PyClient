@@ -37,8 +37,8 @@ class TestGetAuthRequest(TestCase):
         actual = self.director.get_auth_request()
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_get_session_request(self):
@@ -74,11 +74,11 @@ class TestGetAuthRequest(TestCase):
             actual = self.director.get_session_request()
 
             self.assertEqual(
+                expected,
+                actual,
+                error_message.format(
+                    test,
                     expected,
-                    actual,
-                    error_message.format(
-                            test,
-                            expected,
-                            actual
-                    )
+                    actual
+                )
             )

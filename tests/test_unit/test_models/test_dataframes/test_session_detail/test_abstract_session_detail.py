@@ -35,8 +35,8 @@ class TestSessionDetailModel(TestCase):
             actual = AbstractSessionDetailModel().data
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     @patch(f'{ABSTRACT_SESSION_DETAIL}.Authenticator')

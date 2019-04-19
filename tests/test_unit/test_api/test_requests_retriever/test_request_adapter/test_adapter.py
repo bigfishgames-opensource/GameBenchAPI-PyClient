@@ -49,11 +49,11 @@ class TestRequestsAdapter(TestCase):
 
         adapter = RequestsAdapter(**AUTH_ATTRIBUTES)
         mock_return.request(
-                "POST",
-                AUTH_URL,
-                json={
-                    "token": "test_token"
-                }
+            "POST",
+            AUTH_URL,
+            json={
+                "token": "test_token"
+            }
         )
 
         response = adapter.request()
@@ -66,16 +66,16 @@ class TestRequestsAdapter(TestCase):
 
         adapter = RequestsAdapter(**SESSION_ATTRIBUTES)
         mock_return.request(
-                "GET",
-                DEFAULT_SESSION_URL,
-                json={
-                    "id": "test_id",
-                    "app": {
-                        "name": "EtherPad",
-                        "version": 1,
-                        "packageName": "com.test.testios"
-                    }
+            "GET",
+            DEFAULT_SESSION_URL,
+            json={
+                "id": "test_id",
+                "app": {
+                    "name": "EtherPad",
+                    "version": 1,
+                    "packageName": "com.test.testios"
                 }
+            }
         )
 
         response = adapter.request()
