@@ -38,7 +38,7 @@ class Attributes:
             GameBench account.  For other requests it will include the information
             provided by the user, or an empty string if nothing was provided.
 
-            :return: A Dictionary containing either the usernamer and password,
+            :return: A Dictionary containing either the username and password,
                 or the data key and its value.
         """
 
