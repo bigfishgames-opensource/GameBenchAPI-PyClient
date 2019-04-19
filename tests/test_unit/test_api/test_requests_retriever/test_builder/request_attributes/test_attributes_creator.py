@@ -132,11 +132,11 @@ class TestAttributes(TestCase):
 
         mock_is_auth_request.return_value = False
         test_parameters = {
-            "data": "test_data",
+            'session_id': '1234abc'
         }
         attributes = Attributes(**test_parameters)
         actual = attributes.get_data()
-        expected = "test_data"
+        expected = ''
 
         self.assertEqual(
             actual,

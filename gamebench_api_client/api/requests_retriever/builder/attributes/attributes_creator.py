@@ -26,6 +26,7 @@ class Attributes:
 
     def get_data(self):
         """ Determines which data should be used for the request.
+
             In the case of auth requests, this is the username and password of the
             GameBench account.
 
@@ -38,8 +39,9 @@ class Attributes:
                 'username': self.request_parameters['username'],
                 'password': self.request_parameters['password']
             }
-        else:
-            return self.request_parameters["data"]
+        elif 'data' not in self.request_parameters:
+            self.request_parameters['data'] = ''
+        return self.request_parameters['data']
 
     def _get_session_headers(self):
         """ Determines which type of session request is being created and returns
@@ -53,7 +55,7 @@ class Attributes:
             :return: Dictionary containing the headers for the session request.
         """
 
-        if self.request_parameters["session_id"] == "":
+        if self.request_parameters["session_id"] == '':
             return {
                 'accept': 'application/json',
                 'Authorization': 'JWT ' + self.request_parameters["auth_token"],
@@ -68,7 +70,7 @@ class Attributes:
     def _is_auth_request(self):
         """ Determine if the request parameters contain a 'username' key.
 
-        If the parameters do contain this key it is an auth request.
+            If the parameters contain this key it is an auth request.
         """
 
         return "username" in self.request_parameters
