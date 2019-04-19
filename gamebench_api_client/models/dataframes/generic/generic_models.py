@@ -27,7 +27,12 @@ class SessionNotes(AbstractGenericModel):
 
 
 class SessionSummary(AbstractGenericModel):
-    """ Object to set the Session Summary information for a session."""
+    """ Object to set the Session Summary information for a session.
+
+        Instance variables represent the inner dictionaries present in
+        the SessionSummary DataFrame.  They return a DataFrame with only
+        that data in it.
+    """
 
     METRIC_PATH = ''
 

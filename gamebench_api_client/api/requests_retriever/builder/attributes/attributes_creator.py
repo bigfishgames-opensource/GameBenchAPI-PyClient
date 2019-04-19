@@ -20,9 +20,7 @@ class Attributes:
     def get_params(self):
         """ Determines which parameters should be used for the request."""
 
-        if 'params' not in self.request_parameters:
-            self.request_parameters['params'] = ''
-        return self.request_parameters['params']
+        return self.request_parameters.get('params', '')
 
     def get_data(self):
         """ Determines which data should be used for the request.
@@ -39,9 +37,7 @@ class Attributes:
                 'username': self.request_parameters['username'],
                 'password': self.request_parameters['password']
             }
-        elif 'data' not in self.request_parameters:
-            self.request_parameters['data'] = ''
-        return self.request_parameters['data']
+        return self.request_parameters.get('data', '')
 
     def _get_session_headers(self):
         """ Determines which type of session request is being created and returns
