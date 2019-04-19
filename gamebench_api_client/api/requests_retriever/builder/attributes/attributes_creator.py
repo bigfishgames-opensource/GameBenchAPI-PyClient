@@ -20,7 +20,9 @@ class Attributes:
     def get_params(self):
         """ Determines which parameters should be used for the request."""
 
-        return self.request_parameters["params"]
+        if 'params' not in self.request_parameters:
+            self.request_parameters['params'] = ''
+        return self.request_parameters['params']
 
     def get_data(self):
         """ Determines which data should be used for the request.

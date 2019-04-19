@@ -82,6 +82,18 @@ class TestAttributes(TestCase):
             expected
         )
 
+    def test_get_parameters_no_key(self):
+        """ If 'params' not in dictionary it will be added."""
+
+        test_parameters = {
+            'session_id': '1342312kj12'
+        }
+        attributes = Attributes(**test_parameters)
+        actual = attributes.get_params()
+        expected = ''
+
+        self. assertEqual(actual, expected)
+
     @patch(
         'gamebench_api_client.api.requests_retriever.builder.attributes.attributes_creator.Attributes'
         '._is_auth_request')
