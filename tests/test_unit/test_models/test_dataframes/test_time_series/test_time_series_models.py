@@ -14,37 +14,37 @@ class TimeSeriesModelsTests(TestCase):
                 patch(f'{ABSTRACT_TIME_SERIES}.Authenticator'):
             with self.subTest():
                 battery = Battery()
-                self.assertTrue(set({'metric': '/battery'}).issubset(battery.request_parameters))
+                self.assertEqual('/battery', battery.request_parameters['metric'])
             with self.subTest():
                 core_frequency = CpuCoreFrequency()
-                self.assertTrue(set({'metric': '/corefreq'}).issubset(core_frequency.request_parameters))
+                self.assertEqual('/corefreq', core_frequency.request_parameters['metric'])
             with self.subTest():
                 cpu = Cpu()
-                self.assertTrue(set({'metric': '/cpu'}).issubset(cpu.request_parameters))
+                self.assertEqual('/cpu', cpu.request_parameters['metric'])
             with self.subTest():
                 energy = Energy()
-                self.assertTrue(set({'metric': '/energy'}).issubset(energy.request_parameters))
+                self.assertEqual('/energy', energy.request_parameters['metric'])
             with self.subTest():
                 fps_stability = FpsStability()
-                self.assertTrue(set({'metric': '/fpsStability'}).issubset(fps_stability.request_parameters))
+                self.assertEqual('/fpsStability', fps_stability.request_parameters['metric'])
             with self.subTest():
                 fps = Fps()
-                self.assertTrue(set({'metric': '/fps'}).issubset(fps.request_parameters))
+                self.assertEqual('/fps', fps.request_parameters['metric'])
             with self.subTest():
                 gpu_img = GpuImg()
-                self.assertTrue(set({'metric': '/gpu/img'}).issubset(gpu_img.request_parameters))
+                self.assertEqual('/gpu/img', gpu_img.request_parameters['metric'])
             with self.subTest():
                 gpu = Gpu()
-                self.assertTrue(set({'metric': '/gpu/other'}).issubset(gpu.request_parameters))
+                self.assertEqual('/gpu/other', gpu.request_parameters['metric'])
             with self.subTest():
                 janks = Janks()
-                self.assertTrue(set({'metric': '/janks'}).issubset(janks.request_parameters))
+                self.assertEqual('/janks', janks.request_parameters['metric'])
             with self.subTest():
                 memory = Memory()
-                self.assertTrue(set({'metric': '/memory'}).issubset(memory.request_parameters))
+                self.assertEqual('/memory', memory.request_parameters['metric'])
             with self.subTest():
                 network = Network()
-                self.assertTrue(set({'metric': '/network'}).issubset(network.request_parameters))
+                self.assertEqual('/network', network.request_parameters['metric'])
             with self.subTest():
                 power = Power()
-                self.assertTrue(set({'metric': '/power'}).issubset(power.request_parameters))
+                self.assertEqual('/power', power.request_parameters['metric'])
