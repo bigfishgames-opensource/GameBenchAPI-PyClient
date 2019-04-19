@@ -18,4 +18,4 @@ class GenericModelsTests(TestCase):
             with self.subTest():
                 SessionNotes()
             with self.subTest():
-                SessionSummary
+                SessionSummary()

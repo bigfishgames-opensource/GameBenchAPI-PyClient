@@ -29,4 +29,7 @@ class SessionNotes(AbstractGenericModel):
 class SessionSummary(AbstractGenericModel):
     """ Object to set the Session Summary information for a session."""
 
-    pass
+    def __init__(self, **request_parameters):
+        super().__init__(**request_parameters)
+        self.app = self.get_data().filter(['app'])
+
