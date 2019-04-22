@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from gamebench_api_client.global_settings import set_api_endpoint, get_username_and_password
 from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
+from gamebench_api_client.global_settings import set_api_endpoint, get_username_and_password
 
 
 class TestSetAPIEndpoint(TestCase):

@@ -1,12 +1,18 @@
 class Attributes:
-    """ Class that determines the request's attributes - headers, params, data."""
+    """ Class that determines the request's attributes - headers, params, data.
+
+        :param request_parameter: Dictionary provided by the user.
+    """
 
     def __init__(self, **request_parameters):
 
         self.request_parameters = request_parameters
 
     def get_headers(self):
-        """ Determines which headers should be used for the request."""
+        """ Determines which headers should be used for the request.
+
+            :return: A dictionary containing the needed Headers for a request.
+        """
 
         if "metric" in self.request_parameters:
             return self._get_session_headers()
@@ -18,17 +24,22 @@ class Attributes:
             }
 
     def get_params(self):
-        """ Determines which parameters should be used for the request."""
+        """ Determines which parameters should be used for the request.
 
-        return self.request_parameters["params"]
+            :return: A Dictionary containing the needed 'params' key/value pair.
+        """
+
+        return self.request_parameters.get('params', '')
 
     def get_data(self):
         """ Determines which data should be used for the request.
-            In the case of auth requests, this is the username and password of the
-            GameBench account.
 
-            For Session requests, this will include the auth token and whatever other
-            data is relevant to the specific request being made.
+            In the case of auth requests, this is the username and password of the
+            GameBench account.  For other requests it will include the information
+            provided by the user, or an empty string if nothing was provided.
+
+            :return: A Dictionary containing either the username and password,
+                or the data key and its value.
         """
 
         if self._is_auth_request():
@@ -36,22 +47,20 @@ class Attributes:
                 'username': self.request_parameters['username'],
                 'password': self.request_parameters['password']
             }
-        else:
-            return self.request_parameters["data"]
+        return self.request_parameters.get('data', '')
 
     def _get_session_headers(self):
         """ Determines which type of session request is being created and returns
             the appropriate headers.
 
-            session_id - id for the current session
-                metric - specific category of data being requested
-                (cpu, gpu, battery, etc.)
-                auth_token - authorization token necessary for retrieving
-                data.
+            For most session requests, this will include the auth token and the 'accept' key/value pair.
+            Requests that don't need a session_id will also include the 'Content-Type'
+            key/value pair.
+
             :return: Dictionary containing the headers for the session request.
         """
 
-        if self.request_parameters["session_id"] == "":
+        if self.request_parameters["session_id"] == '':
             return {
                 'accept': 'application/json',
                 'Authorization': 'JWT ' + self.request_parameters["auth_token"],
@@ -66,7 +75,10 @@ class Attributes:
     def _is_auth_request(self):
         """ Determine if the request parameters contain a 'username' key.
 
-        If the parameters do contain this key it is an auth request.
+            If the parameters contain this key it is an auth request.
+
+            :return: Bool of whether or not there is a 'username' key in the
+                request_parameter dictionary.
         """
 
         return "username" in self.request_parameters

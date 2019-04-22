@@ -44,7 +44,8 @@ class TestGenericFrameModel(TestCase):
         """ Ensure that the Authenticator token is added to the request_parameters dictionary as 'auth_token'."""
 
         expected_dict = {
-            'auth_token': 'q1w2e3r4t5y6'
+            'auth_token': 'q1w2e3r4t5y6',
+            'metric': ''
         }
         mock_dict = Mock()
         mock_dict.data = {
@@ -52,7 +53,7 @@ class TestGenericFrameModel(TestCase):
         }
         mock_authenticator.return_value = mock_dict
 
-        with patch(f'{ABSTRACT_GENERIC}.GenericMediator'),\
+        with patch(f'{ABSTRACT_GENERIC}.GenericMediator'), \
                 patch(f'{ABSTRACT_GENERIC}.AbstractGenericModel.get_data'):
             actual = AbstractGenericModel()
 

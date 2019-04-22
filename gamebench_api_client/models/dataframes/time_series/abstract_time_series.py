@@ -20,10 +20,11 @@ class AbstractTimeSeriesModel(AbstractModel, ABC):
 
         """
 
-        super().__init__()
+        super().__init__(**request_parameters)
         self.request_parameters = request_parameters
         self.authenticator = Authenticator()
         self.request_parameters['auth_token'] = self.authenticator.data['token']
+        self.request_parameters['metric'] = self.METRIC_PATH
         self.mediator = TimeSeriesMediator(**self.request_parameters)
         self.data = self.get_data()
 

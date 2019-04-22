@@ -31,6 +31,6 @@ class TestAuthenticator(TestCase):
         actual = Authenticator().data
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )

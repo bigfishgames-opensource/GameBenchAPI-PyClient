@@ -55,8 +55,8 @@ class TestAuthURL(TestCase):
         expected = AUTH_SUFFIX
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
     def test_build_url(self):
@@ -71,8 +71,8 @@ class TestAuthURL(TestCase):
         expected = AUTH_URL
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
 

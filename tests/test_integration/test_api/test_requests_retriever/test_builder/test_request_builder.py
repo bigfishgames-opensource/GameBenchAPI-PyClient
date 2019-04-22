@@ -36,8 +36,8 @@ class TestRequestBuilder(TestCase):
         }
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_basic_session_request(self):
@@ -68,6 +68,6 @@ class TestRequestBuilder(TestCase):
         }
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )

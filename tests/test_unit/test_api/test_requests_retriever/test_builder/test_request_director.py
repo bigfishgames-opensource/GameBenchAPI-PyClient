@@ -41,8 +41,8 @@ class TestRequestDirector(TestCase):
         }
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
     def test_session_to_dict(self):
@@ -67,8 +67,8 @@ class TestRequestDirector(TestCase):
         }
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
 
