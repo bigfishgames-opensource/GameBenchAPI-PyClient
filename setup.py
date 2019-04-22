@@ -17,7 +17,7 @@ setuptools.setup(
         'requests-mock>=1.5.2',
         'pandas>=0.24.2',
         'coverage>=4.5.3',
-        'urllib3==1.24.2',
+        'urllib3>=1.24.2',
     ]
 )
 
