@@ -19,3 +19,7 @@ and the company ID.
     }
 
 If the API endpoint ever changes it can simply be updated in this file.
+
+The company ID can be found on the `GameBench Web Dashboard <https://web.gamebench.net>`__.
+Once signed in go to the 'My Account' section.  The company id is the alpha-numeric string
+in the URL.
