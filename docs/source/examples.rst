@@ -19,18 +19,18 @@ Energy, FPS, FPS Stability, GPU (Imagination), GPU, Janks, Memory, Network, and 
    :linenos:
 
    time_series_request = {
-       'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
-       'metric': '/cpu',
-       'detail': '',
-       'params': '',
-       'data': ''
+       'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5
    }
 
    creator = ModelCreator('Cpu', time_series_request)
 
 
-Generic Model
--------------
+When requesting time-series data, simply pass in the model you want as the first argument
+to the ModelCreator.  The given dictionary then just needs to include the 'session_id' key
+and the associated id as the value.
+
+Generic models
+--------------
 This type of request is used for the following models: Keyword, Markers, Session Notes,
 and Session Summary.
 
@@ -38,33 +38,50 @@ and Session Summary.
    :linenos:
 
     generic_request = {
-        'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
-        'metric': '/notes',
-        'detail': '',
-        'params': '',
-        'data': ''
+        'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5
     }
 
     creator = ModelCreator('SessionNotes', generic_request)
 
+When requesting the session summary, markers, or notes for a session, the given dictionary only needs to include
+the session id.  However, there are two other requests that can be made.
 
-Session Detail Model
---------------------
-This type of request is used to get specific metrics from the summary data and includes
-the following information: App, Device, Location, Metrics, and Network Usage.
+Keyword Search
+^^^^^^^^^^^^^^
+This type of request allows you to pass in keywords that can be used to search for specific
+sessions.  Adding a 'data' dictionary to the given dictionary will allow you to give keywords
+to search for.
+
+**Example:**
 
 .. code-block:: python
    :linenos:
 
-    session_detail_request = {
-        'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
-        'metric': '',
-        'detail': 'app',
-        "params": '',
-        "data": ''
-    }
+   generic_request = {
+        'data': {
+            'query': 'iPad'
+        }
+   }
 
-    creator = ModelCreator('App', session_detail_request)
+Sessions
+^^^^^^^^
+This type of request is different from the session summary request as it gives the summary information
+for multiple sessions.  by passing in the appropriate key/value pairs, you can search for available
+sessions through the GameBench API.
+
+Adding a 'params' key to the given dictionary will allow you to give search parameters.
+
+**Example:**
+
+.. code-block:: python
+   :linenos:
+
+   generic_request = {
+        'params': {
+            'pageSize': 15
+        }
+   }
 
 
-The GameBench API documentation
+To see a full list of the available search options, see the
+`GameBench API Documentation <https://docs.gamebench.net/api/documentation>`__.

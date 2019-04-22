@@ -33,8 +33,8 @@ module.
 See :doc:`global_settings` for for information on this module.
 
 
-Importing
----------
+Basic Usage
+-----------
 
 In the module that will be calling the API Client, import the ModelCreator class.
 
@@ -53,11 +53,7 @@ Here is one example for requesting time series data:
    :linenos:
 
    time_series_request = {
-       'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
-       'metric': '/cpu',
-       'detail': '',
-       'params': '',
-       'data': ''
+       'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5
    }
 
    creator = ModelCreator('Cpu', time_series_request)
