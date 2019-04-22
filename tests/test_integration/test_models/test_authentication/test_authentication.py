@@ -23,7 +23,6 @@ class TestAuthentication(TestCase):
             AUTH_URL,
             json=self.auth_token_json['response']
         )
-        auth_data = {'username': USERNAME, 'password': PASSWORD}
         authenticator = Authenticator()
 
         expected = self.auth_token_json['response']

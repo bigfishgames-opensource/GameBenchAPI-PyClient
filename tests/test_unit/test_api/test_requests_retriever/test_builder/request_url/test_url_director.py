@@ -15,6 +15,6 @@ class TestURLDirector(TestCase):
         """ Test the _builder is set to none on instantiation."""
 
         self.assertEqual(
-                self.url_director._builder,
-                None
+            self.url_director._builder,
+            None
         )

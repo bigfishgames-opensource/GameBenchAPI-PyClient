@@ -1,37 +1,50 @@
-from gamebench_api_client.models.dataframes.time_series.time_series_models import *
-from tests.fixtures.constants import ABSTRACT_TIME_SERIES, DATAFRAMES_PATH
 from unittest import TestCase
 from unittest.mock import patch
+
+from gamebench_api_client.models.dataframes.time_series.time_series_models import *
+from tests.fixtures.constants import ABSTRACT_TIME_SERIES, DATAFRAMES_PATH
 
 
 class TimeSeriesModelsTests(TestCase):
 
     def test_time_series_models_create(self):
         """Ensures each of the classes can be created."""
-        with patch(f'{DATAFRAMES_PATH}.time_series.time_series_models.AbstractTimeSeriesModel.get_data'),\
-                patch(f'{ABSTRACT_TIME_SERIES}.TimeSeriesMediator'),\
+        with patch(f'{DATAFRAMES_PATH}.time_series.time_series_models.AbstractTimeSeriesModel.get_data'), \
+                patch(f'{ABSTRACT_TIME_SERIES}.TimeSeriesMediator'), \
                 patch(f'{ABSTRACT_TIME_SERIES}.Authenticator'):
             with self.subTest():
-                Battery()
+                battery = Battery()
+                self.assertEqual('/battery', battery.request_parameters['metric'])
             with self.subTest():
-                CpuCoreFrequency()
+                core_frequency = CpuCoreFrequency()
+                self.assertEqual('/corefreq', core_frequency.request_parameters['metric'])
             with self.subTest():
-                Cpu()
+                cpu = Cpu()
+                self.assertEqual('/cpu', cpu.request_parameters['metric'])
             with self.subTest():
-                Energy()
+                energy = Energy()
+                self.assertEqual('/energy', energy.request_parameters['metric'])
             with self.subTest():
-                FpsStability()
+                fps_stability = FpsStability()
+                self.assertEqual('/fpsStability', fps_stability.request_parameters['metric'])
             with self.subTest():
-                Fps()
+                fps = Fps()
+                self.assertEqual('/fps', fps.request_parameters['metric'])
             with self.subTest():
-                GpuImg()
+                gpu_img = GpuImg()
+                self.assertEqual('/gpu/img', gpu_img.request_parameters['metric'])
             with self.subTest():
-                Gpu()
+                gpu = Gpu()
+                self.assertEqual('/gpu/other', gpu.request_parameters['metric'])
             with self.subTest():
-                Janks()
+                janks = Janks()
+                self.assertEqual('/janks', janks.request_parameters['metric'])
             with self.subTest():
-                Memory()
+                memory = Memory()
+                self.assertEqual('/memory', memory.request_parameters['metric'])
             with self.subTest():
-                Network()
+                network = Network()
+                self.assertEqual('/network', network.request_parameters['metric'])
             with self.subTest():
-                Power()
+                power = Power()
+                self.assertEqual('/power', power.request_parameters['metric'])

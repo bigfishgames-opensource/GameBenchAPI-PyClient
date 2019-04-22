@@ -124,8 +124,8 @@ class TestAuthRequest(TestCase):
         actual = self.auth_request.request.method
 
         self.assertEqual(
-                expected,
-                actual)
+            expected,
+            actual)
 
     @patch(TEST_URL_DIRECTOR_PATH)
     def test_set_auth_url(self, mock_url):
@@ -141,8 +141,8 @@ class TestAuthRequest(TestCase):
         expected = AUTH_URL
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_set_auth_headers(self):
@@ -154,8 +154,8 @@ class TestAuthRequest(TestCase):
         expected = AUTH_HEADERS
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_no_params_set(self):
@@ -165,8 +165,8 @@ class TestAuthRequest(TestCase):
         expected = None
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_set_data(self):
@@ -178,8 +178,8 @@ class TestAuthRequest(TestCase):
         expected = AUTH_DATA
 
         self.assertEqual(
-                actual,
-                expected
+            actual,
+            expected
         )
 
 
@@ -210,8 +210,8 @@ class TestSessionRequest(TestCase):
         expected = "GET"
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     @patch(TEST_URL_DIRECTOR_PATH)
@@ -229,8 +229,8 @@ class TestSessionRequest(TestCase):
         expected = DEFAULT_SESSION_URL
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_set_session_headers(self):
@@ -242,8 +242,8 @@ class TestSessionRequest(TestCase):
         expected = DEFAULT_SESSION_HEADERS
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_set_session_params(self):
@@ -255,8 +255,8 @@ class TestSessionRequest(TestCase):
         actual = self.session.request.params
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
     def test_set_session_data(self):
@@ -270,8 +270,8 @@ class TestSessionRequest(TestCase):
         }
 
         self.assertEqual(
-                expected,
-                actual
+            expected,
+            actual
         )
 
 
@@ -282,6 +282,6 @@ class TestRequest(TestCase):
         """ Verify a Request object is created."""
 
         self.assertTrue(
-                Request(),
-                None
+            Request(),
+            None
         )

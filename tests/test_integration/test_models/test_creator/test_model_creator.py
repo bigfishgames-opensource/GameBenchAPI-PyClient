@@ -1,14 +1,13 @@
 import json
 from unittest import TestCase
-from unittest.mock import patch
 
 import pandas
+import requests_mock
 from pandas.io.json import json_normalize
 from pandas.util.testing import assert_frame_equal
-import requests_mock
 
-from tests import *
 from gamebench_api_client.models.creator.model_creator import ModelCreator
+from tests import *
 
 
 class TestModelCreator(TestCase):
