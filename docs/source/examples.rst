@@ -24,6 +24,17 @@ Energy, FPS, FPS Stability, GPU (Imagination), GPU, Janks, Memory, Network, and 
 
    creator = ModelCreator('Cpu', time_series_request)
 
+Here is how you can get the DataFrame from your request and what it looks like:
+
+.. code-block:: python
+   :linenos:
+
+   model = creator.get_model()
+   print(model.data)
+
+         appUsage  daemonUsage    gbUsage  timestamp  totalCpuUsage
+   0  1372571.375            0  12.658228       5257      39.688461
+
 
 When requesting time-series data, simply pass in the model you want as the first argument
 to the ModelCreator.  The given dictionary then just needs to include the 'session_id' key
@@ -43,15 +54,7 @@ and Session Summary.
 
     creator = ModelCreator('SessionNotes', generic_request)
 
-Here is how you can get the DataFrame from your request and what it looks like:
 
-.. code-block:: python
-   :linenos:
-
-   print(creator.instance.data)
-
-          appUsage  daemonUsage    gbUsage  timestamp  totalCpuUsage
-    0  1372571.375            0  12.658228       5257      39.688461
 
 When requesting the session summary, markers, or notes for a session, the given dictionary only needs to include
 the session id.  However, there are two other requests that can be made.
