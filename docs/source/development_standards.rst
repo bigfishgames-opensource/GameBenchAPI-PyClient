@@ -429,6 +429,7 @@ and increase readability.
     new_hire = Employee.from_full_name(full_name)
     new_hire.activate()
     new_hire.save()
+
 # even better, but this comes later.
 
 .. code-block:: python

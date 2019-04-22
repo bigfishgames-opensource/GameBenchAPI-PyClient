@@ -4,8 +4,7 @@ from importlib import import_module
 class ModelCreator:
     """ Creates model objects based on the users requirements.
 
-        Class variables are composed of the different models and
-        which modules they are in.
+        Class variables are composed of the different models and which modules they are in.
     """
 
     MODELS_AND_MODULES = {
@@ -26,6 +25,7 @@ class ModelCreator:
             :param model: The name of the model that the user wants.
             :param request_parameters: This will be a dictionary from the
                 client that includes the following keys:
+
                     session_id: ID for a specific session.
                     metric: Which metric the user requested (cpu, memory, etc.).
                     auth_token: Auth token for the user.

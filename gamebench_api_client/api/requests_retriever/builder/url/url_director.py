@@ -11,10 +11,9 @@ class URLDirector:
     def construct_url(self, builder, **request_parameters):
         """ Constructs an URL object.
 
-            :param builder: object which determines which concrete creator
-            to use.
+            :param builder: object which determines which concrete creator to use.
             :param request_parameters: strings used when creating the session URL
-            (session_id, metric)
+                (session_id, metric).
         """
 
         self._builder = builder
