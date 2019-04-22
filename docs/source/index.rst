@@ -16,8 +16,8 @@ Welcome to the GameBench API Client documentation!
    how_to_extend
    global_settings
    CONTRIBUTING
-   CODE_OF_CONDUCT
    development_standards
+   CODE_OF_CONDUCT
 
 
 Indices and tables
