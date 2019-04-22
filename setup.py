@@ -11,13 +11,14 @@ setuptools.setup(
         "Programming Language :: Python :: 3.7",
         "License :: OSI Approved :: 3-Clause BSD License",
         "Operating System :: OS Independent",
+    ],
+    python_requires='>=3.7',
+    install_requires=[
+        'requests-mock>=1.5.2',
+        'pandas>=0.24.2',
+        'coverage>=4.5.3',
+        'urllib3==1.24.2',
     ]
 )
 
-install_requires = [
-    'python>=3.7',
-    'requests-mock>=1.5.2',
-    'pandas>=0.24.2',
-    'coverage>=4.5.3',
-    'urllib3>=1.24.2',
-]
+
