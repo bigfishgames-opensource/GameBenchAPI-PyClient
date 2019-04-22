@@ -12,7 +12,7 @@ gamebench-api-client = {editable = true,path = "."}
 coverage = ">=4.5.3"
 recommonmark = "*"
 gamebench-api-client-big-fish = {editable = true,path = "."}
-urllib3 = "*"
+urllib3 = ">=1.24.2,<1.25"
 
 [requires]
 python_version = "3.7"
