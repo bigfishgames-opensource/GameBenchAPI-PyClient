@@ -12,8 +12,6 @@ class AbstractTimeSeriesModel(AbstractModel, ABC):
         individually as needed.
     """
 
-    METRIC_PATH = ''
-
     def __init__(self, **request_parameters):
         """ Sets up the mediator and data attributes.
 
