@@ -104,5 +104,6 @@ class TestModelCreator(TestCase):
         df = pandas.DataFrame([self.session_app_json['response']])
         expected = df.filter(['app'])
         actual = model.app
+        print(creator.instance.data)
 
         assert_frame_equal(actual, expected)

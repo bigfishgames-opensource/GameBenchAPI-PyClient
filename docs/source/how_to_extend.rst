@@ -7,6 +7,7 @@ The abstract base class ‘Adapter’:
 
 .. code-block:: python
    :caption: adapter.py
+   :linenos:
 
    class Adapter(ABC):
         """ Abstract adapter for external HTTP request services."""
@@ -25,7 +26,8 @@ The abstract base class ‘Adapter’:
 This class can simply be inherited to a new class for whichever library will be used.  The _http_library instance variable should be used in the new class to hold a reference to the imported library.  The request method needs to be implemented in all concrete classes and will be used to send the request.  Here is the implemented class for using URLLib:
 
 .. code-block:: python
-    :caption: adapter.py
+   :caption: adapter.py
+   :linenos:
 
     class URLLibAdapter(Adapter):
 
@@ -45,8 +47,9 @@ For this class we set up our local import of the urllib.request library.  We ass
 Now that we have the new library set up to send requests, we just have to update our response retrievers to use this library.  Here is what the Authentication Retriever currently looks like:
 
 .. code-block:: python
-    :caption: response_retriever.py
-    :emphasize-lines: 7
+   :caption: response_retriever.py
+   :linenos:
+   :emphasize-lines: 12
 
     class AuthResponseRetriever(AbstractRetriever):
         """ Facade for getting Auth token from the Request.
@@ -72,4 +75,5 @@ Now that we have the new library set up to send requests, we just have to update
 
 This is using the RequestsAdapter to send requests.  We can just update the adapter variable to use the URLLibAdapter to use the new library.
 
-This is all that needs to be done to add in the library of your choosing.
+This is all that needs to be done to add in the library of your choosing. We'd love to refactor this class and allow
+it to be user configurable.

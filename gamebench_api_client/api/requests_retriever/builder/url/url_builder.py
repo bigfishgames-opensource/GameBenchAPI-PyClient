@@ -5,6 +5,7 @@ class URLBuilder(ABC):
     """ Abstract interface for creating each part of the URL object."""
 
     def __init__(self):
+
         self.url = URL()
         self.base_url = self.url.base_url
         self.version = self.url.version
@@ -30,6 +31,7 @@ class AuthURL(URLBuilder):
 
     def set_suffix(self):
         """ Implementation of the abstract set_suffix method.
+
             Sets the proper suffix for authentication.
         """
 
@@ -37,6 +39,7 @@ class AuthURL(URLBuilder):
 
     def set_url(self):
         """ Implementation of the abstract set_url method.
+
             Sets the url property to the URL string created by _build_url
         """
 
@@ -60,11 +63,9 @@ class SessionURL(URLBuilder):
     def set_suffix(self, **request_parameters):
         """ Implementation of the abstract set_suffix method.
 
-            Creates the suffix variable for the URL object and sets it to the
-            proper suffix for authentication.
+            Creates the suffix variable for the URL object and sets it to the proper suffix for authentication.
 
-            :param request_parameters: session_id, metric - strings representing the
-            session_id and metric respectively.
+            :param request_parameters: session_id, metric - strings representing the session_id and metric respectively.
         """
 
         self.suffix = '/sessions'
