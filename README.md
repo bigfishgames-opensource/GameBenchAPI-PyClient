@@ -10,14 +10,26 @@ Please check out our [ZenHub Board](https://app.zenhub.com/workspaces/gamebencha
 
 For full documentation, go to the [ReadtheDocs](https://gamebenchapi-pyclient.readthedocs.io/) page.
 
-##Overview
-The GameBench API Client library enables automatic delivery of performance data from the GameBench API back to the client. It is built in Python 3.7 and uses the Requests python library to construct HTTP traffic.
+## Overview
+The GameBench API Client library supplies a high-level object-oriented interface to the GameBench API. It is built in
+Python 3.7 and uses the Requests library and Pandas data frames to easily integrate into data analysis software.
 
-The client simply passes in a dictionary to the library that includes the information they want from the GameBenchAPI. The library will do the rest and return the requested data as a Pandas DataFrame for the client to use.
+The library has two main architectural components; the models and API packages. The API package is responsible for
+URL requests and dealing with the responses. The models are the objects representing the data returned. A mediator
+provides the glue between the api and the models.
 
-##The Basics
-All requests to the GameBench API Client will go through the `ModelCreator` class.  This class
-is instantiated and given a
+As a user of the library, you should only ever need to interact with the models creator class and the model objects
+it can return.
+
+Right now, the models are very thin. They only contain a property that has the data frame assigned. Over time we
+would like to add common functionality, like aggregates, to these classes.
+
+## The Basics
+To make a request, import the ModelCreator class.
+Instantiating the ModelCreator requires two arguments.  The first is a CamelCase style 'model'
+named after the metric that you are looking for; the model is dynamically imported based on this
+name.  The second argument is a dictionary that must include specific key/value pairs for
+querying the GameBench API.
 
 ```python
 from gamebench_api_client.models.creator.model_creator import ModelCreator

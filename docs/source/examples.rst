@@ -5,7 +5,7 @@ To make a request, import the *ModelCreator* class.
 Instantiating the *ModelCreator* requires two arguments.  The first is a CamelCase style 'model'
 named after the metric that you are looking for; the model is dynamically imported based on this
 name.  The second argument is a dictionary that must include specific key/value pairs for
-querying the GameBench database.
+querying the GameBench API.
 
 Here are examples of the dictionaries that can be passed to the *ModelCreator* as an argument
 to get back information.
