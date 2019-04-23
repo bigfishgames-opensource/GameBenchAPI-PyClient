@@ -7,7 +7,7 @@ A Python Client for the GameBench API
 [![Gitter](https://badges.gitter.im/bigfishgames/GameBench-API-PyClient.svg)](https://gitter.im/bigfishgames/GameBench-API-PyClient?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Please check out our [ZenHub Board](https://app.zenhub
-.com/workspaces/gamebenchapi-pyclient-5cabf535a736c27636b0283d/board?repos=180245554) for open issues and feature 
+.com/workspaces/gamebenchapi-pyclient-5cabf535a736c27636b0283d/board?repos=180245554) for open issues and feature
 requests.
 
 Repository: [GitHub](https://github.com/bigfishgames/GameBenchAPI-PyClient)
@@ -41,11 +41,7 @@ from gamebench_api_client.models.creator.model_creator import ModelCreator
 
 
 time_series_request = {
-    'session_id': '66d926f47ff5a7a5d853d1058c6305614e1ae6a5',
-    'metric': '/cpu',
-    'detail': '',
-    'params': '',
-    'data': '',
+    'session_id': '66d926f47ff5a7a5d853d1058c6305614e1ae6a5'
 }
 
 creator = ModelCreator('Cpu', time_series_request)
@@ -61,5 +57,3 @@ print(results)
 """
 
 ```
-
-
