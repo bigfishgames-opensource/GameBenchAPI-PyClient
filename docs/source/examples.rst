@@ -25,7 +25,7 @@ for that information looks like:
    }
 
    creator = ModelCreator('Cpu', time_series_request)
-   model = creator.get_model()
+   cpu_time_series = creator.get_model()
 
    print(model.data)
 
