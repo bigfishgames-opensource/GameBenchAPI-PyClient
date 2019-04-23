@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'GameBench API'
+project = 'GameBenchAPI-PyClient '
 copyright = '2019, Big Fish Games, Inc.'
 author = 'Big Fish Games, Inc.'
 
