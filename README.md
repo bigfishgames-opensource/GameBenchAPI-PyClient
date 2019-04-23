@@ -6,7 +6,11 @@ A Python Client for the GameBench API
 [![BCH compliance](https://bettercodehub.com/edge/badge/bigfishgames/GameBenchAPI-PyClient?branch=master)](https://bettercodehub.com/)
 [![Gitter](https://badges.gitter.im/bigfishgames/GameBench-API-PyClient.svg)](https://gitter.im/bigfishgames/GameBench-API-PyClient?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Please check out our [ZenHub Board](https://app.zenhub.com/workspaces/gamebenchapi-pyclient-5cabf535a736c27636b0283d/board?repos=180245554) for open issues.
+Please check out our [ZenHub Board](https://app.zenhub
+.com/workspaces/gamebenchapi-pyclient-5cabf535a736c27636b0283d/board?repos=180245554) for open issues and feature 
+requests.
+
+Repository: [GitHub](https://github.com/bigfishgames/GameBenchAPI-PyClient)
 
 For full documentation, go to the [ReadtheDocs](https://gamebenchapi-pyclient.readthedocs.io/) page.
 
@@ -58,4 +62,4 @@ print(results)
 
 ```
 
-[GitHub](https://github.com/bigfishgames/GameBenchAPI-PyClient)
+
