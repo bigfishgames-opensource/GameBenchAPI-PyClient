@@ -20,19 +20,29 @@ All requests to the GameBench API Client will go through the `ModelCreator` clas
 is instantiated and given a
 
 ```python
-
 from gamebench_api_client.models.creator.model_creator import ModelCreator
 
 
+
 time_series_request = {
-    'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5,
+    'session_id': '66d926f47ff5a7a5d853d1058c6305614e1ae6a5',
     'metric': '/cpu',
     'detail': '',
     'params': '',
-    'data': ''
+    'data': '',
 }
 
 creator = ModelCreator('Cpu', time_series_request)
+cpu_time_series = creator.get_model()
+
+results = cpu_time_series.data
+
+print(results)
+
+"""
+      appUsage  daemonUsage    gbUsage  timestamp  totalCpuUsage
+0  1372571.375            0  12.658228       5257      39.688461
+"""
 
 ```
 

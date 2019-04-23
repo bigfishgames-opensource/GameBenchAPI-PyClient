@@ -21,7 +21,7 @@ for that information looks like:
    :linenos:
 
    time_series_request = {
-       'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5
+       'session_id': "66d926f47ff5a7a5d853d1058c6305614e1ae6a5"
    }
 
    creator = ModelCreator('Cpu', time_series_request)
@@ -46,7 +46,7 @@ and Session Summary.
    :linenos:
 
     generic_request = {
-        'session_id': 66d926f47ff5a7a5d853d1058c6305614e1ae6a5
+        'session_id': "66d926f47ff5a7a5d853d1058c6305614e1ae6a5"
     }
 
     creator = ModelCreator('SessionNotes', generic_request)
