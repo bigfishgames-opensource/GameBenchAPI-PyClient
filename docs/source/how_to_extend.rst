@@ -75,4 +75,5 @@ Now that we have the new library set up to send requests, we just have to update
 
 This is using the RequestsAdapter to send requests.  We can just update the adapter variable to use the URLLibAdapter to use the new library.
 
-This is all that needs to be done to add in the library of your choosing.
+This is all that needs to be done to add in the library of your choosing. We'd love to refactor this class and allow
+it to be user configurable.

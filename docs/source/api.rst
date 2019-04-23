@@ -8,7 +8,7 @@ The GameBench API Client can be install using pip:
 
 .. code-block:: python
 
-    pip install gamebench-api
+    pip install GameBenchAPI-PyClient
 
 It can also be found on the `GitHub`_ page.
 
