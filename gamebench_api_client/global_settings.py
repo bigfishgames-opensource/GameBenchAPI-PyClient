@@ -1,7 +1,7 @@
 """ Global settings for the GameBench API Client."""
 
 GAMEBENCH_CONFIG = {
-    'url': 'https://api.production.gamebench.net',
+    'url': 'https://production.node.gce.gamebench.net',
     'api_version': '/v1',
     'username': '',
     'password': '',
