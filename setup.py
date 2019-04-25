@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='GameBenchAPI-PyClient-BigFish',
-    version='0.1.0',
+    version='0.1.1',
     description='A GameBench API Library Client.',
     url='https://github.com/bigfishgames/GameBenchAPI-PyClient',
     author='Big Fish Games, Inc.',
