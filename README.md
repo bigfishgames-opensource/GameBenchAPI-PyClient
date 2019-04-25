@@ -14,6 +14,8 @@ Repository: [GitHub](https://github.com/bigfishgames/GameBenchAPI-PyClient)
 For full documentation, go to the [ReadtheDocs](https://gamebenchapi-pyclient.readthedocs.io/) page.
 
 ## Overview
+To install, run `pip install GameBenchAPI-PyClient-BigFish`
+
 The GameBench API Client library supplies a high-level object-oriented interface to the GameBench API. It is built in
 Python 3.7 and uses the Requests library and Pandas data frames to easily integrate into data analysis software.
 
