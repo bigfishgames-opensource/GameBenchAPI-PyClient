@@ -6,7 +6,7 @@ setuptools.setup(
     description='A GameBench API Library Client.',
     url='https://github.com/bigfishgames/GameBenchAPI-PyClient',
     author='Big Fish Games, Inc.',
-    author_email='',
+    author_email='https://gitter.im/bigfishgames/GameBench-API-PyClient',
     classifiers=[
         'Programming Language :: Python :: 3.7',
         'License :: OSI Approved :: BSD License',
