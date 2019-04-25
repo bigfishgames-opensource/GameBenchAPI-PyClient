@@ -8,7 +8,7 @@ The GameBench API Client can be install using pip:
 
 .. code-block:: python
 
-    pip install GameBenchAPI-PyClient
+    pip install GameBenchAPI-PyClient-BigFish
 
 It can also be found on the `GitHub`_ page.
 
