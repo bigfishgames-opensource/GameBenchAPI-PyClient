@@ -4,16 +4,15 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-
-[packages]
 requests-mock = "~=1.5.2"
-pandas = "~=0.24.2"
-gamebench-api-client = {editable = true,path = "."}
 coverage = "~=4.5.3"
-recommonmark = "~=0.5.0"
-gamebench-api-client-big-fish = {editable = true,path = "."}
-urllib3 = ">=1.24.2,<1.25"
 bump2version = "~=0.5.10"
+recommonmark = "~=0.5.0"
+urllib3 = ">=1.24.2,<1.25"
+pandas = "~=0.24.2"
 
 [requires]
 python_version = "3.7"
+
+[packages]
+gamebench-api-client-big-fish = {editable = true,path = "."}
