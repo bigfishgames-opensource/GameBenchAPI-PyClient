@@ -1,22 +1,26 @@
 import setuptools
 
+with open("README.md", "r") as file_handle:
+    long_description = file_handle.read()
+
 setuptools.setup(
-    name='gamebench_api_client_big_fish',
-    version='0.0.1',
+    name='GameBenchAPI-PyClient-BigFish',
+    version='0.1.2',
+    packages=setuptools.find_packages(),
     description='A GameBench API Library Client.',
-    url='https://github.com/bigfishgames/GameBenchAPI',
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url='https://github.com/bigfishgames/GameBenchAPI-PyClient',
     author='Big Fish Games, Inc.',
-    author_email='Placeholder for email.',
+    author_email='',
     classifiers=[
-        "Programming Language :: Python :: 3.7",
-        "License :: OSI Approved :: 3-Clause BSD License",
-        "Operating System :: OS Independent",
+        'Programming Language :: Python :: 3.7',
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: OS Independent',
     ],
     python_requires='>=3.7',
     install_requires=[
-        'requests-mock>=1.5.2',
-        'pandas>=0.24.2',
-        'coverage>=4.5.3',
+        'pandas~=0.24.2',
         'urllib3>=1.24.2,<1.25',
     ]
 )

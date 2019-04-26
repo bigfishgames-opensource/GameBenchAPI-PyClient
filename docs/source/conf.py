@@ -25,9 +25,9 @@ copyright = '2019, Big Fish Games, Inc.'
 author = 'Big Fish Games, Inc.'
 
 # The short X.Y version
-version = ''
+version = '0.1.2'
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '0.1.2'
 
 
 # -- General configuration ---------------------------------------------------
