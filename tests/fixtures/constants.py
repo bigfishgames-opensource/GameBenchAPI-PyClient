@@ -1,6 +1,8 @@
+from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
+
 # Universal
-BASE_URL = 'https://api.production.gamebench.net'
-VERSION = '/v1'
+BASE_URL = GAMEBENCH_CONFIG['url']
+VERSION = GAMEBENCH_CONFIG['api_version']
 API_SAMPLES = '/fixtures/api_samples/'
 
 # Authentication Related
