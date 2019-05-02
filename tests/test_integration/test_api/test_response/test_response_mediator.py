@@ -7,6 +7,7 @@ import requests_mock
 from pandas.io.json import json_normalize
 from pandas.testing import assert_frame_equal
 
+from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
 from gamebench_api_client.api.requests_retriever.request_adapter.adapter import RequestsAdapter
 from gamebench_api_client.api.response.response_mediator import GenericMediator, SessionDetailMediator, \
     TimeSeriesMediator, AuthenticationMediator
@@ -64,7 +65,7 @@ class TestSessionDetailMediator(TestCase):
 
         mock_return.request(
             "GET",
-            "https://api.production.gamebench.net/v1/sessions/session_id",
+            GAMEBENCH_CONFIG['url'] + "/v1/sessions/session_id",
             json=self.session_app_json["response"]
         )
 
@@ -140,7 +141,7 @@ class TestResponseRetriever(TestCase):
                 'metric': '',
                 "params": 'test_params',
                 'session_id': '',
-                'url': "https://api.production.gamebench.net/v1/sessions",
+                'url': BASE_URL + VERSION + "/sessions",
                 "data": {'test_data': 'test_data'},
                 "headers": NO_METRIC_HEADERS,
                 "attributes": {
@@ -154,7 +155,7 @@ class TestResponseRetriever(TestCase):
                 'metric': '',
                 "params": 'test_params',
                 'session_id': SESSION_ID,
-                'url': "https://api.production.gamebench.net/v1/sessions/session_id",
+                'url': BASE_URL + VERSION + "/sessions/session_id",
                 "data": {'test_data': 'test_data'},
                 "headers": DEFAULT_SESSION_HEADERS,
                 "attributes": {

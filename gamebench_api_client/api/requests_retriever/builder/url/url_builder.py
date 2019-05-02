@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
+
 
 class URLBuilder(ABC):
     """ Abstract interface for creating each part of the URL object."""
@@ -101,5 +103,5 @@ class URL(object):
     """ URL object with basic properties used by the URLBuilder."""
 
     def __init__(self):
-        self.base_url = "https://api.production.gamebench.net"
-        self.version = "/v1"
+        self.base_url = GAMEBENCH_CONFIG['url']
+        self.version = GAMEBENCH_CONFIG['api_version']

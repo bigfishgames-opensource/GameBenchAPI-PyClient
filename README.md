@@ -13,6 +13,8 @@ Repository: [GitHub](https://github.com/bigfishgames/GameBenchAPI-PyClient)
 
 For full documentation, go to the [ReadtheDocs](https://gamebenchapi-pyclient.readthedocs.io/) page.
 
+[PyPi](https://pypi.org/project/GameBenchAPI-PyClient-BigFish/#description)
+
 ## Overview
 To install, run `pip install GameBenchAPI-PyClient-BigFish`
 
