@@ -1,7 +1,9 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from gamebench_api_client.api.requests_retriever.builder.url.url_builder import AuthURL, SessionURL, URLBuilder
+from gamebench_api_client.api.requests_retriever.builder.url.url_builder import AuthURL, SessionURL, URLBuilder, \
+    URL
+from gamebench_api_client.global_settings import GAMEBENCH_CONFIG
 from tests import *
 
 
@@ -139,3 +141,23 @@ class TestSessionURL(TestCase):
         self.session._set_metric(METRIC)
         actual = self.session.metric
         self.assertEqual(actual, METRIC)
+
+
+class TestURL(TestCase):
+
+    def setUp(self):
+        self.url = URL()
+
+    def test_base_url_attribute(self):
+        """ The URL.base_url attribute should match the URL set in the global settings."""
+
+        actual = self.url.base_url
+        expected = GAMEBENCH_CONFIG['url']
+        self.assertEqual(actual, expected)
+
+    def test_version_attribute(self):
+        """ The URL.version attribute should match the URL set in the global settings."""
+
+        actual = self.url.version
+        expected = GAMEBENCH_CONFIG['api_version']
+        self.assertEqual(actual, expected)
