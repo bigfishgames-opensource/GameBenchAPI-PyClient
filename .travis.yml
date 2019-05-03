@@ -22,4 +22,10 @@ script:
   - coverage xml --include=./gamebench_api_client/*
   - sonar-scanner
 
+deploy:
+  - provider: script
+  script: bash deploy_scripts/main_deploy.sh
+  on:
+    branch: master
+
 
