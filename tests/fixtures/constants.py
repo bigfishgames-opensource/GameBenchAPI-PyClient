@@ -16,7 +16,7 @@ AUTH_RESPONSE = {
 }
 AUTH_HEADERS = {
     'accept': 'application/json',
-    'Content-Type': 'application/json'
+    'Content - Type': 'application/json'
 }
 AUTH_DATA = {
     'username': USERNAME,
