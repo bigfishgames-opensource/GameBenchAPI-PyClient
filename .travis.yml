@@ -23,6 +23,7 @@ script:
   - sonar-scanner
 
 deploy:
+  skip_cleanup: true
   provider: script
   script: bash deploy_scripts/main_deploy.sh
   on:
