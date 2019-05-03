@@ -22,6 +22,7 @@ setuptools.setup(
     install_requires=[
         'pandas~=0.24.2',
         'urllib3>=1.24.2,<1.25',
+        'requests=*',
     ]
 )
 

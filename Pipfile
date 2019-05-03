@@ -16,3 +16,4 @@ python_version = "3.7"
 
 [packages]
 gamebench-api-client-big-fish = {editable = true,path = "."}
+requests = "*"
