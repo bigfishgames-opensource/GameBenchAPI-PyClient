@@ -23,7 +23,7 @@ script:
   - sonar-scanner
 
 deploy:
-  - provider: script
+  provider: script
   script: bash deploy_scripts/main_deploy.sh
   on:
     branch: master
