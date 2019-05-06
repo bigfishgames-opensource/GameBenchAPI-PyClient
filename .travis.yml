@@ -1,4 +1,4 @@
-dist: xenial   # required for Python >= 3.7
+dist: xenial
 
 language: python
 
@@ -6,7 +6,7 @@ sudo: true
 
 addons:
   sonarcloud:
-    organization: "bigfishgames" # the key of the org you chose at step #3
+    organization: "bigfishgames"
     token:
       secure: $SONAR_TOKEN
 
