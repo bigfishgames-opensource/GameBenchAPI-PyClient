@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 BUMP_PART="$(./get_bump_part.sh)"
 
 function bump_or_exit(){
