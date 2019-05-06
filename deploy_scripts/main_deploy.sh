@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-bump_version.sh;
-build_package.sh;
-publish_package.sh;
+./deploy_scripts/bump_version.sh;
+./deploy_scripts/build_package.sh;
+./deploy_scripts/publish_package.sh;
 
 exit
 
