@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function set_bump_part(){
     if [[ $(git log -1 | grep -cim1 ::patch::) > 0 ]]; then
         BUMP_PART="patch"
