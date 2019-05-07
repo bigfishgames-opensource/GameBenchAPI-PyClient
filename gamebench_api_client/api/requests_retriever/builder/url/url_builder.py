@@ -81,9 +81,16 @@ class SessionURL(URLBuilder):
         self.url = self._build_url()
 
     def _set_session_id(self, session_id):
-        """ Helper method to set the session_id. """
+        """ Helper method to set the session_id.
 
-        if session_id != '':
+            If the session_id contains an id it will set the self.session_id variable
+            to the given id and a '/' in front of it.  The forward slash is necessary
+            for when the id is added onto the end of a URL.
+
+            :param session_id: The session_id for a request.
+        """
+
+        if session_id:
             self.session_id = '/' + session_id
         else:
             self.session_id = session_id
