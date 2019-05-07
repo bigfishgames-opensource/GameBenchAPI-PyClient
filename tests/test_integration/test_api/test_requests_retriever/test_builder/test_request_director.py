@@ -31,7 +31,10 @@ class TestGetAuthRequest(TestCase):
             "url": AUTH_URL,
             "attributes": {
                 "headers": AUTH_HEADERS,
-                "auth": (USERNAME, PASSWORD)
+                "data": {
+                    'username': USERNAME,
+                    'password': PASSWORD
+                }
             }
         }
         actual = self.director.get_auth_request()

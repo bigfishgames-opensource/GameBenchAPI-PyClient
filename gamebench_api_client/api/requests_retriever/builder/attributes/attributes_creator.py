@@ -20,7 +20,7 @@ class Attributes:
         else:
             return {
                 'accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content - Type': 'application/json'
             }
 
     def get_params(self):
