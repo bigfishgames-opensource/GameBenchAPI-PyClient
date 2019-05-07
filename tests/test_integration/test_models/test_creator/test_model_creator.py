@@ -43,7 +43,6 @@ class TestModelCreator(TestCase):
             ['id', 'sessionId']
         )
         actual = model.data
-
         assert_frame_equal(actual, expected)
 
     @requests_mock.Mocker()
