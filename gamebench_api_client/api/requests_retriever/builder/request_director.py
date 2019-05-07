@@ -44,10 +44,9 @@ class RequestDirector:
 
         auth = AuthRequest(**self.request_parameters)
         director = RequestDirector(**self.request_parameters)
-        director.construct_request(auth, )
+        director.construct_request(auth)
 
         request = self._auth_to_dict(auth)
-
         return request
 
     @staticmethod
@@ -64,10 +63,10 @@ class RequestDirector:
             'url': auth_object.request.url,
             'attributes': {
                 'headers': auth_object.request.headers,
-                'auth': (
-                    auth_object.request.data['username'],
-                    auth_object.request.data['password']
-                )
+                'data': {
+                    'username': auth_object.request.data['username'],
+                    'password': auth_object.request.data['password']
+                }
             }
         }
 
