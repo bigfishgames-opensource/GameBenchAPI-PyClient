@@ -33,11 +33,11 @@ AUTH_ATTRIBUTES = {
 
 # Session Related
 SESSION_SUFFIX = '/sessions'
-SESSION_ID = "/session_id"
+SESSION_ID = "session_id"
 METRIC = "/cpu"
-BASE_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID
-DEFAULT_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID + METRIC
-GENERIC_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + SESSION_ID + '/notes'
+BASE_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + '/' + SESSION_ID
+DEFAULT_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + '/' + SESSION_ID + METRIC
+GENERIC_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + '/' + SESSION_ID + '/notes'
 SESSION_DATA = {
     "data": {
         "test_data": "test_data"
@@ -73,12 +73,6 @@ SAMPLE_RESPONSE = {
     ]
 }
 METRIC_TEST_PARAMS = {
-    "no_metric": {
-        "metric": "",
-        "headers": NO_METRIC_HEADERS,
-        "method": "POST",
-        "session_id": ""
-    },
     "metric_present": {
         "metric": METRIC,
         "headers": DEFAULT_SESSION_HEADERS,

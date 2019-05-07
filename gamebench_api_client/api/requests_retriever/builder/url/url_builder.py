@@ -83,7 +83,10 @@ class SessionURL(URLBuilder):
     def _set_session_id(self, session_id):
         """ Helper method to set the session_id. """
 
-        self.session_id = session_id
+        if session_id != '':
+            self.session_id = '/' + session_id
+        else:
+            self.session_id = session_id
 
     def _set_metric(self, metric):
         """ Helper method to set the session metric. """

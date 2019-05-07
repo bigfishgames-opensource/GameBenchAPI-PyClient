@@ -122,7 +122,7 @@ class TestSessionURL(TestCase):
         self.session.base_url = BASE_URL
         self.session.version = VERSION
         self.session.suffix = SESSION_SUFFIX
-        self.session.session_id = SESSION_ID
+        self.session.session_id = '/' + SESSION_ID
         self.session.metric = METRIC
         actual = self.session._build_url()
 
@@ -133,7 +133,16 @@ class TestSessionURL(TestCase):
 
         self.session._set_session_id(SESSION_ID)
         actual = self.session.session_id
-        self.assertEqual(actual, SESSION_ID)
+        expected = '/' + SESSION_ID
+        self.assertEqual(actual, expected)
+
+    def test_set_session_id_with_empty_session(self):
+        """ Session ID is blank."""
+
+        self.session._set_session_id('')
+        actual = self.session.session_id
+        expected = ''
+        self.assertEqual(actual, expected)
 
     def test_set_metric(self):
         """ Verify the metric is set."""

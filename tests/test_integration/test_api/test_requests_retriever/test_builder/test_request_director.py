@@ -60,7 +60,7 @@ class TestGetAuthRequest(TestCase):
             }
             expected = {
                 "method": params["method"],
-                "url": BASE_URL + VERSION + SESSION_SUFFIX + params["session_id"] + params["metric"],
+                "url": BASE_URL + VERSION + SESSION_SUFFIX + '/' + params["session_id"] + params["metric"],
                 "attributes": {
                     "headers": params["headers"],
                     "params": "test_params",
@@ -82,3 +82,37 @@ class TestGetAuthRequest(TestCase):
                     actual
                 )
             )
+
+    def test_get_session_request_no_metric(self):
+        """ Test to check that get_session_request returns expected dict when session_id is empty."""
+
+        test_params = {
+            'method': 'POST',
+            'session_id': '',
+            'metric': '',
+            'auth_token': AUTH_TOKEN,
+            "params": "test_params",
+            "data": {
+                "test_data": "test_data"
+            }
+        }
+
+        expected = {
+            "method": "POST",
+            "url": BASE_URL + VERSION + SESSION_SUFFIX,
+            "attributes": {
+                "headers": NO_METRIC_HEADERS,
+                "params": "test_params",
+                "data": {
+                    "test_data": "test_data"
+                }
+            }
+        }
+
+        self.director = RequestDirector(**test_params)
+        actual = self.director.get_session_request()
+
+        self.assertEqual(
+            expected,
+            actual,
+        )
