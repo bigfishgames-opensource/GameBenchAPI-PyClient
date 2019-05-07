@@ -1,4 +1,4 @@
-dist: xenial   # required for Python >= 3.7
+dist: xenial
 
 language: python
 
@@ -6,7 +6,7 @@ sudo: true
 
 addons:
   sonarcloud:
-    organization: "bigfishgames" # the key of the org you chose at step #3
+    organization: "bigfishgames"
     token:
       secure: $SONAR_TOKEN
 
@@ -21,5 +21,12 @@ script:
   - coverage run --source=./gamebench_api_client -m --branch unittest discover -s tests/
   - coverage xml --include=./gamebench_api_client/*
   - sonar-scanner
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ./deploy_scripts/main_deploy.sh $PyPi_UN $PyPi_PW
+  on:
+    branch: master
 
 
