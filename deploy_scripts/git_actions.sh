@@ -6,7 +6,7 @@ git_config() {
 }
 
 git_commit() {
-    git commit -m "[skip travis-ci]";
+    git commit -m "[skip travis-ci] version bumped!";
 }
 
 git_push() {
