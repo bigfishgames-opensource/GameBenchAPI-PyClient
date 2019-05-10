@@ -11,7 +11,7 @@ git_commit() {
 
 git_push() {
     git remote rm origin;
-    git remote add origin https://"$3"@github.com/bigfishgames/GameBenchAPI-PyClient.git
+    git remote add origin https://"$1"@github.com/bigfishgames/GameBenchAPI-PyClient.git
     git push origin master ; #--quiet
 }
 
