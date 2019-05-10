@@ -5,5 +5,5 @@ git config --global user.name "Travis CI";
 git add .;
 git commit -m "[skip travis-ci] version bumped!";
 git remote rm origin;
-git remote add origin https://"$1"@github.com/bigfishgames/GameBenchAPI-PyClient.git > /dev/null 2>&1;
-git push origin master --quiet;
+git remote add origin https://"$1"@github.com/bigfishgames/GameBenchAPI-PyClient.git;
+git push origin master;
