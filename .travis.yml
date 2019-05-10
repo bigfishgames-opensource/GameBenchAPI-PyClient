@@ -23,7 +23,7 @@ script:
   - sonar-scanner
 
 deploy:
-  skip_cleanup: false
+  skip_cleanup: true
   provider: script
   script: ./deploy_scripts/main_deploy.sh $PyPi_UN $PyPi_PW $GH_TOKEN
   on:
