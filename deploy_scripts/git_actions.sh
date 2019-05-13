@@ -3,12 +3,12 @@
 git config --global user.email "travis@travis-ci.com";
 git config --global user.name "Travis CI";
 
-git stash -m "[skip travis-ci] stashing CI changes."
+git stash;
 
 git checkout master;
 
-git stash pop -m "[skip travis-ci] version bumped!";
-#git commit --all -m "[skip travis-ci] version bumped!";
+git stash pop;
+git commit --all -m "[skip travis-ci] version bumped!";
 
 git remote rm origin;
 git remote add origin https://aaron-wilson-bfg:"$1"@github.com/bigfishgames/GameBenchAPI-PyClient.git;
