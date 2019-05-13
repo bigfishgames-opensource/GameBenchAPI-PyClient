@@ -28,5 +28,3 @@ deploy:
   script: ./deploy_scripts/main_deploy.sh $PyPi_UN $PyPi_PW $GH_TOKEN
   on:
     branch: master
-
-
