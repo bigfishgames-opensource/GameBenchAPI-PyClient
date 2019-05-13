@@ -25,5 +25,3 @@ setuptools.setup(
         'requests~=2.21.0',
     ]
 )
-
-
