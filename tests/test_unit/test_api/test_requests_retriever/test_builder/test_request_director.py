@@ -53,7 +53,7 @@ class TestRequestDirector(TestCase):
         mock.request.url = DEFAULT_SESSION_URL
         mock.request.headers = DEFAULT_SESSION_HEADERS
         mock.request.params = "test_params"
-        mock.request.data = SESSION_DATA
+        mock.request.data = SESSION_DATA['data']
 
         actual = self.director._session_to_dict(mock)
         expected = {

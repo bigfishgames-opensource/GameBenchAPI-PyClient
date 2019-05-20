@@ -50,7 +50,7 @@ DEFAULT_SESSION_HEADERS = {
 NO_METRIC_HEADERS = {
     'accept': 'application/json',
     'Authorization': 'JWT ' + AUTH_TOKEN,
-    'Content-Type': 'application/json'
+    'Content - Type': 'application/json'
 }
 SESSION_ATTRIBUTES = {
     'method': 'GET',
@@ -111,6 +111,14 @@ DEFAULT_SESSION_DETAIL_PARAMS = {
     'auth_token': AUTH_TOKEN,
     "params": '',
     "data": ''
+}
+KEYWORD_SEARCH_PARAMS = {
+    'session_id': '',
+    'metric': '',
+    'detail': '',
+    'auth_token': AUTH_TOKEN,
+    "params": '',
+    "data": {'query': 'Gummy'}
 }
 DEFAULT_GENERIC_PARAMS = {
     'session_id': SESSION_ID,
