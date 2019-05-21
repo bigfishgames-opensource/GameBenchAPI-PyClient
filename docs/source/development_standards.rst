@@ -150,7 +150,7 @@ In Python:
 
     a = 3
     b = 5
-    c = math.sqrt(a \*\* 2 + b \*\* 2)
+    c = math.sqrt(a ** 2 + b ** 2)
     print(str(c))
 
 However, you may also consider using more descriptive names for those
@@ -163,7 +163,7 @@ without specific knowledge.
 
     adjacent = 3
     opposite = 4
-    hypotenuse = math.sqrt(adjacent \*\* 2 + opposite \*\* 2)
+    hypotenuse = math.sqrt(adjacent ** 2 + opposite ** 2)
     sine = opposite / hypotenuse
 
 You may also use the common access level intention hints that are common
