@@ -16,7 +16,7 @@ AUTH_RESPONSE = {
 }
 AUTH_HEADERS = {
     'accept': 'application/json',
-    'Content - Type': 'application/json'
+    'Content-Type': 'application/json'
 }
 AUTH_DATA = {
     'username': USERNAME,
@@ -50,7 +50,7 @@ DEFAULT_SESSION_HEADERS = {
 NO_METRIC_HEADERS = {
     'accept': 'application/json',
     'Authorization': 'JWT ' + AUTH_TOKEN,
-    'Content - Type': 'application/json'
+    'Content-Type': 'application/json'
 }
 SESSION_ATTRIBUTES = {
     'method': 'GET',

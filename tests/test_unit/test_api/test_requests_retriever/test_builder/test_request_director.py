@@ -33,10 +33,7 @@ class TestRequestDirector(TestCase):
             'url': mock.request.url,
             'attributes': {
                 'headers': mock.request.headers,
-                "data": {
-                    'username': USERNAME,
-                    'password': PASSWORD
-                }
+                "data": f'{{ "username": "{USERNAME}", "password": "{PASSWORD}" }}'
             }
         }
 
@@ -62,7 +59,7 @@ class TestRequestDirector(TestCase):
             'attributes': {
                 'headers': mock.request.headers,
                 'params': mock.request.params,
-                'data': mock.request.data
+                'data': f"{mock.request.data}"
             }
         }
 
