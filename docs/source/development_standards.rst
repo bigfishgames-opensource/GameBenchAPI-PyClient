@@ -24,7 +24,7 @@ and deliver value to the community. On this topic we have strong
 convictions. And we have experienced the costs of failure to follow
 them.
 
-We also arn’t perfect, so we write these down and focus code review on
+We also aren’t perfect, so we write these down and focus code review on
 these standards.
 
 These standards are also here so future you and other contributors have
@@ -150,7 +150,7 @@ In Python:
 
     a = 3
     b = 5
-    c = math.sqrt(a \*\* 2 + b \*\* 2)
+    c = math.sqrt(a ** 2 + b ** 2)
     print(str(c))
 
 However, you may also consider using more descriptive names for those
@@ -163,7 +163,7 @@ without specific knowledge.
 
     adjacent = 3
     opposite = 4
-    hypotenuse = math.sqrt(adjacent \*\* 2 + opposite \*\* 2)
+    hypotenuse = math.sqrt(adjacent ** 2 + opposite ** 2)
     sine = opposite / hypotenuse
 
 You may also use the common access level intention hints that are common
@@ -263,7 +263,7 @@ good context, you should also consider a more descriptive name over a
 concise name if refactoring the structure isn’t practical.
 
 Methods
-^^^^^^^
+~~~~~~~~~
 
 Methods are actions, so they should be verbs. Use lowercase underscore
 separated words. A method should either ask a question (query), ask for
@@ -436,6 +436,16 @@ and increase readability.
    :linenos:
 
     human_resources_facade.onboard_new_hire(full_name)
+
+Method Length
+^^^^^^^^^^^^^^
+When our methods grow, they become more rigid and fragile. Long methods are
+also more difficult to read. Aim to have your methods to be about 5 lines of
+code.
+
+If you extract out logic to new methods until you can't, this gets easy. This
+process results in clear high-level methods and small units that are easy to
+change and test.
 
 Automated Tests
 ---------------
