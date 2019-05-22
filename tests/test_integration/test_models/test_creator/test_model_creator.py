@@ -136,3 +136,33 @@ class TestModelCreator(TestCase):
         actual = model.data
 
         assert_frame_equal(actual, expected)
+
+    @requests_mock.Mocker()
+    def test_data_search(self, mock_return):
+        """ Keyword search should return the proper DataFrames."""
+        with open(os.path.join(
+            PARENT_DIR + '/fixtures/' + "authentication_token.json")) as \
+            json_data:
+            self.auth_token = json.load(json_data)
+        with open(os.path.join(
+            PARENT_DIR + API_SAMPLES + "apps_filter.json")) as \
+            json_data:
+            self.app_filter_json = json.load(json_data)
+        mock_return.request(
+            'POST',
+            AUTH_URL,
+            json=self.auth_token
+        )
+        mock_return.request(
+            'POST',
+            'https://production.node.gce.gamebench.net/v1/sessions',
+            json=self.app_filter_json['response']
+        )
+        creator = ModelCreator('SessionSummary', **APPS_FILTER_PARAMS)
+        model = creator.get_model()
+        expected = pandas.DataFrame(
+            [self.app_filter_json['response']]
+        )
+        actual = model.data
+
+        assert_frame_equal(actual, expected)

@@ -63,13 +63,11 @@ class RequestDirector:
             'url': auth_object.request.url,
             'attributes': {
                 'headers': auth_object.request.headers,
-                'data': {
-                    'username': auth_object.request.data['username'],
-                    'password': auth_object.request.data['password']
-                }
+                'data':
+                    f'{{ "username": "{auth_object.request.data["username"]}", '
+                    f'"password": "{auth_object.request.data["password"]}" }}'
             }
         }
-
         return auth_request
 
     def get_session_request(self):
@@ -101,7 +99,7 @@ class RequestDirector:
             'attributes': {
                 'headers': session_object.request.headers,
                 'params': session_object.request.params,
-                'data': session_object.request.data
+                'data': f'{session_object.request.data}'
             }
         }
 

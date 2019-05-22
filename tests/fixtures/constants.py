@@ -117,8 +117,8 @@ KEYWORD_SEARCH_PARAMS = {
     'metric': '',
     'detail': '',
     'auth_token': AUTH_TOKEN,
-    "params": '',
-    "data": {'query': 'Gummy'}
+    "params": 'pageSize=15&sort=timePushed%3Adesc',
+    "data": {"apps": ["Ether Drop!"]}
 }
 DEFAULT_GENERIC_PARAMS = {
     'session_id': SESSION_ID,
@@ -128,6 +128,14 @@ DEFAULT_GENERIC_PARAMS = {
     "data": {
         "test_data": "test_data"
     }
+}
+APPS_FILTER_PARAMS = {
+    "session_id": "",
+    "metric": "",
+    "detail": "",
+    "auth_token": AUTH_TOKEN,
+    "params": {'company': 'test', 'pageSize': 5},
+    "data": '{"apps": ["Ether Drop!"]}'
 }
 NO_METRIC_REQUEST_PARAMS = {
     'metric': 'app',
