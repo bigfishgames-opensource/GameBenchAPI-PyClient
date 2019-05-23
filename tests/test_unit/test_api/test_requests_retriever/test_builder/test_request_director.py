@@ -33,10 +33,7 @@ class TestRequestDirector(TestCase):
             'url': mock.request.url,
             'attributes': {
                 'headers': mock.request.headers,
-                "data": {
-                    'username': USERNAME,
-                    'password': PASSWORD
-                }
+                "data": f'{{ "username": "{USERNAME}", "password": "{PASSWORD}" }}'
             }
         }
 
@@ -53,7 +50,7 @@ class TestRequestDirector(TestCase):
         mock.request.url = DEFAULT_SESSION_URL
         mock.request.headers = DEFAULT_SESSION_HEADERS
         mock.request.params = "test_params"
-        mock.request.data = SESSION_DATA
+        mock.request.data = SESSION_DATA['data']
 
         actual = self.director._session_to_dict(mock)
         expected = {
@@ -62,7 +59,7 @@ class TestRequestDirector(TestCase):
             'attributes': {
                 'headers': mock.request.headers,
                 'params': mock.request.params,
-                'data': mock.request.data
+                'data': f"{mock.request.data}"
             }
         }
 

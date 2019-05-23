@@ -31,10 +31,7 @@ class TestGetAuthRequest(TestCase):
             "url": AUTH_URL,
             "attributes": {
                 "headers": AUTH_HEADERS,
-                "data": {
-                    'username': USERNAME,
-                    'password': PASSWORD
-                }
+                "data": f'{{ "username": "{USERNAME}", "password": "{PASSWORD}" }}'
             }
         }
         actual = self.director.get_auth_request()
@@ -56,20 +53,16 @@ class TestGetAuthRequest(TestCase):
                 'session_id': params["session_id"],
                 'metric': params["metric"],
                 'auth_token': AUTH_TOKEN,
-                "params": "test_params",
-                "data": {
-                    "test_data": "test_data"
-                }
+                "params": "",
+                "data": ''
             }
             expected = {
                 "method": params["method"],
                 "url": BASE_URL + VERSION + SESSION_SUFFIX + '/' + params["session_id"] + params["metric"],
                 "attributes": {
                     "headers": params["headers"],
-                    "params": "test_params",
-                    "data": {
-                        "test_data": "test_data"
-                    }
+                    "params": "",
+                    "data": ''
                 }
             }
 
@@ -95,9 +88,7 @@ class TestGetAuthRequest(TestCase):
             'metric': '',
             'auth_token': AUTH_TOKEN,
             "params": "test_params",
-            "data": {
-                "test_data": "test_data"
-            }
+            "data": '{"test_data": "test_data"}'
         }
 
         expected = {
@@ -106,9 +97,7 @@ class TestGetAuthRequest(TestCase):
             "attributes": {
                 "headers": NO_METRIC_HEADERS,
                 "params": "test_params",
-                "data": {
-                    "test_data": "test_data"
-                }
+                "data": '{"test_data": "test_data"}'
             }
         }
 

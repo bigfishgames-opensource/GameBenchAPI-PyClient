@@ -53,6 +53,9 @@ class RequestDirector:
     def _auth_to_dict(auth_object):
         """ Helper method to turn the auth object into a dictionary to return it.
 
+            The value for the 'data' key must be in a string for the request to
+            get back the proper information.
+
             :param auth_object: authorization object.
             :return auth_request: dictionary containing the attributes of the authorization
             object.
@@ -63,13 +66,11 @@ class RequestDirector:
             'url': auth_object.request.url,
             'attributes': {
                 'headers': auth_object.request.headers,
-                'data': {
-                    'username': auth_object.request.data['username'],
-                    'password': auth_object.request.data['password']
-                }
+                'data':
+                    f'{{ "username": "{auth_object.request.data["username"]}", '
+                    f'"password": "{auth_object.request.data["password"]}" }}'
             }
         }
-
         return auth_request
 
     def get_session_request(self):
@@ -90,6 +91,9 @@ class RequestDirector:
     def _session_to_dict(session_object):
         """ Helper method to turn the session object into a dictionary.
 
+            The value for the 'data' key must be in a string for the request to
+            get back the proper information.
+
             :param session_object: session request object.
             :return session_request: dictionary containing the attributes of the
             session object.
@@ -101,7 +105,7 @@ class RequestDirector:
             'attributes': {
                 'headers': session_object.request.headers,
                 'params': session_object.request.params,
-                'data': session_object.request.data
+                'data': f'{session_object.request.data}'
             }
         }
 

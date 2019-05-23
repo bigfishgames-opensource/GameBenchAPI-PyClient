@@ -20,7 +20,7 @@ class Attributes:
         else:
             return {
                 'accept': 'application/json',
-                'Content - Type': 'application/json'
+                'Content-Type': 'application/json'
             }
 
     def get_params(self):
@@ -80,5 +80,4 @@ class Attributes:
             :return: Bool of whether or not there is a 'username' key in the
                 request_parameter dictionary.
         """
-
         return "username" in self.request_parameters
