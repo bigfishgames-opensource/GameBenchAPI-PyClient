@@ -54,7 +54,7 @@ class Attributes:
             the appropriate headers.
 
             For most session requests, this will include the auth token and the 'accept' key/value pair.
-            Requests that don't need a session_id will also include the 'Content - Type'
+            Requests that don't need a session_id will also include the 'Content-Type'
             key/value pair.
 
             :return: Dictionary containing the headers for the session request.
