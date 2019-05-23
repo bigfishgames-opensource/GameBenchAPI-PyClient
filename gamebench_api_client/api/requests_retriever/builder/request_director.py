@@ -53,6 +53,9 @@ class RequestDirector:
     def _auth_to_dict(auth_object):
         """ Helper method to turn the auth object into a dictionary to return it.
 
+            The value for the 'data' key must be in a string for the request to
+            get back the proper information.
+
             :param auth_object: authorization object.
             :return auth_request: dictionary containing the attributes of the authorization
             object.
@@ -87,6 +90,9 @@ class RequestDirector:
     @staticmethod
     def _session_to_dict(session_object):
         """ Helper method to turn the session object into a dictionary.
+
+            The value for the 'data' key must be in a string for the request to
+            get back the proper information.
 
             :param session_object: session request object.
             :return session_request: dictionary containing the attributes of the

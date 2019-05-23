@@ -139,7 +139,8 @@ class TestModelCreator(TestCase):
 
     @requests_mock.Mocker()
     def test_data_search(self, mock_return):
-        """ Keyword search should return the proper DataFrames."""
+        """ Keyword search using 'apps' should return the proper DataFrames."""
+
         with open(os.path.join(
             PARENT_DIR + '/fixtures/' + "authentication_token.json")) as \
             json_data:
