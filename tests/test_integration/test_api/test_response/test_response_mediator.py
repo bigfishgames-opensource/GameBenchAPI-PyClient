@@ -124,15 +124,15 @@ class TestResponseRetriever(TestCase):
             "metric": {
                 'method': 'GET',
                 'metric': '/cpu',
-                "params": 'test_params',
+                "params": '',
                 'session_id': SESSION_ID,
                 "url": DEFAULT_SESSION_URL,
-                "data": '{"test_data": "test_data"}',
+                "data": '',
                 "headers": DEFAULT_SESSION_HEADERS,
                 "attributes": {
-                    'params': 'test_params',
+                    'params': '',
                     'headers': DEFAULT_SESSION_HEADERS,
-                    'data': '{"test_data": "test_data"}'
+                    'data': ''
                 }
             },
             "no_metric": {
@@ -152,15 +152,15 @@ class TestResponseRetriever(TestCase):
             "session": {
                 'method': 'GET',
                 'metric': '',
-                "params": 'test_params',
+                "params": '',
                 'session_id': SESSION_ID,
                 'url': BASE_URL + VERSION + "/sessions/session_id",
-                "data": '{"test_data": "test_data"}',
+                "data": '',
                 "headers": DEFAULT_SESSION_HEADERS,
                 "attributes": {
-                    'params': 'test_params',
+                    'params': '',
                     'headers': DEFAULT_SESSION_HEADERS,
-                    'data': '{"test_data": "test_data"}'
+                    'data': ''
                 }
             }
         }
