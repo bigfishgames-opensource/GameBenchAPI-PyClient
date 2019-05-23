@@ -108,7 +108,10 @@ class TestModelCreator(TestCase):
 
     @requests_mock.Mocker()
     def test_keyword_search(self, mock_return):
-        """ Keyword search should return the proper DataFrames."""
+        """ Keyword search should return the proper DataFrames.
+
+            Regression test for https://github.com/bigfishgames/gamebenchapi-pyclient/issues/56
+        """
 
         with open(os.path.join(
                 PARENT_DIR + '/fixtures/' + "authentication_token.json")) as \
@@ -138,8 +141,11 @@ class TestModelCreator(TestCase):
         assert_frame_equal(actual, expected)
 
     @requests_mock.Mocker()
-    def test_data_search(self, mock_return):
-        """ Keyword search using 'apps' should return the proper DataFrames."""
+    def test_filter_using_apps(self, mock_return):
+        """ Keyword search using 'apps' should return the proper DataFrames.
+
+            Regression test for https://github.com/bigfishgames/gamebenchapi-pyclient/issues/59
+        """
 
         with open(os.path.join(
             PARENT_DIR + '/fixtures/' + "authentication_token.json")) as \
