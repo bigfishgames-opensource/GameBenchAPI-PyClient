@@ -11,7 +11,7 @@ and the company ID.
    :caption: global_settings.py
 
     GAMEBENCH_CONFIG = {
-        'url': 'https://api.production.gamebench.net',
+        'url': 'https://production.node.gce.gamebench.net',
         'api_version': '/v1',
         'username': '',
         'password': '',
@@ -20,6 +20,14 @@ and the company ID.
 
 If the API endpoint ever changes it can be updated in this file.
 
-The company ID can be found on the `GameBench Web Dashboard <https://web.gamebench.net>`__.
-Once signed in go to the 'My Account' section.  The company id is the alpha-numeric string
-in the URL.
+Currently the company ID must be manually queried for.  Here are steps on retrieving the ID:
+
+1. Request an API authorisation token using the API calls in the `GameBench API Documentation <https://docs.gamebench.net/api/documentation>`__.
+2. Copy down the token from the Response.
+3. Contact the following API endpoint, replacing the '<auth_token>' with the token from the first step:
+
+.. code-block:: python
+
+   https://production.node.gce.gamebench.net/v1/users/me?jwt=<auth_token>
+
+4. Find the 'company.id' value.
