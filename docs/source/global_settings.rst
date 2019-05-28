@@ -20,7 +20,7 @@ and the company ID.
 
 If the API endpoint ever changes it can be updated in this file.
 
-Currently the company ID must be manually queried for.  Here are steps on retrieving the ID:
+Currently, the company ID must be manually retrieved.  Here are the steps to do that:
 
 1. Request an API authorisation token using the API calls in the `GameBench API Documentation <https://docs.gamebench.net/api/documentation>`__.
 2. Copy down the token from the Response.
