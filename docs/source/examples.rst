@@ -64,9 +64,10 @@ the session id.  However, there are two other requests that can be made.
 
 Keyword Search
 ^^^^^^^^^^^^^^
-This type of request allows you to pass in keywords that can be used to search for specific
-sessions.  Adding a 'data' dictionary to the given dictionary will allow you to give keywords
-to search for.
+This type of request allows you to pass in keywords in order to get a return an array of keyword objects based on the
+query..  Adding a 'data' dictionary to the given dictionary will allow you to give keywords to search for.
+
+The following example will search for sessions that contain the parameter 'iPad'.
 
 **Example:**
 
@@ -74,12 +75,64 @@ to search for.
    :linenos:
 
    generic_request = {
-        'data': {
-            'query': 'iPad'
-        }
+        'data': '{
+            "query": "Google"
+        }'
    }
 
    creator = ModelCreator('Keyword', generic_request)
+
+*NOTE:* When using the 'data' key the value must be a string with the outer quotes as single-quotes, and any inner
+quotes as double-quotes.
+
+The response is an array of dictionaries.
+
+**Example**
+
+.. code-block:: python
+   :linenos:
+
+   [
+      {'key': 'Google', 'doc_count': 3804, 'type': 'manufacturer'},
+      {'key': 'Google', 'doc_count': 27, 'type': 'app'},
+      {'key': 'Google Pixelbook', 'doc_count': 9, 'type': 'device'}
+   ]
+
+App, Device, or Manufacturer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The API allows filtering by three different keywords: apps, device, and manufacturer.  The 'key' values from the
+query search can be used as keywords in this search.  This request will return sessions recorded that match the
+specified keywords.
+
+**Example**
+
+.. code-block:: python
+   :linenos:
+
+   generic_request = {
+        'data': '{
+            "apps": ["Google"]
+        }'
+   }
+
+You can use any of these three individually or together.
+
+**Example**
+
+.. code-block:: python
+   :linenos:
+
+   generic_request = {
+        'data': '{
+            "apps": ["Google"],
+            "device": ["Google Pixelbook"],
+            "manufacturer": ["Google"]
+        }'
+   }
+
+This will return sessions recorded by the authenticated user.  If you are part of a company, you can include the
+'company_id' to expand the search to all sessions from the entire company.  An example of using a 'company_id' can
+be seen in the next section.
 
 Sessions
 ^^^^^^^^
@@ -98,15 +151,30 @@ Adding a 'params' key to the given dictionary will allow you to give search para
 
    generic_request = {
         'params': {
+            'company_id': 'QcBvM2IB0D53NS9vlGcH',
             'pageSize': 15
         }
    }
 
    creator = ModelCreator('SessionSummary', generic_request)
 
+The 'params' value could also be set to a string of exactly what the client wants added as a parameter to the endpoint.
 
-To see a full list of the available search options, see the
-`GameBench API Documentation <https://docs.gamebench.net/api/documentation>`__.
+**Example**
+
+.. code-block:: python
+   :linenos:
+
+   generic_request = {
+      'params': 'company=QcBvM2IB0D53NS9vlGcH&pageSize=15'
+   }
+
+   creator = ModelCreator('SessionSummary', generic_request)
+
+This string will be passed to the endpoint to specify the type of response generated.  Either of these two ways will
+return the same information.
+
+
 
 Session Detail
 ^^^^^^^^^^^^^^
@@ -118,3 +186,7 @@ information in a DataFrame.
 
 Here are all of the detail metrics you can call this way: app, device, location, metrics, and
 network app usage.
+
+
+To see a full list of the available search options, see the
+`GameBench API Documentation <https://docs.gamebench.net/api/documentation>`__.
