@@ -27,7 +27,7 @@ for that information looks like:
        'session_id': '66d926f47ff5a7a5d853d1058c6305614e1ae6a5'
    }
 
-   creator = ModelCreator('Cpu', time_series_request)
+   creator = ModelCreator('Cpu', **time_series_request)
    cpu_time_series = creator.get_model()
 
    results = cpu_time_series.data
@@ -55,7 +55,7 @@ and Session Summary.
         'session_id': '66d926f47ff5a7a5d853d1058c6305614e1ae6a5'
     }
 
-    creator = ModelCreator('SessionNotes', generic_request)
+    creator = ModelCreator('SessionNotes', **generic_request)
 
 
 
@@ -79,7 +79,7 @@ to search for.
         }
    }
 
-   creator = ModelCreator('Keyword', generic_request)
+   creator = ModelCreator('Keyword', **generic_request)
 
 Sessions
 ^^^^^^^^
@@ -102,7 +102,7 @@ Adding a 'params' key to the given dictionary will allow you to give search para
         }
    }
 
-   creator = ModelCreator('SessionSummary', generic_request)
+   creator = ModelCreator('SessionSummary', **generic_request)
 
 
 To see a full list of the available search options, see the
