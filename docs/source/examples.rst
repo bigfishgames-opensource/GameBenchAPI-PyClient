@@ -28,7 +28,7 @@ for that information looks like:
        'session_id': '66d926f47ff5a7a5d853d1058c6305614e1ae6a5'
    }
 
-   creator = ModelCreator('Cpu', time_series_request)
+   creator = ModelCreator('Cpu', **time_series_request)
    cpu_time_series = creator.get_model()
 
    results = cpu_time_series.data
@@ -57,7 +57,7 @@ and Session Summary.
         'session_id': '66d926f47ff5a7a5d853d1058c6305614e1ae6a5'
     }
 
-    creator = ModelCreator('SessionNotes', generic_request)
+    creator = ModelCreator('SessionNotes', **generic_request)
 
 
 
@@ -83,7 +83,7 @@ The following example will search for sessions that contain the parameter 'iPad'
         }'
    }
 
-   creator = ModelCreator('Keyword', generic_request)
+   creator = ModelCreator('Keyword', **generic_request)
 
 *NOTE:* When using the 'data' key the value must be a string with the outer quotes as single-quotes, and any inner
 quotes as double-quotes.
@@ -119,6 +119,8 @@ specified keywords.
         }'
    }
 
+   creator = ModelCreator('SessionSummary', **generic_request)
+
 You can use any of these three individually or together.
 
 **Example**
@@ -133,6 +135,8 @@ You can use any of these three individually or together.
             "manufacturer": ["Google"]
         }'
    }
+
+   creator = ModelCreator('SessionSummary', **generic_request)
 
 This will return sessions recorded by the authenticated user.  If you are part of a company, you can include the
 'company_id' to expand the search to all sessions from the entire company.  An example of using a 'company_id' can
@@ -161,7 +165,7 @@ Adding a 'params' key to the given dictionary will allow you to give search para
         }
    }
 
-   creator = ModelCreator('SessionSummary', generic_request)
+   creator = ModelCreator('SessionSummary', **generic_request)
 
 The 'params' value could also be set to a string of exactly what the client wants added as a parameter to the endpoint.
 
@@ -174,7 +178,7 @@ The 'params' value could also be set to a string of exactly what the client want
       'params': 'company=QcBvM2IB0D53NS9vlGcH&pageSize=15'
    }
 
-   creator = ModelCreator('SessionSummary', generic_request)
+   creator = ModelCreator('SessionSummary', **generic_request)
 
 This string will be passed to the endpoint to specify the type of response generated.  Either of these two ways will
 return the same information.
