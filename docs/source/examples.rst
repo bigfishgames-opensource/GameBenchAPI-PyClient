@@ -10,6 +10,7 @@ querying the GameBench API.
 Here are examples of the dictionaries that can be passed to the *ModelCreator* as an argument
 to get back information.
 
+
 Time-Series Model
 -----------------
 This type of request is used for the following models: Battery, Cpu, CPU Core Frequency,
@@ -43,6 +44,7 @@ When requesting time-series data, pass in the model you want as the first argume
 to the ModelCreator.  The given dictionary then just needs to include the 'session_id' key
 and the associated id as the value.
 
+
 Generic models
 --------------
 This type of request is used for the following models: Keyword, Markers, Session Notes,
@@ -61,6 +63,7 @@ and Session Summary.
 
 When requesting the session summary, markers, or notes for a session, the given dictionary only needs to include
 the session id.  However, there are two other requests that can be made.
+
 
 Keyword Search
 ^^^^^^^^^^^^^^
@@ -98,6 +101,7 @@ The response is an array of dictionaries.
       {'key': 'Google Pixelbook', 'doc_count': 9, 'type': 'device'}
    ]
 
+
 App, Device, or Manufacturer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 The API allows filtering by three different keywords: apps, device, and manufacturer.  The 'key' values from the
@@ -133,6 +137,7 @@ You can use any of these three individually or together.
 This will return sessions recorded by the authenticated user.  If you are part of a company, you can include the
 'company_id' to expand the search to all sessions from the entire company.  An example of using a 'company_id' can
 be seen in the next section.
+
 
 Sessions
 ^^^^^^^^
