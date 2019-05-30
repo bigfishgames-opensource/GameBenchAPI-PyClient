@@ -173,3 +173,38 @@ class TestModelCreator(TestCase):
         actual = model.data
 
         assert_frame_equal(actual, expected)
+
+    @requests_mock.Mocker()
+    def test_fps_stability(self, mock_return):
+        """ FPS Stability gets the correct data back
+
+            The FPS Stability needs to go through the 'to_dataframe' utility method.
+            Regression test for https://github.com/bigfishgames/gamebenchapi-pyclient/issues/67
+        """
+
+        with open(os.path.join(
+            PARENT_DIR + '/fixtures/' + "authentication_token.json")) as \
+            json_data:
+            self.auth_token = json.load(json_data)
+        with open(os.path.join(
+            PARENT_DIR + API_SAMPLES + "fps_stability.json")) as \
+            json_data:
+            self.fps_stability_json = json.load(json_data)
+        mock_return.request(
+            'POST',
+            AUTH_URL,
+            json=self.auth_token
+        )
+        mock_return.request(
+            'GET',
+            FPS_STABILITY_URL,
+            json=self.fps_stability_json['response']
+        )
+        creator = ModelCreator('FpsStability', **FPS_STABILITY_PARAMS)
+        model = creator.get_model()
+        expected = pandas.DataFrame(
+            [self.fps_stability_json['response']]
+        )
+        actual = model.data
+
+        assert_frame_equal(actual, expected)

@@ -8,6 +8,12 @@
 from gamebench_api_client.models.dataframes.generic.abstract_generic import AbstractGenericModel
 
 
+class FpsStability(AbstractGenericModel):
+    """ Object to set the FPS Stability information for a session."""
+
+    METRIC_PATH = '/fpsStability'
+
+
 class Keyword(AbstractGenericModel):
     """ Object to set the results for a keyword search."""
 

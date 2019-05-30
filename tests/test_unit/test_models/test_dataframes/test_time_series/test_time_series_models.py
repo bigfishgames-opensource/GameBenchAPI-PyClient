@@ -25,9 +25,6 @@ class TimeSeriesModelsTests(TestCase):
                 energy = Energy()
                 self.assertEqual('/energy', energy.request_parameters['metric'])
             with self.subTest():
-                fps_stability = FpsStability()
-                self.assertEqual('/fpsStability', fps_stability.request_parameters['metric'])
-            with self.subTest():
                 fps = Fps()
                 self.assertEqual('/fps', fps.request_parameters['metric'])
             with self.subTest():

@@ -38,6 +38,7 @@ METRIC = "/cpu"
 BASE_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + '/' + SESSION_ID
 DEFAULT_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + '/' + SESSION_ID + METRIC
 GENERIC_SESSION_URL = BASE_URL + VERSION + SESSION_SUFFIX + '/' + SESSION_ID + '/notes'
+FPS_STABILITY_URL = BASE_URL + VERSION + SESSION_SUFFIX + '/' + SESSION_ID + '/fpsStability'
 SESSION_DATA = {
     "data": {
         "test_data": "test_data"
@@ -157,6 +158,9 @@ NO_METRIC_EXPECTED_REQUEST_PARAMS = {
             'test_data': 'test_data'
         }
     }
+}
+FPS_STABILITY_PARAMS = {
+    'session_id': SESSION_ID
 }
 
 # Mock Paths
