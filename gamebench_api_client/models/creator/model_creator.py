@@ -9,12 +9,12 @@ class ModelCreator:
 
     MODELS_AND_MODULES = {
         "gamebench_api_client.models.dataframes.generic.generic_models":
-            ["Keyword", "Markers", "SessionNotes", "SessionSummary"],
+            ["FpsStability", "Keyword", "Markers", "SessionNotes", "SessionSummary"],
         "gamebench_api_client.models.dataframes.session_detail.session_detail_models":
             ["App", "Device", "Location", "Metrics", "NetworkUsage"],
         "gamebench_api_client.models.dataframes.time_series.time_series_models":
             [
-                "Battery", "Cpu", "CpuCoreFrequency", "Energy", "Fps", "FpsStability",
+                "Battery", "Cpu", "CpuCoreFrequency", "Energy", "Fps",
                 "Energy", "GpuImg", "Gpu", "Janks", "Memory", "Network", "Power"
             ]
     }

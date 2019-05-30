@@ -14,6 +14,9 @@ class GenericModelsTests(TestCase):
                 patch(f'{ABSTRACT_GENERIC}.GenericMediator'), \
                 patch(f'{ABSTRACT_GENERIC}.Authenticator'):
             with self.subTest():
+                fps_stability = FpsStability()
+                self.assertEqual('/fpsStability', fps_stability.request_parameters['metric'])
+            with self.subTest():
                 keyword = Keyword()
                 self.assertEqual('/typeahead', keyword.request_parameters['metric'])
             with self.subTest():

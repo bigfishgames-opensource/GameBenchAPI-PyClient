@@ -32,12 +32,6 @@ class Energy(AbstractTimeSeriesModel):
     METRIC_PATH = '/energy'
 
 
-class FpsStability(AbstractTimeSeriesModel):
-    """ Object to set the FPS Stability information for a session."""
-
-    METRIC_PATH = '/fpsStability'
-
-
 class Fps(AbstractTimeSeriesModel):
     """ Object to set the FPS information for a session."""
 
