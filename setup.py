@@ -5,7 +5,7 @@ with open("README.md", "r") as file_handle:
 
 setuptools.setup(
     name='GameBenchAPI-PyClient-BigFish',
-    version='1.0.2',
+    version='1.0.3',
     packages=setuptools.find_packages(),
     description='A GameBench API Client Library.',
     long_description=long_description,
